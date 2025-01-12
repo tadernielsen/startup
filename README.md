@@ -2,7 +2,6 @@
 
 [My Notes](notes.md)
 
-A brief description of the application here.
 This application serves as both a developer log and a place where I can feature stuff I have created. People can go on the application and read the devlogs and download things that I have created and released onto their computer (such as a video game). The site can also double as a place where I can send employers to look at my works.
 
 
