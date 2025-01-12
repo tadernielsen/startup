@@ -1,5 +1,5 @@
 # CS 260 Notes
-VSCODE TEST
+
 [My startup](https://simon.cs260.click)
 
 ## Helpful links

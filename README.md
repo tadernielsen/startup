@@ -1,8 +1,9 @@
-# Your startup name here
+# Developer Website (Name Undecided)
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. test commit. VSCODE TEST.
+A brief description of the application here.
+This application serves as both a developer log and a place where I can feature stuff I have created. People can go on the application and read the devlogs and download things that I have created and released onto their computer (such as a video game). The site can also double as a place where I can send employers to look at my works.
 
 
 > [!NOTE]
