@@ -43,12 +43,12 @@ sequenceDiagram
 
 ### Key features
 
-- Home Page where users can see the latest announcement and redirect to other pages
-- Devlog Page where users can view and like posts that I release
-- Game Page where users can view, favorite, and install games
-- Both Game and Devlog pages have the ability to show the amount of likes/favorites on each post
-- Secure user login page for users
-- Seprate secure developer login page so I can login with the ability to add posts
+- ***Home Page*** where users can see the latest announcement and redirect to other pages
+- ***Devlog Page*** where users can view and like posts that I release
+- ***Game Page*** where users can view, favorite, and install games
+- Both **Game** and **Devlog** pages have the ability to show the amount of likes/favorites on each post
+- Secure ***user login page*** for users
+- Seprate ***secure developer login page*** so I can login with the ability to add posts
 - Ability for me (The developer) to create new devlog posts and game pages without having to mess with the code
 
 ### Technologies
