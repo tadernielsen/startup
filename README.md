@@ -1,8 +1,8 @@
-# Developer Website (Name Undecided)
+# Game Development Website (Name Undecided)
 
 [My Notes](notes.md)
 
-This application serves as both a developer log and a place where I can feature stuff I have created. People can go on the application and read the devlogs and download things that I have created and released onto their computer (such as a video game). The site can also double as a place where I can send employers to look at my works.
+This application serves as both a developer log and a place where I can feature games I have created. People can go on the application and read the devlogs and download games that I have created and released onto their computer. The site can also double as a place where I can send employers to look at my works.
 
 
 > [!NOTE]
@@ -26,7 +26,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Whenever I am making a game or some other project, it would be nice to have somewhere to put it for people to easily see it. This application is designed to be a hub for games that I create and release onto the internet. It is also designed to have a devlog where I can write about stuff that I am doing and also announce games on. Users will be able to log into the website and read the devlogs and like both posts or games. They will also be able to go to the games page and install my games (or redirect to a website where they can install it). I will also be able to log in to the site and be able to add new posts or create a new page for a game.
 
 ### Design
 
