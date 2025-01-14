@@ -18,10 +18,10 @@ This application serves as both a developer log and a place where I can feature 
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
+- [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
 - [x] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Description of how you will use each technology
 - [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
@@ -30,18 +30,29 @@ Whenever I am making a game or some other project, it would be nice to have some
 
 ### Design
 
+Website Design sketches (Subject to change)
+
 ![Home Page Design](Devsite%20Design%20Home.PNG)
 ![Devlog Page Design](Devsite%20Design%20Devlog.PNG)
 ![Games Page Design](Devsite%20Design%20Games.PNG)
 ![Login](Devsite%20Design%20Login.PNG)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Sequence Diagram on how the website interacts with its users
 
 ```mermaid
 sequenceDiagram
-    actor You
+    actor Developer
+    actor Jared
+    actor Samuel
     actor Website
-    You->>Website: Replace this with your design
+    Developer->>Website: Add Game/Devlog Post
+    Website-->>Jared: View Game/Devlog Post
+    Website-->>Samuel: View Game/Devlog Post
+    Jared->>Website: Like Game/Devlog Post
+    Samuel->>Website: Like Game/Devlog Post
+    Website-->>Jared: Download Game
+    Website-->>Samuel: Download Game
+    Website-->>Developer: Number of Game Downloads or Post Likes
 ```
 
 ### Key features
@@ -58,12 +69,17 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - The basic structure for the website. Uses 5 HTML pages. Pages are, Home, Devlog, Games, User Login, and Developer Login. Uses Hyperlinks to connect all of the pages together.
+- **CSS** - Create the style for the website. Such as where all the boxes goes and the size of images.
+- **React** - Provides login, post, applying likes/favorites, display likes/favorites, game install, and backend endpoint calls. Reacts to user actions on site.
+- **Service** - Backend service with endpoints for:
+    - retrieving game files
+    - retrieving post info
+    - submitting likes or favorites
+    - submitting new posts or games
+    - displaying a random geek joke from https://geek-jokes.sameerkumar.website/api?format=json
+- **DB/Login** - Stores game files and post data, devlog post data, and likes/favorites in database. Also stores user and developer data securely in the database. Users must be authenticated to like or favorite posts, but not to install games.
+- **WebSocket** - Posts are brodcast to other users when submitted by the Developer. Likes and favorites are also brodcasted when a user presses the button
 
 ## 🚀 AWS deliverable
 
