@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-This application serves as both a developer log and a place where I can feature games I have created. People can go on the application and read the devlogs and download games that I have created and released onto their computer. The site can also double as a place where I can send employers to look at my works.
+This application serves as both a developer log and a place where I can feature games I have created. People can go on the application and read the devlogs and download games that I have created and released onto their computer. The site can also double as a portfolio where I can send employers to look at my works.
 
 
 > [!NOTE]
@@ -19,8 +19,8 @@ This application serves as both a developer log and a place where I can feature 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
 - [ ] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
@@ -30,7 +30,10 @@ Whenever I am making a game or some other project, it would be nice to have some
 
 ### Design
 
-![Design image](placeholder.png)
+![Home Page Design](Devsite%20Design%20Home.PNG)
+![Devlog Page Design](Devsite%20Design%20Devlog.PNG)
+![Games Page Design](Devsite%20Design%20Games.PNG)
+![Login](Devsite%20Design%20Login.PNG)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -47,8 +50,8 @@ sequenceDiagram
 - ***Devlog Page*** where users can view and like posts that I release
 - ***Game Page*** where users can view, favorite, and install games
 - Both **Game** and **Devlog** pages have the ability to show the amount of likes/favorites on each post
-- Secure ***user login page*** for users
-- Seprate ***secure developer login page*** so I can login with the ability to add posts
+- Secure ***User Login Page*** for users
+- Seprate, secure ***Developer Login Page*** so I can login with the ability to add posts
 - Ability for me (The developer) to create new devlog posts and game pages without having to mess with the code
 
 ### Technologies
