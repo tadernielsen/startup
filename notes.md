@@ -7,6 +7,8 @@
 - [Course instruction](https://github.com/webprogramming260)
 - [Canvas](https://byu.instructure.com)
 - [MDN](https://developer.mozilla.org)
+- [Markdown Documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [Voter Example](https://github.com/webprogramming260/startup-example/blob/main/README.md)
 
 ## AWS Notes
 
