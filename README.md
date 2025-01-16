@@ -75,7 +75,7 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://startup.tn-games.com).
 
 ## 🚀 HTML deliverable
 
