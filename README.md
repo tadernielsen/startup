@@ -1,4 +1,4 @@
-# Game Development Website (Name Undecided)
+# TNGames (Game Development Website)
 
 [My Notes](notes.md)
 
