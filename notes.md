@@ -1,6 +1,6 @@
 # CS 260 Notes
 
-[My startup](https://simon.cs260.click)
+[My startup](https://tn-games.com)
 
 ## Helpful links
 
