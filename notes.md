@@ -56,4 +56,44 @@
 
 ## HTML Notes
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+- Hyper Text Markup Language
+- Frontend
+- The structural language of the web (No styling is done with html)
+
+### Base parts of HTML
+- DOCTYPE: The current html verion (HTML5)
+- lang: language
+- head: used as metadata and holds the title
+- body: where everything is rendered
+
+Create a tree data structure to visulize how the computer sees it
+
+### How to render the page
+- Browser - about:blank (devtools)
+- VSCode - Live Server
+
+### Link References
+- Absolute: Uses a website to find the attribute value
+- Relative: Uses the local files to find the attribute value
+
+### Elements
+- html: page container
+- head: header info
+- title: page title
+- body: entire content body
+- header: header content
+- main: main content
+- footer: footer of main content
+- section: a section of main content
+- div: A block division of content
+- span: inline span of content
+- h<1-9>: Text heading
+- p: paragraph
+- table
+- ol, ul: ordered/unordered list
+- a: Anchor to a hyperlink
+- img: Graphical image reference
+
+There are different unicodes for certain characters
+
+### CodePen
