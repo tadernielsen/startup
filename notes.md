@@ -97,3 +97,40 @@ Create a tree data structure to visulize how the computer sees it
 There are different unicodes for certain characters
 
 ### CodePen
+
+### Simon Notes
+
+
+## CSS Notes
+
+Cascading Style Sheets
+
+Could do style inline, but you should do it in a serpeate file (or in the style element)
+
+### Parts
+
+- selector
+- decloration block
+- rule
+- property
+- value
+- decleration
+
+Can use href to reference to an external stylesheet
+
+HTML calls the most recent CSS (Precedence)
+
+### Selectors
+- Element
+- ID
+- Class
+- Element class
+
+### Declorations
+- background-color
+- border
+- color
+- display
+- font
+- margin
+- padding
