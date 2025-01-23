@@ -98,8 +98,19 @@ There are different unicodes for certain characters
 
 ### CodePen
 
+- inline elements can go into block elements without splitting them
+- [HTML Elements](https://github.com/webprogramming260/.github/blob/main/profile/html/structure/structure.md)
+- [HTML Input Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input)
+- [HTML Media Elements](https://github.com/webprogramming260/.github/blob/main/profile/html/media/media.md)
+- svg and canvas contains code to let you create images in your website
+- [SVG Documentation](https://developer.mozilla.org/en-US/docs/Web/SVG)
+
 ### Simon Notes
 
+Application data: SVG Graphic Buttons, user name, insparational quote
+Authentication: Account creation and login
+Database data: High scores of all players
+WebSocket data: Updates every time another user creates or ends a game. 
 
 ## CSS Notes
 
