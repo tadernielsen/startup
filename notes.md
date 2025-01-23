@@ -110,7 +110,14 @@ There are different unicodes for certain characters
 Application data: SVG Graphic Buttons, user name, insparational quote
 Authentication: Account creation and login
 Database data: High scores of all players
-WebSocket data: Updates every time another user creates or ends a game. 
+WebSocket data: Updates every time another user creates or ends a game.
+
+### My Startup
+
+Application data: Username, Game and Devlog post boxes, developer buttons, geek joke 
+Authentication: Username and password page
+Database data: game data, devlog post data
+WebSocket data: likes, favorotes, downloads, new posts
 
 ## CSS Notes
 
