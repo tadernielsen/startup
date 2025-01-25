@@ -82,12 +82,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **HTML pages** - I created four HTML Pages, `index.html` (Home page), `devlog.html`, `games.html`, and `login.html`
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
+- [x] **Proper HTML element usage** - I used HTML tags such as HEADER, BODY, NAV, MAIN, etc. to help create my website
+- [x] **Links** - I created links between all of my pages
+- [x] **Text** - Most of my pages have text such as the home page or the devlog page in order to give the user informaton about the page
+- [x] **3rd party API placeholder** - `index.html` has a place on the footer to display a geek joke.
 - [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
+- [x] **Login placeholder** - Placeholder for authentication is on the 'login.html' page
 - [ ] **DB data placeholder** - I did not complete this part of the deliverable.
 - [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
 
