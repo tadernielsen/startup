@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="icon" href="" />
+  </head>
+
+  <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header>
+      <img src="Images/placeholder.png" width="75px"></img>
+      <h1>TN-Games.com</h1>
+
+      <nav>
+        <table border="1px">
+            <tr>
+                <td><a href="https://www.youtube.com/@tadernielsen">YouTube</a></td>
+                <td><a href="https://github.com/tadernielsen/">GitHub</a></td>
+                <td><a href="https://tadernielsen.itch.io/">Itch</a></td>
+            </tr>
+        </table>
+      </nav>
+      
+      <br />
+      <a href="login.html" class="username">LOGIN</a>
+
+      <!-- Navigation elements -->
+      <nav>
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+        <menu>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="devlog.html">DEVLOG</a></li>
+            <li><a href="games.html">GAMES</a></li>
+        </menu>
+      </nav>
+
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+      <hr />
+    </header>
+
+    <main>
+        <h2>DevLog</h2>
+        
+        <section class = "devlog">
+            <table border="2px">
+                <tr>
+                    <td>
+                        <h3>Log 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                        <button class="Like"><img src="Images/placeholder.png" width="25px"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Log 2</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                        <button class="like"><img src="Images/placeholder.png" width="25px"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Log 3</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                        <button class="like"><img src="Images/placeholder.png" width="25px"></button>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">Kaden Nielsen</span>
+      <br />
+      <a href="https://github.com/tadernielsen/startup">GitHub</a>
+    </footer>
+  </body>
+</html>
