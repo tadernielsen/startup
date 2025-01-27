@@ -86,7 +86,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Links** - I created links between all of my pages
 - [x] **Text** - Most of my pages have text such as the home page or the devlog page in order to give the user informaton about the page
 - [x] **3rd party API placeholder** - `index.html` has a place on the footer to display a geek joke.
-- [ ] **Images** - I did not complete this part of the deliverable.
+- [ ] **Images** - Image is on every page
 - [x] **Login placeholder** - Placeholder for authentication is on the 'login.html' page
 - [ ] **DB data placeholder** - I did not complete this part of the deliverable.
 - [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
