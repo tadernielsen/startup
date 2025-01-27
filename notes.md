@@ -117,7 +117,7 @@ WebSocket data: Updates every time another user creates or ends a game.
 Application data: Username, Game and Devlog post boxes, developer buttons, geek joke 
 Authentication: Username and password page
 Database data: game data, devlog post data
-WebSocket data: likes, favorotes, downloads, new posts
+WebSocket data: likes, favorites, downloads, new posts
 
 ## CSS Notes
 
