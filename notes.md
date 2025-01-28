@@ -1,6 +1,6 @@
 # CS 260 Notes
 
-[My startup](https://tn-games.com)
+[My startup](https://startup.tn-games.com)
 
 ## Helpful links
 
@@ -152,3 +152,21 @@ HTML calls the most recent CSS (Precedence)
 - font
 - margin
 - padding
+
+### Responsive design
+- Meta - defines metadata for css
+- Float - renders the position of the text to respond to the window resizing
+- Display
+  - none - doesn't render
+  - block - allocates full line
+  - inline - renders multiple in one line
+  - flex - renders children in a flexable way
+  - grid - represent children as a grid
+- Flex - makes children flexable
+- Media queries - overrides styles when requirements are met
+
+### CSS Frameworks
+You pull in someone's code so you can use it for your own CSS
+Most common framework: [Bootstrap](https://getbootstrap.com/)
+- All you have to do is reference it in the header and set the class
+- Code is open source
