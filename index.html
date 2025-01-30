@@ -12,29 +12,34 @@
   <body>
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
-      <img src="Images/V2 TN.jpg" width="75px"></img>
-      <h1>TN-Games.com</h1>
+      <div class="headerTop">
+        <div class="title">
+          <img src="Images/V2 TN.jpg"></img>
+          <h1><span>TN</span>-Games.com</h1>
+        </div>
+        
+        <div class="topRight">
+        <nav>
+          <table>
+              <tr>
+                  <td><a href="https://www.youtube.com/@tadernielsen">YouTube</a></td>
+                  <td><a href="https://github.com/tadernielsen/">GitHub</a></td>
+                  <td><a href="https://tadernielsen.itch.io/">Itch</a></td>
+              </tr>
+          </table>
+        </nav>
+        
+        <a href="login.html" id="username">LOGIN</a>
 
-      <nav>
-        <table>
-            <tr>
-                <td><a href="https://www.youtube.com/@tadernielsen">YouTube</a></td>
-                <td><a href="https://github.com/tadernielsen/">GitHub</a></td>
-                <td><a href="https://tadernielsen.itch.io/">Itch</a></td>
-            </tr>
-        </table>
-      </nav>
-      
-      <a href="login.html" class="username">LOGIN</a>
+        </div>
+      </div>
 
       <!-- Navigation elements -->
       <nav>
         <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
-        <menu>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="devlog.html">DEVLOG</a></li>
-            <li><a href="games.html">GAMES</a></li>
-        </menu>
+        <a href="index.html">HOME</a>
+        <a href="devlog.html">DEVLOG</a>
+        <a href="games.html">GAMES</a>
       </nav>
 
       <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
@@ -46,7 +51,7 @@
         
         <section class="latestAnnouncement">
             <h3>Latest Announcement</h3>
-            <div class="latestAnouncement">No current announcements</div>
+            <p class="latestAnouncement">No current announcements</p>
             <a class="devButton" hidden><button>Edit</button></a>
         </section>
         
@@ -62,9 +67,11 @@
     </main>
 
     <footer>
-      <span class="text-reset">Kaden Nielsen</span>
-      <a href="https://github.com/tadernielsen/startup">GitHub</a>
-      <p class="randomGeekJoke">Geek Joke here</p>
+      <div>
+        <span>Kaden Nielsen</span>
+        <a href="https://github.com/tadernielsen/startup">GitHub</a>
+      </div>
+      <p id="randomGeekJoke">Geek Joke here</p>
     </footer>
   </body>
 </html>
