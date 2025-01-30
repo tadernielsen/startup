@@ -166,7 +166,47 @@ HTML calls the most recent CSS (Precedence)
 - Media queries - overrides styles when requirements are met
 
 ### CSS Frameworks
-You pull in someone's code so you can use it for your own CSS
-Most common framework: [Bootstrap](https://getbootstrap.com/)
+- You pull in someone's code so you can use it for your own CSS
+- Most common framework: [Bootstrap](https://getbootstrap.com/)
 - All you have to do is reference it in the header and set the class
 - Code is open source
+
+## JavaScript
+
+### History
+- 1995: Eich invents Java
+- 1997: JavaScript becomes ECMAScript
+- 2009: ES5: strice, JSON, array iteration
+- 2015-xx: ES6, let, default params, async, rest/spread, destructure, module, class, template literals
+
+- Inspired by Scheme
+- Interpreted language
+- Dunamically typed
+- Not related to Java
+
+Console.log - Outputs to terminal window
+
+### Node.js
+Run the JavaScript outside the browser
+Lets you run in the terminal using node
+
+*History*
+- 2009: Node.js released
+- 2010: NPM released
+- 2011: Dahl moves to Joyent
+  - Windows version released
+  - Widespread adoption. LinkedIn, Uber, ...
+- 2015: Node.js/Open.js Foundation
+- Deno (ES modules, TypeScript, security, ...)
+
+Node - JavaScript runtime
+NPM - Node package manager
+
+*Node Package Manager*
+- Access to massive library of packages
+- Install project packages
+- Manage package versions
+- Configure execution of project
+
+### Debugging
+- Use run debugger in VSCode
