@@ -14,6 +14,11 @@ h1 {
     margin-bottom: auto;
 }
 
+h2 {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
 .title span {
     background-color: black;
     color:red;  
@@ -81,7 +86,7 @@ footer {
 
 footer a {
     float: right;
-}
+}   
 
 #randomGeekJoke {
     float: bottom;
