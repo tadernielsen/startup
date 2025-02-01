@@ -73,7 +73,6 @@ h2 {
 }
 
 .topRight {
-    display: flex;
     align-self: right;
 }
 
