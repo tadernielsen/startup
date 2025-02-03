@@ -25,6 +25,10 @@ h2 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+h3 {
+    font-weight: bold;
+}
+
 .title span {
     background-color: black;
     border-radius: 10px;
@@ -110,9 +114,27 @@ section {
     height: 100px;
 }
 
-.gameinfo {
+div {
     display: flex;
+}
+
+.gameInfo {
     flex-direction: row;
+    flex: 1 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gameInfo p {
+    margin-left: 15px;
+
+}
+
+.gameButtons {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-right: 2px;
 }
 
 footer {
@@ -120,9 +142,10 @@ footer {
     flex: 0 30px;
     width: auto;
     height: auto;
-    flex-direction: column;
+    flex-direction: row;
     background-color: black;
     color: white;
+    justify-content: space-between;
 
     padding-top: 0.3em;
     padding-left: 0.3em;
@@ -131,7 +154,7 @@ footer {
 }
 
 footer a {
-    float: right;
+    align-self: right;
 } 
 
 @media (max-width: 585px) {
@@ -139,3 +162,10 @@ footer a {
         display: none;
     }
   }
+
+@media (max-width: 560px)
+{
+    .game img {
+        display: none;
+    }
+}
