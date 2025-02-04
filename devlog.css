@@ -42,9 +42,13 @@ div {
 
 footer {
     justify-content: space-between;
-
     padding: 0.3em;
-    
+}
+
+footer div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 footer a {
