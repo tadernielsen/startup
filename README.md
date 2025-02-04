@@ -1,4 +1,4 @@
-# TNGames (Game Development Website)
+# TN-Games (Game Development Website)
 
 [My Notes](notes.md)
 
@@ -95,12 +95,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - I used the CSS file `main.css` to style the basic page style. Specific styling are in the `home.css`, `devlog.css`, `games.css`, and `login.css` files.
+- [x] **Navigation elements** - Used Bootstrap to style the navigation buttons.
+- [x] **Responsive to window resizing** - All pages respond to window resizing using `display:flex;` and other flex features.
+- [x] **Application elements** - Used flex to align everything in the correct place.
+- [x] **Application text content** - The main text are in `Courier New`, but there are several other fonts and sizes for different text.
+- [x] **Application images** - Resized images to fit with the rest of the page.
 
 ## 🚀 React part 1: Routing deliverable
 
