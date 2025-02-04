@@ -9,6 +9,7 @@
 - [MDN](https://developer.mozilla.org)
 - [Markdown Documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 - [Voter Example](https://github.com/webprogramming260/startup-example/blob/main/README.md)
+- [Bootstrap](https://getbootstrap.com/)
 
 ## AWS Notes
 
@@ -210,3 +211,35 @@ NPM - Node package manager
 
 ### Debugging
 - Use run debugger in VSCode
+
+## React
+
+### Web Frameworks
+- Simplify common patterns
+- Provide common components
+- Improve performance
+- Increase device coverage
+
+### JSX
+
+Uses Babel to translate JSX to JavaScript and then the browser renders it into HTML
+Can run Babel in CodePen by changing the JS Preprocessor settings
+
+### Components
+
+- Define: const Hello
+- Use: root.render(<Hello />);
+- Provide: <Hello phrase="cs260" />
+- Destructuring: [color, setColor]
+- Update: setColor(color === "red" ? "green" : "red");
+
+### Router
+Lets you have one HTML page and just change one component of it (such as the body)
+
+- Router Component: <BrowserRouter>
+- Routing links: <NavLink to="">
+- Map route to components:  <Route path="" element={} />
+
+### Toolchain
+How do I compile JSX myself?
+Vite - Frontend build tool

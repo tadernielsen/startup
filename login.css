@@ -62,7 +62,7 @@ img {
     float: right;
   }
 
-  @media (max-height: 380px) {
+  @media (max-height: 460px) {
     img {
         display: none;
     }
