@@ -123,6 +123,7 @@ div {
     flex: 1 50px;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
 }
 
 .gameInfo p {
@@ -147,9 +148,7 @@ footer {
     color: white;
     justify-content: space-between;
 
-    padding-top: 0.3em;
-    padding-left: 0.3em;
-    padding-right: 0.3em;
+    padding: 0.3em;
     
 }
 
