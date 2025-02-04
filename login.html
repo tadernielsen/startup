@@ -19,21 +19,21 @@
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
       <img src="Images/V2 TN.jpg"></img>
-      <h1>TN-Games.com</h1>
+      <h1><span>TN</span>-Games.com</h1>
     </header>
 
     <main>
       <div class="login">
         <h1>Login</h1>
         <form method="get" action="index.html">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" placeholder="your@email.com" required />
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="username">Username:</label>
+                <input class="form-control" type="text" id="username" placeholder="your@email.com" required />
             </div>
             <br />
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" placeholder="Password" required />
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="password">Password:</label>
+                <input class="form-control" type="password" id="password" placeholder="Password" required />
             </div>
             <br />
             <button type="submit" class="btn btn-primary btn-sm">Login</button>
