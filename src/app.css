@@ -93,6 +93,10 @@ footer {
     color: white;
 }
 
+footer a {
+    float: right;
+}   
+
 @media (max-width: 585px) {
     .title img {
         display: none;
