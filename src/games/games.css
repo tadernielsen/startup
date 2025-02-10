@@ -13,6 +13,8 @@ section {
     height: 100%;
     overflow-y: auto;
     justify-content: space-between;
+    background-color: gray;
+    border: none;
 }
 
 .game {
@@ -31,7 +33,7 @@ section {
     height: 100px;
 }
 
-div {
+.games div {
     display: flex;
 }
 
@@ -54,21 +56,6 @@ div {
     justify-content: space-evenly;
     margin-right: 2px;
 }
-
-footer {
-    justify-content: space-between;
-    padding: 0.3em;
-}
-
-footer div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-footer a {
-    align-self: right;
-} 
 
 @media (max-width: 560px)
 {
