@@ -1,13 +1,13 @@
-h3 {
+.gamePage h3 {
     font-weight: bold;
 }
 
-main {
-    height: 400px;
+.gamePage {
+    flex: 1 400px;
     padding-bottom: 10px;
 }
 
-section {
+.gamePage section {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -17,7 +17,7 @@ section {
     border: none;
 }
 
-.game {
+main .game {
     flex-direction: row;
     border: 1px solid black;
     background-color: white;

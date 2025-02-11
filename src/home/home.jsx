@@ -3,7 +3,7 @@ import './home.css';
 
 export function Home() {
   return (
-    <main>
+    <main className="home">
         <h2>Home</h2>
         
         <section className="latestAnnouncement">

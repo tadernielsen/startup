@@ -3,7 +3,7 @@ import './games.css';
 
 export function Games() {
   return (
-    <main>
+    <main className="gamePage">
         <h2>Games</h2>
         <a className="devButton" hidden><button>Add Game</button></a>
         

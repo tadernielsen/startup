@@ -1,13 +1,17 @@
 body {
     background-color: rgba(159, 0, 0, 0.986);
+}
+.body {
+    
     display: flex;
     flex-direction: column;
     font-family: 'Courier New', Courier, monospace;
 
-    margin-bottom: 0px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 0;
+    padding-bottom: 0px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 header {
@@ -91,11 +95,20 @@ footer {
     flex-direction: column;
     background-color: black;
     color: white;
+    
+    padding-top: 0.3em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
 }
 
 footer a {
     float: right;
 }   
+
+#randomGeekJoke {
+    float: bottom;
+    margin-bottom: 0;
+}
 
 @media (max-width: 585px) {
     .title img {

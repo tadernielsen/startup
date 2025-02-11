@@ -1,4 +1,4 @@
-h2 {
+.home h2 {
     margin-top: 1px;
     margin-bottom: 1px;
 }
@@ -8,25 +8,10 @@ main {
     justify-content: space-evenly;
 }
 
-section {
+.home section {
     border: 1px solid black;
     background-color: white;
     text-align: center;
     width: 100%;
     border-radius: 1px;
-}
-
-footer {
-    padding-top: 0.3em;
-    padding-left: 0.3em;
-    padding-right: 0.3em;
-}
-
-footer a {
-    float: right;
-}   
-
-#randomGeekJoke {
-    float: bottom;
-    margin-bottom: 0;
 }
