@@ -2,6 +2,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './login.css';
 
+import { NavLink } from 'react-router-dom';
+
 export function Login() {
   return (
     <main className="loginPage">
@@ -12,19 +14,17 @@ export function Login() {
                 <label className="input-group-text" for="username">Username:</label>
                 <input className="form-control" type="text" id="username" placeholder="your@email.com" required />
             </div>
-            <br />
             <div className="input-group mb-3">
                 <label className="input-group-text" for="password">Password:</label>
                 <input className="form-control" type="password" id="password" placeholder="Password" required />
             </div>
-            <br />
             <div className="buttons">
-              <button type="submit" className="btn btn-primary btn-sm">Login</button>
-              <button type="submit" className="btn btn-secondary btn-sm">Create Account</button>
-              <button type="submit" className="btn btn-outline-dark btn-sm">Developer Login</button>
+              <NavLink to="/" type="submit" className="btn btn-primary btn-sm">Login</NavLink>
+              <NavLink to="/" type="submit" className="btn btn-secondary btn-sm">Create Account</NavLink>
+              <NavLink to="/" type="submit" className="btn btn-outline-dark btn-sm">Developer Login</NavLink>
             </div>
         </form>
-        <a href="index.html">Back</a>
+        <NavLink to="/">Back</NavLink>
       </div>
     </main>
   );
