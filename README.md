@@ -106,9 +106,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - Routing between login and voting components.
+- [x] **Bundled using Vite** - I installed vite and bundled my application with it
+- [x] **Components** - All HTML pages have been converted to React components.
+    - **Login**: Reworked HTML and CSS to work with the react page, scrapped login's header and footer to stay consistent with the rest of the site. All buttons route to home page.
+    - **Devlog & Games**: Reworked HTML and CSS in order to work with React. Placeholders for devlogs/games and their buttons.
+    - **Home**: Reworked CSS but left HTML alone. Footer with Geek Joke placeholder is now on all pages.
+- [x] **Router** - Routing between `Home`, `DevLog`, `Games`, and `Login` components.
 
 ## 🚀 React part 2: Reactivity
 
