@@ -15,7 +15,7 @@ export default function App() {
         <header>
           <div className="headerTop">
             <div className="title">
-              <img src="public/V2 TN.jpg"></img>
+              <img src="V2 TN.jpg"></img>
               <h1><span>TN</span>-Games.com</h1>
             </div>
             

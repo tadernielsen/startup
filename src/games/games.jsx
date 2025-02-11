@@ -10,7 +10,7 @@ export function Games() {
         <section className="games">
           <div className="game">
             <div className="gameInfo">
-              <img src="Images/placeholder.png"/>
+              <img src="placeholder.png"/>
               <h3>Game 1</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
             </div>
@@ -23,7 +23,7 @@ export function Games() {
           </div>
           <div className="game">
             <div className="gameInfo">
-              <img src="Images/placeholder.png"/>
+              <img src="placeholder.png"/>
               <h3>Game 2</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
             </div>
@@ -36,7 +36,7 @@ export function Games() {
           </div>
           <div className="game">
             <div className="gameInfo">
-              <img src="Images/placeholder.png"/>
+              <img src="placeholder.png"/>
               <h3>Game 3</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
             </div>
