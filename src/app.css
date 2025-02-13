@@ -110,6 +110,11 @@ footer a {
     margin-bottom: 0;
 }
 
+.devButton {
+    width: auto;
+    height: 2em;
+}
+
 @media (max-width: 585px) {
     .title img {
         display: none;

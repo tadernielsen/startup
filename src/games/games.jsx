@@ -5,7 +5,7 @@ export function Games() {
   return (
     <main className="gamePage">
         <h2>Games</h2>
-        <a className="devButton"><button>Add Game</button></a>
+        <button className="devButton">Add Game</button>
         
         <section className="games">
           <div className="game">
@@ -15,11 +15,11 @@ export function Games() {
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
             </div>
             <div className="gameButtons">
-              <a href=""><button className="like">👍</button></a>
-              <a href=""><button className="favorite">⭐</button></a>
-              <a href=""><button className="download">Download</button></a>
+              <button className="like">👍</button>
+              <button className="favorite">⭐</button>
+              <button className="download">Download</button>
             </div>
-            <a className="devButton"><button>Edit</button></a>
+            <button className="devButton">Edit</button>
           </div>
           <div className="game">
             <div className="gameInfo">
@@ -28,11 +28,11 @@ export function Games() {
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
             </div>
             <div className="gameButtons">
-              <a href=""><button className="like">👍</button></a>
-              <a href=""><button className="favorite">⭐</button></a>
-              <a href=""><button className="download">Download</button></a>
+              <button className="like">👍</button>
+              <button className="favorite">⭐</button>
+              <button className="download">Download</button>
             </div>
-            <a className="devButton"><button>Edit</button></a>
+            <button className="devButton">Edit</button>
           </div>
           <div className="game">
             <div className="gameInfo">
@@ -41,11 +41,11 @@ export function Games() {
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
             </div>
             <div className="gameButtons">
-              <a href=""><button className="like">👍</button></a>
-              <a href=""><button className="favorite">⭐</button></a>
-              <a href=""><button className="download">Download</button></a>
+              <button className="like">👍</button>
+              <button className="favorite">⭐</button>
+              <button className="download">Download</button>
             </div>
-            <a className="devButton"><button>Edit</button></a>
+            <button className="devButton">Edit</button>
           </div>
       </section>
     </main>
