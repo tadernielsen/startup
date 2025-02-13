@@ -5,7 +5,7 @@ export function Games() {
   return (
     <main className="gamePage">
         <h2>Games</h2>
-        <a className="devButton" hidden><button>Add Game</button></a>
+        <a className="devButton"><button>Add Game</button></a>
         
         <section className="games">
           <div className="game">
@@ -19,7 +19,7 @@ export function Games() {
               <a href=""><button className="favorite">⭐</button></a>
               <a href=""><button className="download">Download</button></a>
             </div>
-            <a className="devButton" hidden><button>Edit</button></a>
+            <a className="devButton"><button>Edit</button></a>
           </div>
           <div className="game">
             <div className="gameInfo">
@@ -32,7 +32,7 @@ export function Games() {
               <a href=""><button className="favorite">⭐</button></a>
               <a href=""><button className="download">Download</button></a>
             </div>
-            <a className="devButton" hidden><button>Edit</button></a>
+            <a className="devButton"><button>Edit</button></a>
           </div>
           <div className="game">
             <div className="gameInfo">
@@ -45,7 +45,7 @@ export function Games() {
               <a href=""><button className="favorite">⭐</button></a>
               <a href=""><button className="download">Download</button></a>
             </div>
-            <a className="devButton" hidden><button>Edit</button></a>
+            <a className="devButton"><button>Edit</button></a>
           </div>
       </section>
     </main>

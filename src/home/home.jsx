@@ -9,7 +9,7 @@ export function Home() {
         <section className="latestAnnouncement">
             <h3>Latest Announcement</h3>
             <p className="latestAnouncement">No current announcements</p>
-            <a className="devButton" hidden><button>Edit</button></a>
+            <a className="devButton"><button>Edit</button></a>
         </section>
         
         <section className="welcome">
