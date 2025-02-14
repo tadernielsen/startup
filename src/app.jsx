@@ -10,18 +10,17 @@ import { Devlog } from './devlog/devlog';
 import { Login } from './login/login';
 
 // Extra stuff
-import { useGlitch } from 'react-powerglitch'
+import { useGlitch, } from 'react-powerglitch'
 
 export default function App() {
   const [joke, setJoke] = React.useState('Loading joke...');
-  const [headerImage, setHeaderImage] = React.useState('placeholder.png');
+  const [headerImage, setHeaderImage] = React.useState('TN PFP V3.png');
   const images = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png'];
 
-  const glitch = useGlitch();
+  const glitch = useGlitch({"playMode": "click"});
 
   React.useEffect(() => {
     setJoke('Epic Geek Joke');
-    setHeaderImage('TN PFP V3.png');
   }, []);
 
   const generateRandomImage = () => {
@@ -29,9 +28,7 @@ export default function App() {
     const max = images.length;
     const randomNumber = Math.floor(Math.random() * (max - min) + min);
 
-    glitch.startGlitch();
     setHeaderImage(images[randomNumber]);
-    glitch.stopGlitch();
   }
 
   return (
@@ -40,7 +37,7 @@ export default function App() {
         <header>
           <div className="headerTop">
             <div className="title">
-              <img src={headerImage} onClick={generateRandomImage}></img>
+              <img src={headerImage} onClick={generateRandomImage} ref={glitch.ref}></img>
               <h1><span>TN</span>-Games.com</h1>
             </div>
             
