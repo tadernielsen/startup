@@ -9,6 +9,12 @@ import { Devlog } from './devlog/devlog';
 import { Login } from './login/login';
 
 export default function App() {
+  const [joke, setJoke] = React.useState('Loading joke...');
+
+  React.useEffect(() => {
+    setJoke('Epic Geek Joke');
+  }, []);
+
   return (
     <BrowserRouter>
       <div className='body'>
@@ -53,7 +59,7 @@ export default function App() {
             <span>Kaden Nielsen</span>
             <a href="https://github.com/tadernielsen/startup"><button type="button" className="btn btn-secondary">GitHub</button></a>
           </div>
-          <p id="randomGeekJoke">Geek Joke here</p>
+          <p id="randomGeekJoke">{joke}</p>
         </footer>
       </div>
     </BrowserRouter>
