@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
+// Routing
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Home } from './home/home';
 import { Games } from './games/games';
@@ -10,10 +11,21 @@ import { Login } from './login/login';
 
 export default function App() {
   const [joke, setJoke] = React.useState('Loading joke...');
+  const [headerImage, setHeaderImage] = React.useState('placeholder.png');
+  const images = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png'];
 
   React.useEffect(() => {
     setJoke('Epic Geek Joke');
+    setHeaderImage('TN PFP V3.png');
   }, []);
+
+  const generateRandomImage = () => {
+    const min = 0;
+    const max = images.length;
+    const randomNumber = Math.floor(Math.random() * (max - min) + min);
+    console.log(randomNumber);
+    setHeaderImage(images[randomNumber]);
+  }
 
   return (
     <BrowserRouter>
@@ -21,7 +33,7 @@ export default function App() {
         <header>
           <div className="headerTop">
             <div className="title">
-              <img src="V2 TN.jpg"></img>
+              <img src={headerImage} onClick={generateRandomImage}></img>
               <h1><span>TN</span>-Games.com</h1>
             </div>
             
