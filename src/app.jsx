@@ -9,10 +9,15 @@ import { Games } from './games/games';
 import { Devlog } from './devlog/devlog';
 import { Login } from './login/login';
 
+// Extra stuff
+import { useGlitch } from 'react-powerglitch'
+
 export default function App() {
   const [joke, setJoke] = React.useState('Loading joke...');
   const [headerImage, setHeaderImage] = React.useState('placeholder.png');
   const images = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png'];
+
+  const glitch = useGlitch();
 
   React.useEffect(() => {
     setJoke('Epic Geek Joke');
@@ -23,8 +28,10 @@ export default function App() {
     const min = 0;
     const max = images.length;
     const randomNumber = Math.floor(Math.random() * (max - min) + min);
-    console.log(randomNumber);
+
+    glitch.startGlitch();
     setHeaderImage(images[randomNumber]);
+    glitch.stopGlitch();
   }
 
   return (
