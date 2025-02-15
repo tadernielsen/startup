@@ -15,9 +15,9 @@ import { useGlitch, } from 'react-powerglitch'
 export default function App() {
   const [joke, setJoke] = React.useState('Loading joke...');
   const [headerImage, setHeaderImage] = React.useState('TN PFP V3.png');
-  const images = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png'];
+  const images = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png', 'Halloween TN.png', 'TN chrismas Logo.png', 'TN chrismas V2.png', 'TN COVID-19.png', 'TN halloween 2021 pfp.png'];
 
-  const glitch = useGlitch({"playMode": "click"});
+  const glitch = useGlitch({"playMode": "click", glitchTimeSpan: false});
 
   React.useEffect(() => {
     setJoke('Epic Geek Joke');
