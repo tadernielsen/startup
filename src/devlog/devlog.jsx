@@ -2,10 +2,25 @@ import React from 'react';
 import './devlog.css';
 
 export function Devlog() {
+  const [logs, setLogs] = React.useState([]);
+  const logRows = [];
+
+  function addNewPost()
+  {
+    logRows.push(
+      <div className="log">
+        <input type="text" id="logTitle" placeholder='Title'></input>
+        <textarea type="textarea" id="logDescription" placeholder="Enter description here"></textarea>
+        <button className="devButton">Post</button>
+      </div>
+    )
+  }
+
   return (
+
     <main className='devlogPage'>
         <h2>DevLog</h2>
-        <button className="devButton">Add Post</button>
+        <button className="devButton" onClick={addNewPost}>Add Post</button>
         
         <section className = "logs">
 

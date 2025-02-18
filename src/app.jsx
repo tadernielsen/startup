@@ -23,7 +23,8 @@ export default function App() {
     setJoke('Epic Geek Joke');
   }, []);
 
-  const generateRandomImage = () => {
+  function generateRandomImage() 
+  {
     const min = 0;
     const max = images.length;
     const randomNumber = Math.floor(Math.random() * (max - min) + min);
