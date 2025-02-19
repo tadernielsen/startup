@@ -27,6 +27,17 @@
     margin-bottom: 0.5em;
 }
 
+#logDescription {
+    width: 100%;
+    text-align: center;
+    height: 100px;
+}
+
+#logTitle {
+    text-align: center;
+    width: 15%;
+}
+
 .log p {
     margin-top: auto;
     margin-bottom: auto;

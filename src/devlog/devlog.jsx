@@ -3,17 +3,18 @@ import './devlog.css';
 
 export function Devlog() {
   const [logs, setLogs] = React.useState([]);
-  const logRows = [];
+  const [newPost, setNewPost] = React.useState(false);
 
   function addNewPost()
   {
-    logRows.push(
-      <div className="log">
-        <input type="text" id="logTitle" placeholder='Title'></input>
-        <textarea type="textarea" id="logDescription" placeholder="Enter description here"></textarea>
-        <button className="devButton" onClick={savePost(document.getElementById(logTitle).value, document.getElementById(logDescription).value)}>Post</button>
-      </div>
-    );
+    if (!newPost)
+    {
+      setNewPost(true)
+    }
+    else
+    {
+      setNewPost(false)
+    }
   }
 
   function savePost(title, description)
@@ -35,6 +36,14 @@ export function Devlog() {
         <button className="devButton" onClick={addNewPost}>Add Post</button>
         
         <section className = "logs">
+          {newPost ? (
+            <div className="log newlog">
+              <input type="text" id="logTitle" placeholder='Title'></input>
+              <textarea type="textarea" id="logDescription" placeholder="Enter description here"></textarea>
+              <button className="saveButton" onClick={savePost("hellow", "world")}>Post</button>
+            </div>
+            ) : (null)
+          }
 
           <div className="log">
             <h3>Log 1</h3>
