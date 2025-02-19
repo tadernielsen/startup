@@ -34,7 +34,9 @@
 
 .log button {
     margin-right: 2px;
-    margin-top: 2px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
     height:30px;
 }
 

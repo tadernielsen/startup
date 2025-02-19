@@ -11,9 +11,21 @@ export function Devlog() {
       <div className="log">
         <input type="text" id="logTitle" placeholder='Title'></input>
         <textarea type="textarea" id="logDescription" placeholder="Enter description here"></textarea>
-        <button className="devButton">Post</button>
+        <button className="devButton" onClick={savePost(document.getElementById(logTitle).value, document.getElementById(logDescription).value)}>Post</button>
       </div>
-    )
+    );
+  }
+
+  function savePost(title, description)
+  {
+    const newPost = {"logTitle": title, 'logDescription': description, "logLikes": 0};
+    logs.push(newPost);
+    localStorage.setItem('devLogs', logs);
+  }
+
+  function likePost()
+  {
+    
   }
 
   return (
@@ -27,19 +39,28 @@ export function Devlog() {
           <div className="log">
             <h3>Log 1</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-            <button className="like">👍</button>
+            <div className="likeCounter">
+              <p><b>0</b></p>
+              <button className="like">👍</button>
+            </div>
             <button className="devButton">Edit</button>
           </div>
           <div className="log">
             <h3>Log 2</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-            <button className="like">👍</button>
+            <div className="likeCounter">
+              <p><b>0</b></p>
+              <button className="like">👍</button>
+            </div>
             <button className="devButton">Edit</button>
           </div>
           <div className="log">
             <h3>Log 3</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-            <button className="like">👍</button>
+            <div className="likeCounter">
+              <p><b>0</b></p>
+              <button className="like">👍</button>
+            </div>
             <button className="devButton">Edit</button>
           </div>
         </section>
