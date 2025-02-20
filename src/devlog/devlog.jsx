@@ -40,7 +40,7 @@ export function Devlog() {
             <div className="log newlog">
               <input type="text" id="logTitle" placeholder='Title'></input>
               <textarea type="textarea" id="logDescription" placeholder="Enter description here"></textarea>
-              <button className="saveButton" onClick={savePost("hellow", "world")}>Post</button>
+              <button className="saveButton" onClick={() => savePost("hellow", "world")}>Post</button>
             </div>
             ) : (null)
           }
