@@ -243,3 +243,31 @@ Lets you have one HTML page and just change one component of it (such as the bod
 ### Toolchain
 How do I compile JSX myself?
 Vite - Frontend build tool
+
+## Service
+
+Browser rendering is single threaded
+Everything must be asynchronous (Happening at the same time)
+
+### Promise
+"I promise to call you back"
+Built in the JavaScript library
+
+_Promise state_
+- pending - Currently running asynchronously
+- fulfilled - Completed successfully
+- rejected - Failed to complete
+
+_Handlers_
+- .then - only called if successful
+- .catch - only called if failled
+- .finally - calls no matter what
+
+_Async/Await_
+- Async - function that indicates promise returned
+- Await - .then but with better(ish) syntax
+
+Rule for using Await:
+Top level module function or called from an async function
+
+Remember that async will auto-generate a promise if not explicitly returned
