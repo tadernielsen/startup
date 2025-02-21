@@ -55,7 +55,7 @@ export function Devlog() {
     const savedLogs = localStorage.getItem('devLogs')
     if (savedLogs)
     {
-      setLogs()// Need to have it set the savedLogs to the logs var
+      setLogs(JSON.parse(savedLogs))
     }
   }, []);
 
@@ -78,8 +78,20 @@ export function Devlog() {
   function savePost(title, description)
   {
     const newPost = new DevlogPost(title, description);
-
+    //Somthing up with this
+    logs.push(newPost.returnJson);
     setNewPost(false);
+  }
+
+  const savedDevLogs = []
+  if (logs.length)
+  {
+    //Or this
+    for (const log of logs.entries)
+    {
+      const post = new DevlogPost(log.title, log.description)
+      savedDevLogs.push(post.initilizePost())
+    }
   }
 
   return (
@@ -98,7 +110,9 @@ export function Devlog() {
             ) : (null)
           }
 
-          <div className="log">
+          {savedDevLogs.initilizePost}
+
+          {/* <div className="log">
             <h3>Log 1</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
             <div className="likeCounter">
@@ -106,25 +120,7 @@ export function Devlog() {
               <button className="like">👍</button>
             </div>
             <button className="devButton">Edit</button>
-          </div>
-          <div className="log">
-            <h3>Log 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-            <div className="likeCounter">
-              <p><b>0</b></p>
-              <button className="like">👍</button>
-            </div>
-            <button className="devButton">Edit</button>
-          </div>
-          <div className="log">
-            <h3>Log 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-            <div className="likeCounter">
-              <p><b>0</b></p>
-              <button className="like">👍</button>
-            </div>
-            <button className="devButton">Edit</button>
-          </div>
+          </div> */}
         </section>
 
     </main>
