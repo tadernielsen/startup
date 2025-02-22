@@ -55,13 +55,16 @@ export function Devlog() {
     const savedLogs = localStorage.getItem('devLogs')
     if (savedLogs)
     {
+      console.log("e" + savedLogs)
+      console.log("ea"+JSON.parse(savedLogs))
       setLogs(JSON.parse(savedLogs))
     }
   }, []);
 
   useEffect(() => {
+    console.log("working");
     localStorage.setItem('devLogs', JSON.stringify(logs));
-  }, [logs]);
+  }, [logs.push()]);
 
   function addNewPost()
   {
@@ -78,21 +81,22 @@ export function Devlog() {
   function savePost(title, description)
   {
     const newPost = new DevlogPost(title, description);
-    //Somthing up with this
-    logs.push(newPost.returnJson);
+    console.log(newPost.returnJson())
+    logs.push(newPost.returnJson());
     setNewPost(false);
   }
 
   const savedDevLogs = []
   if (logs.length)
   {
-    //Or this
-    for (const log of logs.entries)
+    for (const log of logs.entries())
     {
+      console.log("log " +log);
       const post = new DevlogPost(log.title, log.description)
-      savedDevLogs.push(post.initilizePost())
+      savedDevLogs.push(post.initilizePost());
     }
   }
+  console.log(savedDevLogs);
 
   return (
 
@@ -110,7 +114,7 @@ export function Devlog() {
             ) : (null)
           }
 
-          {savedDevLogs.initilizePost}
+          {savedDevLogs}
 
           {/* <div className="log">
             <h3>Log 1</h3>
