@@ -5,7 +5,7 @@ import './login.css';
 import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
-export function Login() {
+export function Login({setUser}) {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -14,6 +14,7 @@ export function Login() {
       '\nUsername:', username,
       '\nPassword:', password);
     localStorage.setItem('username', username);
+    setUser(username);
   }
 
   function createAccount() {
@@ -21,6 +22,7 @@ export function Login() {
       '\nUsername:', username,
       '\nPassword:', password);
     localStorage.setItem('username', username);
+    setUser(username);
   }
 
   function loginDeveloper() {
@@ -28,6 +30,7 @@ export function Login() {
       '\nUsername:', username,
       '\nPassword:', password);
     localStorage.setItem('username', username);
+    setUser(username);
   }
 
   return (

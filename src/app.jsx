@@ -19,6 +19,8 @@ export default function App() {
   const [headerImage, setHeaderImage] = React.useState('TN PFP V3.png');
   const images = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png', 'Halloween TN.png', 'TN chrismas Logo.png', 'TN chrismas V2.png', 'TN COVID-19.png', 'TN halloween 2021 pfp.png'];
 
+  const [username, setUser] = React.useState(localStorage.getItem('username') || null);
+
   const glitch = useGlitch({"playMode": "click", glitchTimeSpan: false});
 
   React.useEffect(() => {
@@ -46,7 +48,7 @@ export default function App() {
             
             <div className="topRight">
               <NavLink to="login" id="username">
-                <Button type="button" variant='secondary' size="lg">LOGIN</Button>
+                <Button type="button" variant='secondary' size="lg">{username || "LOGIN"}</Button>
               </NavLink>
             </div>
           </div>
@@ -69,7 +71,7 @@ export default function App() {
           <Route path='/' element={<Home />} exact />
           <Route path='/devlog' element={<Devlog />} />
           <Route path='/games' element={<Games />} />
-          <Route path='/login' element={<Login />} /> // Needs to be changed for own login page
+          <Route path='/login' element={<Login setUser={setUser} />} /> // Needs to be changed for own login page
           <Route path='*' element={<NotFound />} />
         </Routes>
 
