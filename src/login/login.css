@@ -30,9 +30,10 @@ img {
   }
   */
 
-  h1 {
+  .loginPage h1 {
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 20px;
   }
 
   .loginPage {
@@ -49,6 +50,7 @@ img {
     border: 5px solid black;
     background-color: grey;
     padding: 30px;
+    padding-top: 10px;
     font-family: var(--bs-body-font-family);
   }
 
