@@ -9,6 +9,8 @@ import { Games } from './games/games';
 import { Devlog } from './devlog/devlog';
 import { Login } from './login/login';
 
+import { Button } from 'react-bootstrap';
+
 // Extra stuff
 import { useGlitch, } from 'react-powerglitch'
 
@@ -44,20 +46,20 @@ export default function App() {
             
             <div className="topRight">
               <NavLink to="login" id="username">
-                <button type="button" className="btn btn-secondary btn-lg">LOGIN</button>
+                <Button type="button" variant='secondary' size="lg">LOGIN</Button>
               </NavLink>
             </div>
           </div>
 
           <nav className="mainNav">
             <NavLink to="">
-              <button type="button" className="btn btn-outline-dark btn-sm">HOME</button>
+              <Button variant='outline-dark' size="sm">HOME</Button>
             </NavLink>
             <NavLink to="devlog">
-              <button type="button" className="btn btn-outline-dark btn-sm">DEVLOG</button>
+              <Button variant='outline-dark' size="sm">DEVLOG</Button>
             </NavLink>
             <NavLink to="games">
-              <button type="button" className="btn btn-outline-dark btn-sm">GAMES</button>
+              <Button variant='outline-dark' size="sm">GAMES</Button>
             </NavLink>
           </nav>
         
@@ -74,7 +76,7 @@ export default function App() {
         <footer>
           <div>
             <span>Kaden Nielsen</span>
-            <a href="https://github.com/tadernielsen/startup"><button type="button" className="btn btn-secondary">GitHub</button></a>
+            <a href="https://github.com/tadernielsen/startup"><Button variant='secondary'>GitHub</Button></a>
           </div>
           <p id="randomGeekJoke">{joke}</p>
         </footer>
