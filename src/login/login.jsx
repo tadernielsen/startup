@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './login.css';
 
 import { NavLink } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 export function Login() {
   const [username, setUsername] = React.useState('');
@@ -33,21 +34,19 @@ export function Login() {
     <main className="loginPage">
       <div className="login">
         <h1>Login</h1>
-        <form method="get" action="index.html">
-            <div className="input-group mb-3">
-                <label className="input-group-text" for="username">Username:</label>
-                <input className="form-control" type="text" id="username" placeholder="your@email.com" required />
-            </div>
-            <div className="input-group mb-3">
-                <label className="input-group-text" for="password">Password:</label>
-                <input className="form-control" type="password" id="password" placeholder="Password" required />
-            </div>
-            <div className="buttons">
-              <NavLink to="/" type="submit" className="btn btn-primary btn-sm">Login</NavLink>
-              <NavLink to="/" type="submit" className="btn btn-secondary btn-sm">Create Account</NavLink>
-              <NavLink to="/" type="submit" className="btn btn-outline-dark btn-sm">Developer Login</NavLink>
-            </div>
-        </form>
+          <div className="input-group mb-3">
+              <label className="input-group-text" for="username">Username:</label>
+              <input className="form-control" type="text" id="username" placeholder="your@email.com" onChange={(e) => setUsername(e.target.value)} />
+          </div>
+          <div className="input-group mb-3">
+              <label className="input-group-text" for="password">Password:</label>
+              <input className="form-control" type="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <div className="buttons">
+            <Button variant='primary' disabled={!username || !password} onClick={loginAccount}>Login</Button>
+            <Button variant='secondary' disabled={!username || !password} onClick={createAccount}>Create Account</Button>
+            <Button variant='outline-dark' disabled={!username || !password} onClick={loginDeveloper}>Developer Login</Button>
+          </div>
         <NavLink to="/">Back</NavLink>
       </div>
     </main>
