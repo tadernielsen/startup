@@ -22,6 +22,13 @@ export function Login() {
     localStorage.setItem('username', username);
   }
 
+  function loginDeveloper() {
+    console.log('Logging in as developer with:',
+      '\nUsername:', username,
+      '\nPassword:', password);
+    localStorage.setItem('username', username);
+  }
+
   return (
     <main className="loginPage">
       <div className="login">
