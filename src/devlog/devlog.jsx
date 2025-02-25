@@ -53,18 +53,13 @@ export function Devlog() {
 
   useEffect(() => {
     const savedLogs = localStorage.getItem('devLogs')
-    if (savedLogs)
+    if (savedLogs) // Use breakpoints to fix this
     {
-      console.log("e" + savedLogs)
-      console.log("ea"+JSON.parse(savedLogs))
+      console.log("savedLogs " + savedLogs)
+      console.log("parsedLogs "+JSON.parse(savedLogs))
       setLogs(JSON.parse(savedLogs))
     }
   }, []);
-
-  useEffect(() => {
-    console.log("working");
-    localStorage.setItem('devLogs', JSON.stringify(logs));
-  }, [logs.push()]);
 
   function addNewPost()
   {
@@ -83,6 +78,7 @@ export function Devlog() {
     const newPost = new DevlogPost(title, description);
     console.log(newPost.returnJson())
     logs.push(newPost.returnJson());
+    localStorage.setItem('devLogs', JSON.stringify(logs));
     setNewPost(false);
   }
 
