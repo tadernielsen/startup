@@ -2,12 +2,14 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './login.css';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
 export function Login({setUser}) {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+
+  const nav = useNavigate();
 
   function loginAccount() {
     console.log('Logging in with:',
@@ -15,6 +17,7 @@ export function Login({setUser}) {
       '\nPassword:', password);
     localStorage.setItem('username', username);
     setUser(username);
+    nav('/');
   }
 
   function createAccount() {
@@ -23,6 +26,7 @@ export function Login({setUser}) {
       '\nPassword:', password);
     localStorage.setItem('username', username);
     setUser(username);
+    nav('/');
   }
 
   function loginDeveloper() {
@@ -31,6 +35,7 @@ export function Login({setUser}) {
       '\nPassword:', password);
     localStorage.setItem('username', username);
     setUser(username);
+    nav('/');
   }
 
   return (
