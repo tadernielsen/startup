@@ -271,3 +271,47 @@ Rule for using Await:
 Top level module function or called from an async function
 
 Remember that async will auto-generate a promise if not explicitly returned
+
+### Making Service Requests
+We have always been making service requests
+Using JavaScript, we can call other services
+
+_Requesting a Resource_
+Everything is a Resource
+
+Uniform Resource Locator
+- Scheme: https://
+- Domain: byu.edu
+- Port: :443
+- Path: /api/city
+- Parameters: ?q=pro
+- Anchor: #3
+
+Port: The address for a certain area of a website
+
+Ports
+- 20: File transfer protocol for data transfers
+- 22: Secure Shell for connecting to remote devices
+- 25: Simple mail transfer for sending emails
+- 53: Domain name system for looking up IP adresses
+- 80: Hypertext transfer protocol for web requests
+- 123: Network time protocol for managing requests
+- 443: HTTPS for sucure websites
+
+HTTP Methods
+GET: Get a resource
+POST: Create a resource
+PUT: Update a resource
+DELETE: Delete a resouce
+OPTIONS: Information about resource
+
+Status Codes
+- 2xx - Sucess
+  - 200 Sucess, 204 No content
+- 3xx - Sucess, but not correct
+  - 301/302 redirects, 304 not modified
+- 4xx - User error
+  - 400 bad request, 404 not found
+  - 403 forbidden, 429 Too many requests
+- 5xx - Server error
+  - 500 Server error, 503 not available
