@@ -5,6 +5,23 @@ import './login.css';
 import { NavLink } from 'react-router-dom';
 
 export function Login() {
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  function loginAccount() {
+    console.log('Logging in with:',
+      '\nUsername:', username,
+      '\nPassword:', password);
+    localStorage.setItem('username', username);
+  }
+
+  function createAccount() {
+    console.log('Creating account with:',
+      '\nUsername:', username,
+      '\nPassword:', password);
+    localStorage.setItem('username', username);
+  }
+
   return (
     <main className="loginPage">
       <div className="login">
