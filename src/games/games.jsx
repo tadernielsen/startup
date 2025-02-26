@@ -45,7 +45,7 @@ class GamePost
     // Downloads game (Or send them somewhere else idk yet)
   }
 
-  initilizePost()
+  initilizePost(isDeveloper)
   {
     return (
       <div className="game">
@@ -62,7 +62,7 @@ class GamePost
           <button className="favorite" onClick={this.favoriteButton}>⭐</button>
           <button className="download">Download</button>
         </div>
-        <button className="devButton">Edit</button>
+        <button className="devButton" hidden={!isDeveloper}>Edit</button>
       </div>
     )
   }
@@ -73,7 +73,7 @@ class GamePost
   }
 }
 
-export function Games({user}) {
+export function Games({user, isDeveloper}) {
   const [games, setGames] = React.useState([]);
   const [newGame, setNewGame] = React.useState(false);
 
@@ -116,14 +116,14 @@ export function Games({user}) {
     for (const game of games.entries())
     {
       const post = new GamePost(game[1].image, game[1].title, game[1].description)
-      savedGames.push(post.initilizePost());
+      savedGames.push(post.initilizePost(isDeveloper));
     }
   }
 
   return (
     <main className="gamePage">
         <h2>Games</h2>
-        <button className="devButton" onClick={addNewGame}>Add Game</button>
+        <button className="devButton" onClick={addNewGame} hidden={!isDeveloper}>Add Game</button>
         
         <section className="games">
         {newGame ? (

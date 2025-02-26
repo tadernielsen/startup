@@ -26,7 +26,7 @@ class DevlogPost
     }
   }
 
-  initilizePost()
+  initilizePost(isDeveloper)
   {
     return (
       <div className="log">
@@ -37,7 +37,7 @@ class DevlogPost
                 <b>{this.likeCount}</b>
                 <button className="like" onClick={this.likeButton}>👍</button>
               </div>
-              <button className="devButton">Edit</button>
+              <button className="devButton" hidden={!isDeveloper}>Edit</button>
             </div>
       </div>
     )
@@ -49,7 +49,7 @@ class DevlogPost
   }
 }
 
-export function Devlog({user}) {
+export function Devlog({user, isDeveloper}) {
   const [logs, setLogs] = React.useState([]);
   const [newPost, setNewPost] = React.useState(false);
 
@@ -88,7 +88,7 @@ export function Devlog({user}) {
     for (const log of logs.entries())
     {
       const post = new DevlogPost(log[1].title, log[1].description)
-      savedDevLogs.push(post.initilizePost());
+      savedDevLogs.push(post.initilizePost(isDeveloper));
     }
   }
 
@@ -96,7 +96,7 @@ export function Devlog({user}) {
 
     <main className='devlogPage'>
         <h2>DevLog</h2>
-        <button className="devButton" onClick={addNewPost}>Add Post</button>
+        <button className="devButton" onClick={addNewPost} hidden={!isDeveloper}>Add Post</button>
         
         <section className = "logs">
           {newPost ? (

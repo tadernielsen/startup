@@ -1,7 +1,7 @@
 import React from 'react';
 import './home.css';
 
-export function Home() {
+export function Home({isDeveloper}) {
   const [announcement, setAnnouncement] = React.useState('No current announcements');
   const [editing, setEditing] = React.useState(false);
 
@@ -33,7 +33,7 @@ export function Home() {
             ) : (
               <div>
                 <p>{announcement}</p>
-                <button className="devButton" onClick={editClick}>Edit</button>
+                <button className="devButton" onClick={editClick} hidden={!isDeveloper}>Edit</button>
               </div>
             )}
         </section>

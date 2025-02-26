@@ -12,7 +12,7 @@ import { Login } from './login/login';
 import { Button } from 'react-bootstrap';
 
 // Extra stuff
-import { useGlitch, } from 'react-powerglitch'
+import { useGlitch } from 'react-powerglitch'
 
 export default function App() {
   const [joke, setJoke] = React.useState('Loading joke...');
@@ -73,9 +73,9 @@ export default function App() {
         </header>
 
         <Routes>
-          <Route path='/' element={<Home />} exact />
-          <Route path='/devlog' element={<Devlog user={username} />} />
-          <Route path='/games' element={<Games user={username} />} />
+          <Route path='/' element={<Home isDeveloper={isDeveloper}/>} exact />
+          <Route path='/devlog' element={<Devlog user={username} isDeveloper={isDeveloper}/>} />
+          <Route path='/games' element={<Games user={username} isDeveloper={isDeveloper}/>} />
           <Route path='/login' element={<Login setUser={setUser} setUserType={setUserType} />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
