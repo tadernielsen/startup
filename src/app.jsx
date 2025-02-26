@@ -69,9 +69,9 @@ export default function App() {
 
         <Routes>
           <Route path='/' element={<Home />} exact />
-          <Route path='/devlog' element={<Devlog />} />
-          <Route path='/games' element={<Games />} />
-          <Route path='/login' element={<Login setUser={setUser} />} /> // Needs to be changed for own login page
+          <Route path='/devlog' element={<Devlog user={username} />} />
+          <Route path='/games' element={<Games user={username} />} />
+          <Route path='/login' element={<Login setUser={setUser} />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 

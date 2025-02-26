@@ -73,7 +73,7 @@ class GamePost
   }
 }
 
-export function Games() {
+export function Games({user}) {
   const [games, setGames] = React.useState([]);
   const [newGame, setNewGame] = React.useState(false);
 

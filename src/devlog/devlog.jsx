@@ -49,7 +49,7 @@ class DevlogPost
   }
 }
 
-export function Devlog() {
+export function Devlog({user}) {
   const [logs, setLogs] = React.useState([]);
   const [newPost, setNewPost] = React.useState(false);
 
