@@ -55,7 +55,7 @@ export function Devlog() {
 
   useEffect(() => {
     const savedLogs = localStorage.getItem('devLogs')
-    if (savedLogs) // Use breakpoints to fix this
+    if (savedLogs)
     {
       console.log("savedLogs " + savedLogs)
       console.log("parsedLogs "+JSON.parse(savedLogs))
