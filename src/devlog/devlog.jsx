@@ -57,8 +57,6 @@ export function Devlog() {
     const savedLogs = localStorage.getItem('devLogs')
     if (savedLogs)
     {
-      console.log("savedLogs " + savedLogs)
-      console.log("parsedLogs "+JSON.parse(savedLogs))
       setLogs(JSON.parse(savedLogs))
     }
   }, []);
@@ -78,7 +76,7 @@ export function Devlog() {
   function savePost(title, description)
   {
     const newPost = new DevlogPost(title, description);
-    console.log(newPost.returnJson())
+
     logs.push(newPost.returnJson());
     localStorage.setItem('devLogs', JSON.stringify(logs));
     setNewPost(false);
@@ -89,12 +87,10 @@ export function Devlog() {
   {
     for (const log of logs.entries())
     {
-      console.log("log " +log);
       const post = new DevlogPost(log[1].title, log[1].description)
       savedDevLogs.push(post.initilizePost());
     }
   }
-  console.log(savedDevLogs);
 
   return (
 
