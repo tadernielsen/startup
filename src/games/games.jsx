@@ -1,6 +1,78 @@
 import React from 'react';
 import './games.css';
 
+class GamePost
+{
+  #liked = false;
+  #favorite = false;
+
+  constructor(image, title, description, likeCount = 0)
+  {
+    this.image = image;
+    this.title = title;
+    this.description = description;
+    this.likeCount = likeCount;
+  }
+
+  likeButton()
+  {
+    if (this.#liked)
+    {
+      this.likeCount -= 1;
+      this.#liked = false;
+    }
+    else
+    {
+      this.likeCount += 1;
+      this.#liked = true;
+    }
+  }
+
+  favoriteButton()
+  {
+    if (this.#favorite)
+    {
+      this.#favorite = false;
+    }
+    else
+    {
+      this.#favorite = true;
+    }
+  }
+
+  downloadButton()
+  {
+    // Downloads game (Or send them somewhere else idk yet)
+  }
+
+  initilizePost()
+  {
+    return (
+      <div className="game">
+        <div className="gameInfo">
+          <img src={this.image}/>
+          <h3>{this.title}</h3>
+          <p>{this.description}</p>
+        </div>
+        <div className="gameButtons">
+          <div className="likeCounter">
+              <b>{this.likeCount}</b>
+              <button className="like" onClick={this.likeButton}>👍</button>
+          </div>
+          <button className="favorite" onClick={this.favoriteButton}>⭐</button>
+          <button className="download">Download</button>
+        </div>
+        <button className="devButton">Edit</button>
+      </div>
+    )
+  }
+
+  returnJson()
+  {
+    return {"Image": this.image, "title": this.title, "description": this.description, "likeCount": this.likeCount}
+  }
+}
+
 export function Games() {
   return (
     <main className="gamePage">
@@ -15,7 +87,10 @@ export function Games() {
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
             </div>
             <div className="gameButtons">
-              <button className="like">👍</button>
+              <div className="likeCounter">
+                <b>0</b>
+                <button className="like">👍</button>
+              </div>
               <button className="favorite">⭐</button>
               <button className="download">Download</button>
             </div>
