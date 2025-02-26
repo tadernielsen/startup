@@ -46,15 +46,15 @@ export default function App() {
             <div className="title">
               <img src={headerImage} onClick={generateRandomImage} ref={glitch.ref}></img>
               <h1><span>TN</span>-Games.com</h1>
-              {isDeveloper ? (
-                <h2>DEVELOPER MODE</h2>
-              ) : (null)}
             </div>
             
             <div className="topRight">
               <NavLink to="login" id="username">
                 <Button type="button" variant='secondary' size="lg">{username || "LOGIN"}</Button>
               </NavLink>
+              {isDeveloper ? (
+                <h2>DEVELOPER MODE</h2>
+              ) : (null)}
             </div>
           </div>
 

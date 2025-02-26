@@ -76,6 +76,8 @@ h2 {
 
 .topRight {
     align-self: right;
+    display: block;
+    text-align: right;
 }
 
 main {
