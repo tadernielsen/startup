@@ -30,13 +30,15 @@ class DevlogPost
   {
     return (
       <div className="log">
-            <h3>{this.title}</h3>
-            <p>{this.description}</p>
-            <div className="likeCounter">
-              <p><b>{this.likeCount}</b></p>
-              <button className="like" onClick={this.likeButton}>👍</button>
+            <h3 className="logTitle">{this.title}</h3>
+            <p className="logDescription">{this.description}</p>
+            <div className="RightSide">
+              <div className="likeCounter">
+                <b>{this.likeCount}</b>
+                <button className="like" onClick={this.likeButton}>👍</button>
+              </div>
+              <button className="devButton">Edit</button>
             </div>
-            <button className="devButton">Edit</button>
       </div>
     )
   }
@@ -103,24 +105,14 @@ export function Devlog() {
         <section className = "logs">
           {newPost ? (
             <div className="log newlog">
-              <input type="text" id="logTitle" placeholder='Title'></input>
-              <textarea type="textarea" id="logDescription" placeholder="Enter description here"></textarea>
-              <button className="saveButton" onClick={() => savePost(document.getElementById('logTitle').value, document.getElementById('logDescription').value)}>Post</button>
+              <input type="text" id="editLogTitle" placeholder='Title' maxLength={15}></input>
+              <textarea type="textarea" id="editLogDescription" placeholder="Enter description here"></textarea>
+              <button className="saveButton" onClick={() => savePost(document.getElementById('editLogTitle').value, document.getElementById('editLogDescription').value)}>Post</button>
             </div>
             ) : (null)
           }
 
           {savedDevLogs}
-
-          <div className="log">
-            <h3>Log 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-            <div className="likeCounter">
-              <p><b>0</b></p>
-              <button className="like">👍</button>
-            </div>
-            <button className="devButton">Edit</button>
-          </div>
 
           {/* <div className="log">
             <h3>Log 1</h3>

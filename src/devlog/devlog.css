@@ -11,29 +11,53 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
     overflow-y: auto;
     justify-content: space-evenly;
 }
 
 .log {
     flex-direction: row;
+    justify-content: space-between;
     border: 1px solid black;
     background-color: white;
     width: 100%;
     border-radius: 1px;
-    height: auto;
+    min-height: 70px;
     text-align: center;
     
     margin-bottom: 0.5em;
 }
 
-#logDescription {
-    width: 100%;
-    text-align: center;
-    height: 100px;
+p
+{
+    overflow-y: auto;
 }
 
-#logTitle {
+b
+{
+    align-self: center;
+}
+
+.logDescription {
+    display: block;
+    width: 75%;
+    text-align: center;
+    height: 70px;
+}
+
+.logTitle {
+    display: block;
+    text-align: center;
+    width: 50px;
+}
+
+#editLogDescription {
+    width: 75%;
+    text-align: center;
+}
+
+#editLogTitle {
     text-align: center;
     width: 15%;
 }
