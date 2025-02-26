@@ -88,7 +88,7 @@ export function Devlog() {
     for (const log of logs.entries())
     {
       console.log("log " +log);
-      const post = new DevlogPost(log.title, log.description)
+      const post = new DevlogPost(log[1].title, log[1].description)
       savedDevLogs.push(post.initilizePost());
     }
   }
@@ -111,6 +111,16 @@ export function Devlog() {
           }
 
           {savedDevLogs}
+
+          <div className="log">
+            <h3>Log 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+            <div className="likeCounter">
+              <p><b>0</b></p>
+              <button className="like">👍</button>
+            </div>
+            <button className="devButton">Edit</button>
+          </div>
 
           {/* <div className="log">
             <h3>Log 1</h3>
