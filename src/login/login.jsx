@@ -18,7 +18,7 @@ export function Login({setUser, setUserType}) {
     localStorage.setItem('username', username);
     localStorage.setItem('userType', 'normal');
     setUser(username);
-    setUserType('normal'); // Error for some reason
+    setUserType('normal');
     nav('/');
   }
 

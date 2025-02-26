@@ -21,6 +21,7 @@ export default function App() {
 
   const [username, setUser] = React.useState(localStorage.getItem('username') || null);
   const [userType, setUserType] = React.useState(localStorage.getItem('userType') || null);
+  const isDeveloper = userType === "developer";
 
   const glitch = useGlitch({"playMode": "click", glitchTimeSpan: false});
 
@@ -45,7 +46,7 @@ export default function App() {
             <div className="title">
               <img src={headerImage} onClick={generateRandomImage} ref={glitch.ref}></img>
               <h1><span>TN</span>-Games.com</h1>
-              {userType ? (
+              {isDeveloper ? (
                 <h2>DEVELOPER MODE</h2>
               ) : (null)}
             </div>
@@ -75,7 +76,7 @@ export default function App() {
           <Route path='/' element={<Home />} exact />
           <Route path='/devlog' element={<Devlog user={username} />} />
           <Route path='/games' element={<Games user={username} />} />
-          <Route path='/login' element={<Login setUser={setUser} userType={setUserType} />} />
+          <Route path='/login' element={<Login setUser={setUser} setUserType={setUserType} />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 
