@@ -20,6 +20,7 @@ export default function App() {
   const images = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png', 'Halloween TN.png', 'TN chrismas Logo.png', 'TN chrismas V2.png', 'TN COVID-19.png', 'TN halloween 2021 pfp.png'];
 
   const [username, setUser] = React.useState(localStorage.getItem('username') || null);
+  const [userType, setUserType] = React.useState(localStorage.getItem('userType') || null);
 
   const glitch = useGlitch({"playMode": "click", glitchTimeSpan: false});
 
@@ -44,6 +45,9 @@ export default function App() {
             <div className="title">
               <img src={headerImage} onClick={generateRandomImage} ref={glitch.ref}></img>
               <h1><span>TN</span>-Games.com</h1>
+              {userType ? (
+                <h2>DEVELOPER MODE</h2>
+              ) : (null)}
             </div>
             
             <div className="topRight">
@@ -71,7 +75,7 @@ export default function App() {
           <Route path='/' element={<Home />} exact />
           <Route path='/devlog' element={<Devlog user={username} />} />
           <Route path='/games' element={<Games user={username} />} />
-          <Route path='/login' element={<Login setUser={setUser} />} />
+          <Route path='/login' element={<Login setUser={setUser} userType={setUserType} />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 

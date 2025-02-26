@@ -5,7 +5,7 @@ import './login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
-export function Login({setUser}) {
+export function Login({setUser, setUserType}) {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -16,7 +16,9 @@ export function Login({setUser}) {
       '\nUsername:', username,
       '\nPassword:', password);
     localStorage.setItem('username', username);
+    localStorage.setItem('userType', 'normal');
     setUser(username);
+    setUserType('normal'); // Error for some reason
     nav('/');
   }
 
@@ -25,7 +27,9 @@ export function Login({setUser}) {
       '\nUsername:', username,
       '\nPassword:', password);
     localStorage.setItem('username', username);
+    localStorage.setItem('userType', 'normal');
     setUser(username);
+    setUserType('normal');
     nav('/');
   }
 
@@ -34,7 +38,9 @@ export function Login({setUser}) {
       '\nUsername:', username,
       '\nPassword:', password);
     localStorage.setItem('username', username);
+    localStorage.setItem('userType', 'developer');
     setUser(username);
+    setUserType('developer');
     nav('/');
   }
 
