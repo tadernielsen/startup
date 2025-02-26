@@ -74,6 +74,48 @@ class GamePost
 }
 
 export function Games() {
+  const [games, setGames] = React.useState([]);
+  const [newGame, setNewGame] = React.useState(false);
+
+  useEffect(() => {
+      const savedGames = localStorage.getItem('games')
+      if (savedGames)
+      {
+        setLogs(JSON.parse(savedGames))
+      }
+  }, []);
+
+  function addNewGame()
+  {
+    if (!newPost)
+    {
+      setNewGame(true)
+    }
+    else
+    {
+      setNewGame(false)
+    }
+  }
+
+  function savePost(image, title, description)
+  {
+    const newPost = new GamePost(image, title, description);
+    
+    games.push(newPost.returnJson());
+    localStorage.setItem('games', JSON.stringify(logs));
+    setNewGame(false);
+  }
+
+  const savedGames = [];
+  if (games.length)
+  {
+    for (const game of games.entries())
+    {
+      const post = new GamePost(game[1].image, game[1].title, game[1].description)
+      savedGames.push(post.initilizePost());
+    }
+  }
+
   return (
     <main className="gamePage">
         <h2>Games</h2>
