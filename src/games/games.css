@@ -12,12 +12,12 @@
     flex-direction: column;
     height: 100%;
     overflow-y: auto;
-    justify-content: space-between;
+    justify-content: space-evenly;
     background-color: gray;
     border: none;
 }
 
-main .game {
+.game {
     flex-direction: row;
     border: 1px solid black;
     background-color: white;
@@ -46,8 +46,16 @@ main .game {
 }
 
 .gameInfo p {
+    height: 100px;
+    overflow-y: auto;
     margin-left: 15px;
+    width: 75%;
+}
 
+.gameInfo h3
+{
+    width: 10%;
+    text-wrap: normal;
 }
 
 .gameButtons {
@@ -55,6 +63,21 @@ main .game {
     align-items: center;
     justify-content: space-evenly;
     margin-right: 2px;
+}
+
+#editGameImage {
+    width: 100px;
+    height: 100px;
+}
+
+#editGameDescription {
+    width: 75%;
+    text-align: center;
+}
+
+#editGameTitle {
+    text-align: center;
+    width: 15%;
 }
 
 @media (max-width: 560px)
