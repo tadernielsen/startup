@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './games.css';
 
 class GamePost
@@ -6,7 +6,7 @@ class GamePost
   #liked = false;
   #favorite = false;
 
-  constructor(image, title, description, likeCount = 0)
+  constructor(image = "placeholder.png", title, description, likeCount = 0)
   {
     this.image = image;
     this.title = title;
@@ -78,16 +78,16 @@ export function Games() {
   const [newGame, setNewGame] = React.useState(false);
 
   useEffect(() => {
-      const savedGames = localStorage.getItem('games')
-      if (savedGames)
-      {
-        setLogs(JSON.parse(savedGames))
-      }
+    const savedGames = localStorage.getItem('games')
+    if (savedGames)
+    {
+      setGames(JSON.parse(savedGames))
+    }
   }, []);
 
   function addNewGame()
   {
-    if (!newPost)
+    if (!newGame)
     {
       setNewGame(true)
     }
@@ -97,12 +97,16 @@ export function Games() {
     }
   }
 
-  function savePost(image, title, description)
+  function saveGame(image, title, description)
   {
+    if (image === "")
+    {
+      image = "placeholder.png";
+    }
     const newPost = new GamePost(image, title, description);
     
     games.push(newPost.returnJson());
-    localStorage.setItem('games', JSON.stringify(logs));
+    localStorage.setItem('games', JSON.stringify(games));
     setNewGame(false);
   }
 
@@ -119,10 +123,24 @@ export function Games() {
   return (
     <main className="gamePage">
         <h2>Games</h2>
-        <button className="devButton">Add Game</button>
+        <button className="devButton" onClick={addNewGame}>Add Game</button>
         
         <section className="games">
-          <div className="game">
+        {newGame ? (
+            <div className="game newGame">
+              <input type="image" src="placeholder.png" id="editGameImage" alt="Submit"></input>
+              <input type="text" id="editGameTitle" placeholder='Title' maxLength={15}></input>
+              <textarea type="textarea" id="editGameDescription" placeholder="Enter description here"></textarea>
+              <button className="saveButton" onClick={() => saveGame(document.getElementById('editGameImage').value, document.getElementById('editGameTitle').value, document.getElementById('editGameDescription').value)}>Post</button>
+            </div>
+            ) : (null)
+          }
+
+          {savedGames}
+      </section>
+
+      {/*
+        <div className="game">
             <div className="gameInfo">
               <img src="placeholder.png"/>
               <h3>Game 1</h3>
@@ -138,33 +156,7 @@ export function Games() {
             </div>
             <button className="devButton">Edit</button>
           </div>
-          <div className="game">
-            <div className="gameInfo">
-              <img src="placeholder.png"/>
-              <h3>Game 2</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-            </div>
-            <div className="gameButtons">
-              <button className="like">👍</button>
-              <button className="favorite">⭐</button>
-              <button className="download">Download</button>
-            </div>
-            <button className="devButton">Edit</button>
-          </div>
-          <div className="game">
-            <div className="gameInfo">
-              <img src="placeholder.png"/>
-              <h3>Game 3</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-            </div>
-            <div className="gameButtons">
-              <button className="like">👍</button>
-              <button className="favorite">⭐</button>
-              <button className="download">Download</button>
-            </div>
-            <button className="devButton">Edit</button>
-          </div>
-      </section>
+      */}
     </main>
   );
 }
