@@ -6,4 +6,4 @@ export class AuthState {
     constructor(name) {
       this.name = name;
     }
-  }
+}
