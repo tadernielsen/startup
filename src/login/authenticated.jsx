@@ -5,14 +5,14 @@ import './login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
-export function Authenticated({setUser, setUserType, onLogout}) {
+export function Authenticated({onLogout}) {
   const nav = useNavigate();
 
   function logout()
   {
     console.log('Logging out');
     localStorage.removeItem('username');
-    localStorage.removeItem('userType');
+    localStorage.setItem('userType', 'standard');
     // setUser(null);
     // setUserType(null);
 

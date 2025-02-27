@@ -5,7 +5,7 @@ import './login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
-export function UnAuthenticated({setUser, setUserType, onLogin}) {
+export function UnAuthenticated({onLogin}) {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
