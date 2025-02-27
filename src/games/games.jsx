@@ -71,7 +71,7 @@ class GamePost
 
   returnJson()
   {
-    return {"Image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts}
+    return {"ID": this.ID, "Image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts, "favoritedAccounts": this.favoritedAccounts}
   }
 }
 
@@ -89,14 +89,7 @@ export function Games({user, isDeveloper}) {
 
   function addNewGame()
   {
-    if (!newGame)
-    {
-      setNewGame(true)
-    }
-    else
-    {
-      setNewGame(false)
-    }
+    setNewGame(!newGame);
   }
 
   function saveGame(image, title, description)
@@ -105,11 +98,18 @@ export function Games({user, isDeveloper}) {
     {
       image = "placeholder.png";
     }
-    const newPost = new GamePost(image, title, description);
-    
-    games.push(newPost.returnJson());
-    localStorage.setItem('games', JSON.stringify(games));
+    const newPost = new GamePost(Date.now(), image, title, description);
+    const updatedPost = [...games, newPost.returnJson()];
+    localStorage.setItem('games', JSON.stringify(updatedPost));
+    setGames(updatedPost);
     setNewGame(false);
+  }
+
+  function updateLikes(ID, likeAccounts)
+  {
+    const updatedPosts = games.map(post => post.ID === ID ? { ...post, "likedAccounts": likeAccounts } : post);
+    localStorage.setItem('games', JSON.stringify(updatedPosts));
+    setGames(updatedPosts);
   }
 
   const savedGames = [];
@@ -117,8 +117,8 @@ export function Games({user, isDeveloper}) {
   {
     for (const game of games.entries())
     {
-      const post = new GamePost(game[1].image, game[1].title, game[1].description)
-      savedGames.push(post.initilizePost(isDeveloper));
+      const post = new GamePost(game[1].ID, game[1].image, game[1].title, game[1].description, game[1].likedAccounts, game[1].favoritedAccounts);
+      savedGames.push(post.initilizePost(isDeveloper, user, updateLikes));
     }
   }
 
