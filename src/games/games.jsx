@@ -3,40 +3,42 @@ import './games.css';
 
 class GamePost
 {
-  #liked = false;
-  #favorite = false;
-
-  constructor(image = "placeholder.png", title, description, likeCount = 0)
+  constructor(ID, image = "placeholder.png", title, description, likedAccounts = [], favoritedAccounts = [])
   {
+    this.ID = ID;
     this.image = image;
     this.title = title;
     this.description = description;
-    this.likeCount = likeCount;
+    this.likeCount = likedAccounts.length;
+    this.likedAccounts = likedAccounts;
+    this.favoritedAccounts = favoritedAccounts;
   }
 
-  likeButton()
+  likeButton(username, updateLikes)
   {
-    if (this.#liked)
+    if (!username)
     {
-      this.likeCount -= 1;
-      this.#liked = false;
+      return;
+    }
+
+    if (this.likedAccounts.includes(username))
+    {
+      this.likedAccounts = this.likedAccounts.filter(account => account !== username);
+      this.likeCount = this.likedAccounts.length;
     }
     else
     {
-      this.likeCount += 1;
-      this.#liked = true;
+      this.likedAccounts.push(username);
+      this.likeCount = this.likedAccounts.length;
     }
+    updateLikes(this.ID, this.likedAccounts);
   }
 
-  favoriteButton()
+  favoriteButton(username, updateFavorites)
   {
-    if (this.#favorite)
+    if (!username)
     {
-      this.#favorite = false;
-    }
-    else
-    {
-      this.#favorite = true;
+      return;
     }
   }
 
@@ -45,10 +47,10 @@ class GamePost
     // Downloads game (Or send them somewhere else idk yet)
   }
 
-  initilizePost(isDeveloper)
+  initilizePost(isDeveloper, username, updateLikes)
   {
     return (
-      <div className="game">
+      <div className="game" key={this.ID}>
         <div className="gameInfo">
           <img src={this.image}/>
           <h3>{this.title}</h3>
@@ -57,7 +59,7 @@ class GamePost
         <div className="gameButtons">
           <div className="likeCounter">
               <b>{this.likeCount}</b>
-              <button className="like" onClick={this.likeButton}>👍</button>
+              <button className="like" onClick={() => this.likeButton(username, updateLikes)}>👍</button>
           </div>
           <button className="favorite" onClick={this.favoriteButton}>⭐</button>
           <button className="download">Download</button>
@@ -69,7 +71,7 @@ class GamePost
 
   returnJson()
   {
-    return {"Image": this.image, "title": this.title, "description": this.description, "likeCount": this.likeCount}
+    return {"Image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts}
   }
 }
 
