@@ -23,13 +23,11 @@ class DevlogPost
     {
       this.likedAccounts = this.likedAccounts.filter(account => account !== username);
       this.likeCount = this.likedAccounts.length;
-      console.log(this.likedAccounts, this.likeCount);
     }
     else
     {
       this.likedAccounts.push(username);
       this.likeCount = this.likedAccounts.length;
-      console.log(this.likedAccounts, this.likeCount);
     }
     updateLikes(this.ID, this.likedAccounts);
   }
