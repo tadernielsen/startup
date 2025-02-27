@@ -306,12 +306,53 @@ DELETE: Delete a resouce
 OPTIONS: Information about resource
 
 Status Codes
-- 2xx - Sucess
-  - 200 Sucess, 204 No content
-- 3xx - Sucess, but not correct
+- 2xx - Success
+  - 200 Success, 204 No content
+- 3xx - Success, but not correct
   - 301/302 redirects, 304 not modified
 - 4xx - User error
   - 400 bad request, 404 not found
   - 403 forbidden, 429 Too many requests
 - 5xx - Server error
   - 500 Server error, 503 not available
+
+### Web Services
+
+_Servoce Design_
+
+Service Endpoints for Simon
+- Create account
+- Login
+- Logout
+- Get user
+- Get scores
+- Save scores
+
+Leverage Standards
+- Transfer Protocols - HTTP, HTTPS, UDP
+- HTTP verbs - GET, PUT, POST, DELETE
+- MIME types - application/json, image/png
+- HTTP headers - cache, accept, cors
+- Data format - JSON, YAML
+
+Endpoint design
+- Grammatical - Noun/resource based
+- Readable - /store/provo/order/28502
+- Simple - Single responsibility principle
+- Documented - Open API
+
+_Express_
+
+Simple, yet powerful
+
+- express: construction and default functionality
+- app: service application
+- req: request boject
+- res: response object
+- router: adding child routing (Don't have to do that)
+
+app.use(express.static('public')): Easy way to get files
+
+_Middleware_
+- Can be changed
+- The middle man in the express app
