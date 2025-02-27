@@ -8,61 +8,10 @@ import Button from 'react-bootstrap/Button';
 import { UnAuthenticated } from './unAuthenticated';
 import { Authenticated } from './authenticated';
 
-export function Login({setUser, setUserType}) {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-
-  const nav = useNavigate();
-
-  function loginAccount() {
-    localStorage.setItem('username', username);
-    localStorage.setItem('userType', 'normal');
-
-    setUser(username);
-    setUserType('normal');
-
-    nav('/');
-  }
-
-  function createAccount() {
-    localStorage.setItem('username', username);
-    localStorage.setItem('userType', 'normal');
-
-    setUser(username);
-    setUserType('normal');
-
-    nav('/');
-  }
-
-  function loginDeveloper() {
-    localStorage.setItem('username', username);
-    localStorage.setItem('userType', 'developer');
-
-    setUser(username);
-    setUserType('developer');
-
-    nav('/');
-  }
-
+export function Login({setUser, setUserType, authState}) {
   return (
     <main className="loginPage">
-      <div className="login">
-        <h1>Login</h1>
-          <div className="input-group mb-3">
-              <label className="input-group-text" for="username">Username:</label>
-              <input className="form-control" type="text" id="username" placeholder="your@email.com" onChange={(e) => setUsername(e.target.value)} />
-          </div>
-          <div className="input-group mb-3">
-              <label className="input-group-text" for="password">Password:</label>
-              <input className="form-control" type="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-          </div>
-          <div className="buttons">
-            <Button variant='primary' disabled={!username || !password} onClick={loginAccount}>Login</Button>
-            <Button variant='secondary' disabled={!username || !password} onClick={createAccount}>Create Account</Button>
-            <Button variant='outline-dark' disabled={!username || !password} onClick={loginDeveloper}>Developer Login</Button>
-          </div>
-        <NavLink to="/">Back</NavLink>
-      </div>
+      
     </main>
   );
 }
