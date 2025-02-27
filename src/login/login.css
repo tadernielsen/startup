@@ -54,6 +54,10 @@ img {
     font-family: var(--bs-body-font-family);
   }
 
+  .loggedIn {
+    text-align: center;
+  }
+
   /* Ditto
   footer {
     flex: 0 30px;
