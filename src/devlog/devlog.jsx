@@ -3,39 +3,47 @@ import './devlog.css';
 
 class DevlogPost
 {
-  #liked = false;
-
-  constructor(title, description, likeCount = 0)
+  constructor(ID, title, description, likedAccounts = [])
   {
-    this.title = title
-    this.description = description
-    this.likeCount = likeCount
+    this.ID = ID;
+    this.title = title;
+    this.description = description;
+    this.likedAccounts = likedAccounts;
+    this.likeCount = likedAccounts.length;
   }
 
-  likeButton()
+  likeButton(username, updateLikes)
   {
-    if (this.#liked)
+    if (!username)
     {
-      this.likeCount -= 1;
-      this.#liked = false;
+      return;
+    }
+
+    if (this.likedAccounts.includes(username))
+    {
+      this.likedAccounts = this.likedAccounts.filter(account => account !== username);
+      this.likeCount = this.likedAccounts.length;
+      console.log(this.likedAccounts, this.likeCount);
     }
     else
     {
-      this.likeCount += 1;
-      this.#liked = true;
+      this.likedAccounts.push(username);
+      this.likeCount = this.likedAccounts.length;
+      console.log(this.likedAccounts, this.likeCount);
     }
+    updateLikes(this.ID, this.likedAccounts);
   }
 
-  initilizePost(isDeveloper)
+  initilizePost(isDeveloper, username, updateLikes)
   {
     return (
-      <div className="log">
+      <div className="log" key={this.ID}>
             <h3 className="logTitle">{this.title}</h3>
             <p className="logDescription">{this.description}</p>
             <div className="RightSide">
               <div className="likeCounter">
                 <b>{this.likeCount}</b>
-                <button className="like" onClick={this.likeButton}>👍</button>
+                <button className="like" onClick={() => this.likeButton(username, updateLikes)}>👍</button>
               </div>
               <button className="devButton" hidden={!isDeveloper}>Edit</button>
             </div>
@@ -45,7 +53,7 @@ class DevlogPost
 
   returnJson()
   {
-    return {"title": this.title, "description": this.description, "likeCount": this.likeCount}
+    return {"ID": this.ID, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts}
   }
 }
 
@@ -63,23 +71,23 @@ export function Devlog({user, isDeveloper}) {
 
   function addNewPost()
   {
-    if (!newPost)
-    {
-      setNewPost(true)
-    }
-    else
-    {
-      setNewPost(false)
-    }
+    setNewPost(!newPost);
   }
 
   function savePost(title, description)
   {
-    const newPost = new DevlogPost(title, description);
-
-    logs.push(newPost.returnJson());
-    localStorage.setItem('devLogs', JSON.stringify(logs));
+    const newPost = new DevlogPost(Date.now(), title, description);
+    const updatedLogs = [...logs, newPost.returnJson()];
+    localStorage.setItem('devLogs', JSON.stringify(updatedLogs));
+    setLogs(updatedLogs)
     setNewPost(false);
+  }
+
+  function updateLikes(ID, likeAccounts)
+  {
+    const updatedLogs = logs.map(log => log.ID === ID ? { ...log, "likedAccounts": likeAccounts } : log);
+    localStorage.setItem('devLogs', JSON.stringify(updatedLogs));
+    setLogs(updatedLogs);
   }
 
   const savedDevLogs = []
@@ -87,8 +95,8 @@ export function Devlog({user, isDeveloper}) {
   {
     for (const log of logs.entries())
     {
-      const post = new DevlogPost(log[1].title, log[1].description)
-      savedDevLogs.push(post.initilizePost(isDeveloper));
+      const post = new DevlogPost(log[1].ID, log[1].title, log[1].description, log[1].likedAccounts);
+      savedDevLogs.push(post.initilizePost(isDeveloper, user, updateLikes));
     }
   }
 
