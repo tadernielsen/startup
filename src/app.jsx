@@ -8,6 +8,7 @@ import { Home } from './home/home';
 import { Games } from './games/games';
 import { Devlog } from './devlog/devlog';
 import { Login } from './login/login';
+import { AuthState } from './login/authState';
 
 import { Button } from 'react-bootstrap';
 
@@ -22,6 +23,8 @@ export default function App() {
   const [username, setUser] = React.useState(localStorage.getItem('username') || null);
   const [userType, setUserType] = React.useState(localStorage.getItem('userType') || null);
   const isDeveloper = userType === "developer";
+  const currentAuthState = username ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
 
   const glitch = useGlitch({"playMode": "click", glitchTimeSpan: false});
 
@@ -76,7 +79,7 @@ export default function App() {
           <Route path='/' element={<Home isDeveloper={isDeveloper}/>} exact />
           <Route path='/devlog' element={<Devlog user={username} isDeveloper={isDeveloper}/>} />
           <Route path='/games' element={<Games user={username} isDeveloper={isDeveloper}/>} />
-          <Route path='/login' element={<Login setUser={setUser} setUserType={setUserType} />} />
+          <Route path='/login' element={<Login setUser={setUser} setUserType={setUserType} authState={authState} />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 
