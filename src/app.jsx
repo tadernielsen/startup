@@ -79,7 +79,17 @@ export default function App() {
           <Route path='/' element={<Home isDeveloper={isDeveloper}/>} exact />
           <Route path='/devlog' element={<Devlog user={username} isDeveloper={isDeveloper}/>} />
           <Route path='/games' element={<Games user={username} isDeveloper={isDeveloper}/>} />
-          <Route path='/login' element={<Login setUser={setUser} setUserType={setUserType} authState={authState} />} />
+          <Route path='/login' element={<Login 
+          username={username} 
+          userType={userType} 
+          authState={authState} 
+
+          AuthChange={(userName, userType, authState) => {
+            setUser(userName);
+            setUserType(userType);
+            setAuthState(authState);
+          }}
+          />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 
