@@ -3,7 +3,7 @@ import './games.css';
 
 class GamePost
 {
-  constructor(ID, image = "placeholder.png", title, description, likedAccounts = [], favoritedAccounts = [])
+  constructor(ID, image = "placeholder.png", title, description, likedAccounts = [], favoritedAccounts = [], favorited = false)
   {
     this.ID = ID;
     this.image = image;
@@ -12,9 +12,10 @@ class GamePost
     this.likeCount = likedAccounts.length;
     this.likedAccounts = likedAccounts;
     this.favoritedAccounts = favoritedAccounts;
+    this.favorited = favorited;
   }
 
-  likeButton(username, updateLikes)
+  likeButton(username, updatePost)
   {
     if (!username)
     {
@@ -31,15 +32,27 @@ class GamePost
       this.likedAccounts.push(username);
       this.likeCount = this.likedAccounts.length;
     }
-    updateLikes(this.ID, this.likedAccounts);
+    updatePost(this.ID, this.likedAccounts, this.favoritedAccounts);
   }
 
-  favoriteButton(username, updateFavorites)
+  favoriteButton(username, updatePost)
   {
     if (!username)
     {
       return;
     }
+
+    if (this.favoritedAccounts.includes(username))
+      {
+        this.favoritedAccounts = this.favoritedAccounts.filter(account => account !== username);
+        this.favorited = false;
+      }
+      else
+      {
+        this.favoritedAccounts.push(username);
+        this.favorited = true;
+      }
+      updatePost(this.ID, this.likedAccounts, this.favoritedAccounts);
   }
 
   downloadButton()
@@ -47,7 +60,12 @@ class GamePost
     // Downloads game (Or send them somewhere else idk yet)
   }
 
-  initilizePost(isDeveloper, username, updateLikes)
+  favoriteTag()
+  {
+    return this.favorited ? "⭐" : "☆";
+  }
+
+  initilizePost(isDeveloper, username, updatePost)
   {
     return (
       <div className="game" key={this.ID}>
@@ -59,9 +77,9 @@ class GamePost
         <div className="gameButtons">
           <div className="likeCounter">
               <b>{this.likeCount}</b>
-              <button className="like" onClick={() => this.likeButton(username, updateLikes)}>👍</button>
+              <button className="like" onClick={() => this.likeButton(username, updatePost)}>👍</button>
           </div>
-          <button className="favorite" onClick={this.favoriteButton}>⭐</button>
+          <button className="favorite" onClick={() => this.favoriteButton(username, updatePost)}>{this.favoriteTag()}</button>
           <button className="download">Download</button>
         </div>
         <button className="devButton" hidden={!isDeveloper}>Edit</button>
@@ -71,7 +89,7 @@ class GamePost
 
   returnJson()
   {
-    return {"ID": this.ID, "Image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts, "favoritedAccounts": this.favoritedAccounts}
+    return {"ID": this.ID, "Image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts, "favoritedAccounts": this.favoritedAccounts, "favorited": this.favorited}
   }
 }
 
@@ -105,9 +123,9 @@ export function Games({user, isDeveloper}) {
     setNewGame(false);
   }
 
-  function updateLikes(ID, likeAccounts)
+  function updatePost(ID, likeAccounts, favoritedAccounts)
   {
-    const updatedPosts = games.map(post => post.ID === ID ? { ...post, "likedAccounts": likeAccounts } : post);
+    const updatedPosts = games.map(post => post.ID === ID ? { ...post, "likedAccounts": likeAccounts, "favoritedAccounts": favoritedAccounts, "favorited": favoritedAccounts.includes(user) } : post);
     localStorage.setItem('games', JSON.stringify(updatedPosts));
     setGames(updatedPosts);
   }
@@ -117,8 +135,8 @@ export function Games({user, isDeveloper}) {
   {
     for (const game of games.entries())
     {
-      const post = new GamePost(game[1].ID, game[1].image, game[1].title, game[1].description, game[1].likedAccounts, game[1].favoritedAccounts);
-      savedGames.push(post.initilizePost(isDeveloper, user, updateLikes));
+      const post = new GamePost(game[1].ID, game[1].image, game[1].title, game[1].description, game[1].likedAccounts, game[1].favoritedAccounts, game[1].favorited);
+      savedGames.push(post.initilizePost(isDeveloper, user, updatePost));
     }
   }
 
