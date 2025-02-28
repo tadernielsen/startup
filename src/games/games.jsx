@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react';
 import './games.css';
 
+import { Navigate } from 'react-router-dom';
+
 class GamePost
 {
-  constructor(ID, image = "placeholder.png", title, description, likedAccounts = [], favoritedAccounts = [], favorited = false)
+  constructor(ID, image = "placeholder.png", title, description, install = "", likedAccounts = [], favoritedAccounts = [], favorited = false)
   {
     this.ID = ID;
     this.image = image;
     this.title = title;
     this.description = description;
-    this.likeCount = likedAccounts.length;
     this.likedAccounts = likedAccounts;
+    this.likeCount = likedAccounts.length;
     this.favoritedAccounts = favoritedAccounts;
     this.favorited = favorited;
+    this.installURL = install;
   }
 
   likeButton(username, updatePost)
@@ -57,7 +60,7 @@ class GamePost
 
   downloadButton()
   {
-    // Downloads game (Or send them somewhere else idk yet)
+    window.open(this.installURL);
   }
 
   favoriteTag()
@@ -80,7 +83,7 @@ class GamePost
               <button className="like" onClick={() => this.likeButton(username, updatePost)}>👍</button>
           </div>
           <button className="favorite" onClick={() => this.favoriteButton(username, updatePost)}>{this.favoriteTag()}</button>
-          <button className="download">Download</button>
+          <button className="download" onClick={() => this.downloadButton()}>Download</button>
         </div>
         <button className="devButton" hidden={!isDeveloper}>Edit</button>
       </div>
@@ -89,7 +92,7 @@ class GamePost
 
   returnJson()
   {
-    return {"ID": this.ID, "Image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts, "favoritedAccounts": this.favoritedAccounts, "favorited": this.favorited}
+    return {"ID": this.ID, "Image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts, "favoritedAccounts": this.favoritedAccounts, "favorited": this.favorited, "installURL": this.installURL}
   }
 }
 
@@ -110,13 +113,13 @@ export function Games({user, isDeveloper}) {
     setNewGame(!newGame);
   }
 
-  function saveGame(image, title, description)
+  function saveGame(image, title, description, install)
   {
     if (image === "")
     {
       image = "placeholder.png";
     }
-    const newPost = new GamePost(Date.now(), image, title, description);
+    const newPost = new GamePost(Date.now(), image, title, description, install);
     const updatedPost = [...games, newPost.returnJson()];
     localStorage.setItem('games', JSON.stringify(updatedPost));
     setGames(updatedPost);
@@ -135,7 +138,7 @@ export function Games({user, isDeveloper}) {
   {
     for (const game of games.entries())
     {
-      const post = new GamePost(game[1].ID, game[1].image, game[1].title, game[1].description, game[1].likedAccounts, game[1].favoritedAccounts, game[1].favorited);
+      const post = new GamePost(game[1].ID, game[1].image, game[1].title, game[1].description, game[1].installURL, game[1].likedAccounts, game[1].favoritedAccounts, game[1].favorited);
       savedGames.push(post.initilizePost(isDeveloper, user, updatePost));
     }
   }
@@ -151,7 +154,8 @@ export function Games({user, isDeveloper}) {
               <input type="image" src="placeholder.png" id="editGameImage" alt="Submit"></input>
               <input type="text" id="editGameTitle" placeholder='Title' maxLength={15}></input>
               <textarea type="textarea" id="editGameDescription" placeholder="Enter description here"></textarea>
-              <button className="saveButton" onClick={() => saveGame(document.getElementById('editGameImage').value, document.getElementById('editGameTitle').value, document.getElementById('editGameDescription').value)}>Post</button>
+              <input type="text" id="editURL" placeholder="install URL"></input>
+              <button className="saveButton" onClick={() => saveGame(document.getElementById('editGameImage').value, document.getElementById('editGameTitle').value, document.getElementById('editGameDescription').value, document.getElementById('editURL').value)}>Post</button>
             </div>
             ) : (null)
           }
