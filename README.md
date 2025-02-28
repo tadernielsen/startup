@@ -117,8 +117,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - Everything on the startup is functional. The features include:
+ - **Login/Create** Users can create accounts to be able to interact with the posts on the `devlog` and `game` pages. The username is saved to `LocalStorage`.
+ - **Developer Login** Developer can log in using the Developer button to be able to activate "Developer mode" and create (or delete) posts or edit the announcements. (No password is required at the moment, so anyone can access this mode).
+ - **Announcement** On the `Home` Page, The Developer can change the announcement and it can be viewed by the users. The announcement is saved to `LocalStorage`.
+ - **Devlog Posts** Developer can create a new post using the `add post` button and add a title and description. Users can press the like button to like the individual posts. Total likes are displayed next to the button. Post are saved to `LocalStorage`.
+ - **Game Posts** Developer can create a new Game and add a title, description, and download URL. Users can both like and favorite individual posts. They can also click the download to be redirected to another page. Total likes are also displayed. Images are currently not avalable due to LocalStorage limitations. Game Posts are saved to `LocalStorage`.
+ - **TN Image** When the image is clicked, it creates a glitch effect and changes the image.
+ - **Geek Joke API** API placeholder functionality mocked out. Currently displays "Epic Geek Joke" 
+- [x] **Hooks** - I used both `useState` and `useEffect` for multiple different parts of the startup
 
 ## 🚀 Service deliverable
 
