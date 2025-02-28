@@ -32,7 +32,7 @@ class DevlogPost
     updateLikes(this.ID, this.likedAccounts);
   }
 
-  initilizePost(isDeveloper, username, updateLikes)
+  initilizePost(isDeveloper, username, updateLikes, deletePost)
   {
     return (
       <div className="log" key={this.ID}>
@@ -43,7 +43,7 @@ class DevlogPost
                 <b>{this.likeCount}</b>
                 <button className="like" onClick={() => this.likeButton(username, updateLikes)}>👍</button>
               </div>
-              <button className="devButton" hidden={!isDeveloper}>Edit</button>
+              <button className="devButton" hidden={!isDeveloper} onClick={() => deletePost(this.ID)}>Delete</button>
             </div>
       </div>
     )
@@ -88,13 +88,19 @@ export function Devlog({user, isDeveloper}) {
     setLogs(updatedLogs);
   }
 
+  function deletePost(ID) {
+    const updatedLogs = logs.filter(log => log.ID !== ID);
+    localStorage.setItem('devLogs', JSON.stringify(updatedLogs));
+    setLogs(updatedLogs);
+  }
+
   const savedDevLogs = []
   if (logs.length)
   {
     for (const log of logs.entries())
     {
       const post = new DevlogPost(log[1].ID, log[1].title, log[1].description, log[1].likedAccounts);
-      savedDevLogs.push(post.initilizePost(isDeveloper, user, updateLikes));
+      savedDevLogs.push(post.initilizePost(isDeveloper, user, updateLikes, deletePost));
     }
   }
 

@@ -68,7 +68,7 @@ class GamePost
     return this.favorited ? "⭐" : "☆";
   }
 
-  initilizePost(isDeveloper, username, updatePost)
+  initilizePost(isDeveloper, username, updatePost, deletePost)
   {
     return (
       <div className="game" key={this.ID}>
@@ -85,7 +85,7 @@ class GamePost
           <button className="favorite" onClick={() => this.favoriteButton(username, updatePost)}>{this.favoriteTag()}</button>
           <button className="download" onClick={() => this.downloadButton()}>Download</button>
         </div>
-        <button className="devButton" hidden={!isDeveloper}>Edit</button>
+        <button className="devButton" hidden={!isDeveloper} onClick={() => deletePost(this.ID)}>Delete</button>
       </div>
     )
   }
@@ -133,13 +133,20 @@ export function Games({user, isDeveloper}) {
     setGames(updatedPosts);
   }
 
+  function deletePost(ID)
+  {
+    const updatedPosts = games.filter(post => post.ID !== ID);
+    localStorage.setItem('games', JSON.stringify(updatedPosts));
+    setGames(updatedPosts);
+  }
+
   const savedGames = [];
   if (games.length)
   {
     for (const game of games.entries())
     {
       const post = new GamePost(game[1].ID, game[1].image, game[1].title, game[1].description, game[1].installURL, game[1].likedAccounts, game[1].favoritedAccounts, game[1].favorited);
-      savedGames.push(post.initilizePost(isDeveloper, user, updatePost));
+      savedGames.push(post.initilizePost(isDeveloper, user, updatePost, deletePost));
     }
   }
 
