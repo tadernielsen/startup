@@ -29,7 +29,7 @@ export default function App() {
   const glitch = useGlitch({"playMode": "click", glitchTimeSpan: false});
 
   React.useEffect(() => {
-    setJoke('Epic Geek Joke');
+    setJoke(getGeekJoke());
   }, []);
 
   function generateRandomImage() 
@@ -39,6 +39,11 @@ export default function App() {
     const randomNumber = Math.floor(Math.random() * (max - min) + min);
 
     setHeaderImage(images[randomNumber]);
+  }
+
+  function getGeekJoke()
+  {
+    return "Epic Geek Joke";
   }
 
   return (
