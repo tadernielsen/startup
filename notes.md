@@ -253,17 +253,17 @@ Everything must be asynchronous (Happening at the same time)
 "I promise to call you back"
 Built in the JavaScript library
 
-_Promise state_
+Promise state
 - pending - Currently running asynchronously
 - fulfilled - Completed successfully
 - rejected - Failed to complete
 
-_Handlers_
+Handlers
 - .then - only called if successful
 - .catch - only called if failled
 - .finally - calls no matter what
 
-_Async/Await_
+Async/Await
 - Async - function that indicates promise returned
 - Await - .then but with better(ish) syntax
 
@@ -276,7 +276,7 @@ Remember that async will auto-generate a promise if not explicitly returned
 We have always been making service requests
 Using JavaScript, we can call other services
 
-_Requesting a Resource_
+__Requesting a Resource__
 Everything is a Resource
 
 Uniform Resource Locator
@@ -318,7 +318,7 @@ Status Codes
 
 ### Web Services
 
-_Servoce Design_
+__Service Design__
 
 Service Endpoints for Simon
 - Create account
@@ -341,7 +341,7 @@ Endpoint design
 - Simple - Single responsibility principle
 - Documented - Open API
 
-_Express_
+__Express__
 
 Simple, yet powerful
 
@@ -353,6 +353,37 @@ Simple, yet powerful
 
 app.use(express.static('public')): Easy way to get files
 
-_Middleware_
+Middleware
 - Can be changed
 - The middle man in the express app
+
+## Authentication
+
+Authentication - Verifies that a user is who they claim to be
+Authorization - Gives user parmission to access site
+
+Authentication Protocols
+- OAuth
+- SAML
+- CAS (The one BYU uses)
+- OIDC
+
+Single sign on (SSO)
+- Auth0
+- Google
+- Facebook
+- Duo
+- AWS
+
+Custom Authentication
+- Store user credentials (and make sure it's secure)
+- Verify credentials
+- Restrict access
+
+Bcrypt
+Salt, hash, and compare
+
+__Cookies__
+Response:
+Set-Cookie: token=x83efhs; Secure; HttpOnly; SameSite=Strict
+Next Request: Cookie: token=x83efhs
