@@ -393,6 +393,7 @@ Next Request: Cookie: token=x83efhs
 __ENDPOINTS:__
 - Third Party API
 - Login
+- Developer Login
 - Logout
 - Create Account
 - Get Account Info
