@@ -387,3 +387,19 @@ __Cookies__
 Response:
 Set-Cookie: token=x83efhs; Secure; HttpOnly; SameSite=Strict
 Next Request: Cookie: token=x83efhs
+
+### Project Notes
+
+__ENDPOINTS:__
+- Third Party API
+- Login
+- Logout
+- Create Account
+- Get Account Info
+- Devlog Post Data
+- Game Post Data
+- Announcement Data
+- Image Data?
+
+__Other Notes__
+- Check login program for login creation help
