@@ -404,3 +404,14 @@ __ENDPOINTS:__
 
 __Other Notes__
 - Check login program for login creation help
+
+### Storage services
+Multer: Program that adds middleware to allow images to be uploaded
+
+__AWS S3__
+- Massive capacity
+- Only pay for what you use
+- Automatic backups
+- Versioned
+- Performant
+- Good security model
