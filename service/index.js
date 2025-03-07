@@ -44,12 +44,18 @@ function setCookie(res, user)
 {
     user.token = uuid.v4();
     res.cookie(
-        'token', user.token, 
+        authCookieName, user.token, 
         {
         secure: true, 
         httpOnly: true, 
         sameSite: 'strict',
     });
+}
+
+function clearCookie(res, user)
+{
+    delete user.token;
+    res.clearCookie(authCookieName);
 }
 
 // Middleware
@@ -95,7 +101,18 @@ app.put('/auth/Login', async (req, res) => {
 
 // Developer Login Maybe?
 
-//
+// User Logout
+app.delete('/auth/Logout', async (req, res) => {
+    const token = req.cookies[authCookieName];
+
+    const user = await getUser('token', token);
+    if (user)
+    {
+        clearCookie(res, user);
+    }
+
+    res.send({msg: 'Logged out.'});
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
