@@ -114,6 +114,14 @@ app.delete('/auth/Logout', async (req, res) => {
     res.send({msg: 'Logged out.'});
 });
 
+// Get User Data
+app.get('/auth/User', async (req, res) =>{
+    const token = req.cookies[authCookieName];
+
+    const user = await getUser('token', token);
+    res.send({"email": "Name", "type": "Type"});
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
