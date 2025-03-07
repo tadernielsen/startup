@@ -35,7 +35,7 @@ async function getUser(field, value)
 {
     if (value)
     {
-        return users.find(user => user[field] === value);
+        return users.find((user) => user[field] === value);
     }
     return null;
 }
@@ -64,7 +64,7 @@ app.use('/api', apiRouter);
 // Endpoints
 // User Creation
 app.post('/auth/CreateAccount', async (req, res) => {
-    if (await getUser('email', req.body.email))
+    if (await getUser('name', req.body.email))
     {
         res.status(409).send({msg: 'User already exists.'});
     }
@@ -77,6 +77,25 @@ app.post('/auth/CreateAccount', async (req, res) => {
         res.send({email: user.name, type: user.type});
     }
 });
+
+// User Login
+app.put('/auth/Login', async (req, res) => {
+    const user = await getUser('name', req.body.email);
+    if (user && (await bcrypt.compare(req.body.password, user.pass)))
+    {
+        setCookie(res, user);
+
+        res.send({email: user.name, type: user.type});
+    }
+    else
+    {
+        res.status(401).send({ msg: 'Incorrect email or password.' });
+    }
+});
+
+// Developer Login Maybe?
+
+//
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
