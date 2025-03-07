@@ -10,4 +10,14 @@ const uuid = require('uuid');
 
 const authCookieName = 'token';
 
+// Data Lists
+const users = [];
+const developers = [];
+
+const devLogs = [];
+const games = [];
+
+const announcement = 'Press Edit to change this!';
+
+
 app.use(express.static('public'));
