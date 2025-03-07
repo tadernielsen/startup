@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 // Routing
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, data, NavLink, Route, Routes } from 'react-router-dom';
 import { Home } from './home/home';
 import { Games } from './games/games';
 import { Devlog } from './devlog/devlog';
@@ -43,7 +43,10 @@ export default function App() {
 
   function getGeekJoke()
   {
-    return "Epic Geek Joke";
+    fetch ('https://geek-jokes.sameerkumar.website/api')
+    .then((response) => response.json())
+    .then((data) => setJoke(data))
+    .catch(setJoke('Error: Fetch failed.'));
   }
 
   return (
