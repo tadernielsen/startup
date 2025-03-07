@@ -405,6 +405,8 @@ __ENDPOINTS:__
 __Other Notes__
 - Check login program for login creation help
 
+## Database
+
 ### Storage services
 Multer: Program that adds middleware to allow images to be uploaded
 
