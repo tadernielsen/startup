@@ -7,7 +7,6 @@ const app = express();
 const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const uuid = require('uuid');
-var apiRouter = express.Router();
 
 const authCookieName = 'token';
 
@@ -65,18 +64,16 @@ app.use(cookieParser());
 
 app.use(express.json());
 
-app.use('/api', apiRouter);
-
 // Endpoints
 // User Creation
-app.post('/auth/CreateAccount', async (req, res) => {
+app.post('/api/auth/CreateAccount', async (req, res) => {
     if (await getUser('name', req.body.email))
     {
         res.status(409).send({msg: 'User already exists.'});
     }
     else
     {
-        const user = await createUser(req.body.email, req.body.password, req.body.type);
+        const user = await createUser(req.body.email, req.body.password, 'normal');
         
         setCookie(res, user);
 
@@ -85,7 +82,7 @@ app.post('/auth/CreateAccount', async (req, res) => {
 });
 
 // User Login
-app.put('/auth/Login', async (req, res) => {
+app.put('/api/auth/Login', async (req, res) => {
     const user = await getUser('name', req.body.email);
     if (user && (await bcrypt.compare(req.body.password, user.pass)))
     {
@@ -102,7 +99,7 @@ app.put('/auth/Login', async (req, res) => {
 // Developer Login Maybe?
 
 // User Logout
-app.delete('/auth/Logout', async (req, res) => {
+app.delete('/api/auth/Logout', async (req, res) => {
     const token = req.cookies[authCookieName];
 
     const user = await getUser('token', token);
@@ -115,7 +112,7 @@ app.delete('/auth/Logout', async (req, res) => {
 });
 
 // Get User Data
-app.get('/auth/User', async (req, res) =>{
+app.get('/api/auth/User', async (req, res) =>{
     const token = req.cookies[authCookieName];
 
     const user = await getUser('token', token);
