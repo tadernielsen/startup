@@ -39,6 +39,15 @@ async function getUser(field, value)
     return null;
 }
 
+async function getDeveloper(field, value)
+{
+    if (value)
+    {
+        return developers.find((dev) => dev[field] === value);
+    }
+    return null;
+}
+
 function setCookie(res, user)
 {
     user.token = uuid.v4();
@@ -97,6 +106,19 @@ app.put('/api/auth/Login', async (req, res) => {
 });
 
 // Developer Login Maybe?
+app.put('/api/auth/Login', async (req, res) => {
+    const dev = await getDeveloper(req.body.email);
+    if (dev && (await bcrypt.compare(req.body.password, dev.pass)))
+    {
+        setCookie(res, dev);
+
+        res.send({email: dev.name, type: dev.type});
+    }
+    else
+    {
+        res.status(401).send({ msg: 'Incorrect email or password.' });
+    }
+});
 
 // User Logout
 app.delete('/api/auth/Logout', async (req, res) => {
