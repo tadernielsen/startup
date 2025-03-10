@@ -105,8 +105,8 @@ app.put('/api/auth/Login', async (req, res) => {
     }
 });
 
-// Developer Login Maybe?
-app.put('/api/auth/Login', async (req, res) => {
+// Developer Login
+app.put('/api/auth/LoginDev', async (req, res) => {
     const dev = await getDeveloper(req.body.email);
     if (dev && (await bcrypt.compare(req.body.password, dev.pass)))
     {
@@ -140,6 +140,14 @@ app.get('/api/auth/User', async (req, res) =>{
     const user = await getUser('token', token);
     res.send({"email": "Name", "type": "Type"});
 });
+
+// Website Management Endpoints
+// Set Announcement
+app.put('/api/data/Announcement', async (req, res) => {
+    announcement = req.body.announcement;
+    req.send({announcement: announcement});
+});
+
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
