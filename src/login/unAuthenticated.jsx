@@ -11,16 +11,25 @@ export function UnAuthenticated({onLogin}) {
 
   const nav = useNavigate();
 
-  function loginAccount() {
-    localStorage.setItem('username', username);
-    localStorage.setItem('userType', 'normal');
+  async function loginAccount() {
+    const response = await fetch('/api/auth/Login', {
+      method: 'PUT',
+      body: JSON.stringify({email: username, password: password}),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
 
-    // setUser(username);
-    // setUserType('normal');
-
-    onLogin(username, 'normal');
-
-    nav('/');
+    if (response?.status === 200)
+    {
+      onLogin(username, 'normal');
+      nav('/');
+    }
+    else
+    {
+      const body = await response.json();
+      alert(body.msg);
+    }
   }
 
   async function createAccount() {
@@ -31,9 +40,6 @@ export function UnAuthenticated({onLogin}) {
         'Content-type': 'application/json',
       },
     });
-
-    // setUser(username);
-    // setUserType('normal');
 
     if (response?.status === 200)
     {
