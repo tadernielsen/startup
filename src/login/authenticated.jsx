@@ -10,15 +10,16 @@ export function Authenticated({onLogout}) {
 
   function logout()
   {
-    console.log('Logging out');
-    localStorage.removeItem('username');
-    localStorage.setItem('userType', 'standard');
-    // setUser(null);
-    // setUserType(null);
-
-    onLogout();
-
-    nav('/');
+    fetch('/api/auth/Logout', {
+      method: 'DELETE',
+    })
+      .then(() => {
+        onLogout();
+        nav('/');
+      })
+      .catch(() => {
+        alert('Logout Failed (Possibly Offline?)');
+      });
   }
 
   return (
