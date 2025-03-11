@@ -26,6 +26,13 @@ app.use(cookieParser());
 
 app.use(express.json());
 
+// Shows both request and response
+app.use((req, res, next) => {
+    console.log(req.path,req.method);
+    console.log(res.statusCode);
+    next();
+});
+
 async function createUser(username, password, userType)
 {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -36,7 +43,7 @@ async function createUser(username, password, userType)
     return user;
 }
 
-async function getUser(field, value)
+function getUser(field, value)
 {
     if (value)
     {
@@ -45,7 +52,7 @@ async function getUser(field, value)
     return null;
 }
 
-async function getDeveloper(field, value)
+function getDeveloper(field, value)
 {
     if (value)
     {
