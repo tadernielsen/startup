@@ -17,7 +17,7 @@ const developers = [];
 const devLogs = [];
 const games = [];
 
-const announcement = 'Press Edit to change this!';
+let announcement = 'Press Edit to change this!';
 
 // Functions
 async function createUser(username, password, userType)
@@ -145,7 +145,12 @@ app.get('/api/auth/User', async (req, res) =>{
 // Set Announcement
 app.put('/api/data/Announcement', async (req, res) => {
     announcement = req.body.announcement;
-    req.send({announcement: announcement});
+    res.send({announcement: announcement});
+});
+
+// Get Announcement
+app.get('/api/data/Announcement', async (req, res) => {
+    res.send({announcement: announcement});
 });
 
 
