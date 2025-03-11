@@ -147,6 +147,12 @@ app.get('/api/auth/User', async (req, res) =>{
     res.send({"email": "Name", "type": "Type"});
 });
 
+// Endpoint for checking if user is developer
+app.use((req, res, next) => {
+    console.log("evil burger");
+    next();
+});
+
 // Announcement Endpoints
 // Set Announcement
 app.put('/api/data/Announcement', (req, res) => {
@@ -161,10 +167,19 @@ app.get('/api/data/Announcement', (req, res) => {
 
 // Devlog Endpoints
 // Create Devlog
+app.post('/api/data/Devlog', (req, res) => {
+    devLogs.push(req.body);
+    res.send(devLogs);
+});
 
 // Like Devlog
 
+// Delete Devlog
+
 // Get Devlog
+app.get('/api/data/Devlog', (req, res) => {
+    res.send(devLogs);
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

@@ -8,11 +8,9 @@ export function Devlog({user, isDeveloper}) {
   const [newPost, setNewPost] = React.useState(false);
 
   useEffect(() => {
-    const savedLogs = localStorage.getItem('devLogs')
-    if (savedLogs)
-    {
-      setLogs(JSON.parse(savedLogs))
-    }
+    fetch('/api/data/Devlog')
+      .then((res) => res.json())
+      .then((log) => setLogs(log));
   }, []);
 
   function addNewPost()
@@ -20,12 +18,19 @@ export function Devlog({user, isDeveloper}) {
     setNewPost(!newPost);
   }
 
-  function savePost(title, description)
+  async function savePost(title, description)
   {
     const newPost = new DevlogPost(Date.now(), title, description);
+
+    await fetch('/api/data/Devlog', {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(newPost.returnJson()),
+    })
+
     const updatedLogs = [...logs, newPost.returnJson()];
-    localStorage.setItem('devLogs', JSON.stringify(updatedLogs));
-    setLogs(updatedLogs)
+
+    setLogs(updatedLogs);
     setNewPost(false);
   }
 
@@ -45,9 +50,9 @@ export function Devlog({user, isDeveloper}) {
   const savedDevLogs = []
   if (logs.length)
   {
-    for (const log of logs.entries())
+    for (const [i, log] of logs.entries())
     {
-      const post = new DevlogPost(log[1].ID, log[1].title, log[1].description, log[1].likedAccounts);
+      const post = new DevlogPost(log.ID, log.title, log.description, log.likedAccounts);
       savedDevLogs.push(post.initilizePost(isDeveloper, user, updateLikes, deletePost));
     }
   }
