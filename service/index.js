@@ -153,7 +153,6 @@ app.get('/api/data/Announcement', async (req, res) => {
     res.send({announcement: announcement});
 });
 
-
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

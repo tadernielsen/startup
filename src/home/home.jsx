@@ -2,7 +2,7 @@ import React from 'react';
 import './home.css';
 
 export function Home({isDeveloper}) {
-  const [announcement, setAnnouncement] = React.useState('No current announcements');
+  const [announcement, setAnnouncement] = React.useState('Loading announcement...');
   const [editing, setEditing] = React.useState(false);
 
   const editClick = () => {
@@ -10,13 +10,23 @@ export function Home({isDeveloper}) {
   }
 
   const saveClick = () => {
-    setAnnouncement(document.getElementById('announcement').value);
-    localStorage.setItem('announcement', document.getElementById('announcement').value);
+    fetch('/api/data/Announcement', {
+      method: 'PUT',
+      body: JSON.stringify({announcement: document.getElementById('announcement').value}),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+    .then((res) => res.json())
+    .then((res) => setAnnouncement(res.announcement));
     setEditing(false);
   }
 
   React.useEffect(() => {
-    setAnnouncement(localStorage.getItem('announcement')) || 'No current announcements';
+    fetch('/api/data/Announcement')
+    .then((res) => res.json())
+    .then((res) => setAnnouncement(res.announcement))
+    .catch(setAnnouncement("500 - Cannot load announcement"));
   }, []);
 
   return (
