@@ -417,3 +417,16 @@ __AWS S3__
 - Versioned
 - Performant
 - Good security model
+
+### Data Services
+
+__Service & Specialty__
+MySQL - Relational queries
+Redis - Memory cached objects
+ElasticSearch - Ranked free text
+MongoDB - JSON objects
+DynamoDB - Key value pairs
+Neo4J - Graph based data
+InfluxDB - Time series data
+
+__MongoDB:__ Collection of schema free JSON
