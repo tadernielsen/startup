@@ -9,8 +9,8 @@ export function Home({isDeveloper}) {
     setEditing(true);
   }
 
-  const saveClick = () => {
-    fetch('/api/data/Announcement', {
+  const saveClick = async () => {
+    await fetch('/api/data/Announcement', {
       method: 'PUT',
       body: JSON.stringify({announcement: document.getElementById('announcement').value}),
       headers: {
@@ -22,11 +22,12 @@ export function Home({isDeveloper}) {
     setEditing(false);
   }
 
+  
+
   React.useEffect(() => {
     fetch('/api/data/Announcement')
     .then((res) => res.json())
-    .then((res) => setAnnouncement(res.announcement))
-    .catch(setAnnouncement("500 - Cannot load announcement"));
+    .then((res) => setAnnouncement(res.announcement));
   }, []);
 
   return (

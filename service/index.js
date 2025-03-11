@@ -136,7 +136,7 @@ app.delete('/api/auth/Logout', async (req, res) => {
         clearCookie(res, user);
     }
 
-    res.send({msg: 'Logged out.'});
+    res.status(204).end();
 });
 
 // Get User Data
@@ -147,17 +147,24 @@ app.get('/api/auth/User', async (req, res) =>{
     res.send({"email": "Name", "type": "Type"});
 });
 
-// Website Management Endpoints
+// Announcement Endpoints
 // Set Announcement
-app.put('/api/data/Announcement', async (req, res) => {
+app.put('/api/data/Announcement', (req, res) => {
     announcement = req.body.announcement;
     res.send({announcement: announcement});
 });
 
 // Get Announcement
-app.get('/api/data/Announcement', async (req, res) => {
+app.get('/api/data/Announcement', (req, res) => {
     res.send({announcement: announcement});
 });
+
+// Devlog Endpoints
+// Create Devlog
+
+// Like Devlog
+
+// Get Devlog
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
