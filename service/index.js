@@ -19,7 +19,13 @@ const games = [];
 
 let announcement = 'Press Edit to change this!';
 
-// Functions
+// Middleware
+app.use(express.static('public'));
+
+app.use(cookieParser());
+
+app.use(express.json());
+
 async function createUser(username, password, userType)
 {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -65,13 +71,6 @@ function clearCookie(res, user)
     delete user.token;
     res.clearCookie(authCookieName);
 }
-
-// Middleware
-app.use(express.static('public'));
-
-app.use(cookieParser());
-
-app.use(express.json());
 
 // Endpoints
 // User Creation
