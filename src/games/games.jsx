@@ -8,11 +8,9 @@ export function Games({user, isDeveloper}) {
   const [newGame, setNewGame] = React.useState(false);
 
   useEffect(() => {
-    const savedGames = localStorage.getItem('games')
-    if (savedGames)
-    {
-      setGames(JSON.parse(savedGames))
-    }
+    fetch('/api/data/Games')
+    .then((res) => res.json())
+    .then((game) => setGames(game))
   }, []);
 
   function addNewGame()
@@ -20,15 +18,23 @@ export function Games({user, isDeveloper}) {
     setNewGame(!newGame);
   }
 
-  function saveGame(image, title, description, install)
+  async function saveGame(image, title, description, install)
   {
     if (image === "")
     {
       image = "placeholder.png";
     }
+
     const newPost = new GamePost(Date.now(), image, title, description, install);
+
+    await fetch('/api/data/Games', {
+      method: 'POST',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(newPost.returnJson()),
+    })
+
     const updatedPost = [...games, newPost.returnJson()];
-    localStorage.setItem('games', JSON.stringify(updatedPost));
+    
     setGames(updatedPost);
     setNewGame(false);
   }
@@ -50,9 +56,9 @@ export function Games({user, isDeveloper}) {
   const savedGames = [];
   if (games.length)
   {
-    for (const game of games.entries())
+    for (const [i, game] of games.entries())
     {
-      const post = new GamePost(game[1].ID, game[1].image, game[1].title, game[1].description, game[1].installURL, game[1].likedAccounts, game[1].favoritedAccounts, game[1].favorited);
+      const post = new GamePost(game.ID, game.image, game.title, game.description, game.installURL, game.likedAccounts, game.favoritedAccounts, game.favorited);
       savedGames.push(post.initilizePost(isDeveloper, user, updatePost, deletePost));
     }
   }
