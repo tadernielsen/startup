@@ -181,6 +181,24 @@ app.get('/api/data/Devlog', (req, res) => {
     res.send(devLogs);
 });
 
+// Game Endpoints
+// Create Game
+app.post('/api/data/Games', (req, res) => {
+    games.push(req.body);
+    res.send(games);
+});
+
+// Like Game
+
+// Favorite Game
+
+// Delete Game
+
+// Get Game
+app.get('/api/data/Games', (req, res) => {
+    res.send(games);
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
