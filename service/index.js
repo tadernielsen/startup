@@ -198,7 +198,7 @@ app.get('/api/data/Devlog', (req, res) => {
 // Create Game
 app.post('/api/data/Games', (req, res) => {
     games.push(req.body);
-    res.send(games);
+    res.send({games: games});
 });
 
 // Like Game
@@ -206,6 +206,19 @@ app.post('/api/data/Games', (req, res) => {
 // Favorite Game
 
 // Delete Game
+app.delete('/api/data/Games', (req, res) => {
+    const game = games.find(post => post.ID === req.body.ID)
+    
+    if (game)
+    {
+        games = games.filter(post => post !== game);
+        res.send({games: games})
+    }
+    else
+    {
+        res.status(400).send({msg: 'ERROR: Could not find game'})
+    }
+});
 
 // Get Game
 app.get('/api/data/Games', (req, res) => {
