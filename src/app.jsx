@@ -18,7 +18,6 @@ import { useGlitch } from 'react-powerglitch'
 export default function App() {
   const [joke, setJoke] = React.useState('Loading joke...');
   const [headerImage, setHeaderImage] = React.useState('TN PFP V3.png');
-  const images = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png', 'Halloween TN.png', 'TN chrismas Logo.png', 'TN chrismas V2.png', 'TN COVID-19.png', 'TN halloween 2021 pfp.png'];
 
   const [username, setUser] = React.useState(localStorage.getItem('username') || null);
   const [userType, setUserType] = React.useState(localStorage.getItem('userType') || null);
@@ -34,11 +33,9 @@ export default function App() {
 
   function generateRandomImage() 
   {
-    const min = 0;
-    const max = images.length;
-    const randomNumber = Math.floor(Math.random() * (max - min) + min);
-
-    setHeaderImage(images[randomNumber]);
+    fetch('/api/data/TNimages')
+    .then((res) => res.json())
+    .then((image) => setHeaderImage(image.img));
   }
 
   function getGeekJoke()

@@ -19,6 +19,8 @@ let games = [];
 
 let announcement = 'Press Edit to change this!';
 
+const tnImages = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png', 'Halloween TN.png', 'TN chrismas Logo.png', 'TN chrismas V2.png', 'TN COVID-19.png', 'TN halloween 2021 pfp.png'];
+
 // Middleware
 app.use(express.static('public'));
 
@@ -81,6 +83,7 @@ function clearCookie(res, user)
 }
 
 // Endpoints
+// Authentication Endpoints
 // User Creation
 app.post('/api/auth/CreateAccount', async (req, res) => {
     if (await getUser('name', req.body.email))
@@ -293,6 +296,16 @@ app.delete('/api/data/Games', verifyDeveloper, (req, res) => {
 // Get Game
 app.get('/api/data/Games', (req, res) => {
     res.send(games);
+});
+
+// Other Endpoints
+// TN suffler Endpoints
+app.get('/api/data/TNimages', (req, res) => {
+    const min = 0;
+    const max = tnImages.length;
+    const randomNumber = Math.floor(Math.random() * (max - min) + min);
+
+    res.send({img: tnImages[randomNumber]})
 });
 
 // Injects Developer into list (Remove when DB is complete)
