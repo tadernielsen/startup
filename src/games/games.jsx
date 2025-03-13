@@ -18,11 +18,40 @@ export function Games({user, isDeveloper}) {
     setNewGame(!newGame);
   }
 
+  async function uploadImage(ImageFile)
+  {
+    const file = ImageFile.files[0];
+    if (file)
+    {
+      const formData = new FormData();
+      forData.append('file', file);
+      const response = await fetch('/api/data/Games/Images', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (response.ok)
+      {
+        return data.name;
+      }
+      else
+      {
+        alert(data.message);
+        return "placeholder.png";
+      }
+    }
+  }
+
   async function saveGame(image, title, description, install)
   {
     if (image === "")
     {
       image = "placeholder.png";
+    }
+    else
+    {
+      image = uploadImage(image);
     }
 
     const newPost = new GamePost(Date.now(), image, title, description, install, user);
