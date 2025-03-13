@@ -217,9 +217,20 @@ app.post('/api/data/Games', (req, res) => {
     res.send({games: games});
 });
 
-// Like Game
+// Like and Favorite Game
+app.put('/api/data/Games', (req, res) => {
+    const game = games.find(post => post.ID === req.body.ID);
 
-// Favorite Game
+    if (game)
+    {
+        games = games.map(post => post === game ? { ...post, "likedAccounts": req.body.likedAccounts, "favoritedAccounts": req.body.favoritedAccounts } : post);
+        res.send({games: games});
+    }
+    else
+    {
+        res.status(400).send({msg: 'ERROR: Could not find game'});
+    }
+})
 
 // Delete Game
 app.delete('/api/data/Games', (req, res) => {
