@@ -40,6 +40,20 @@ export function Games({user, isDeveloper}) {
     setNewGame(false);
   }
 
+  async function updateAllPosts(request)
+  {
+    const updatedPosts = await request.json();
+
+    if (request?.status === 200)
+    {
+      setGames(updatedPosts.games);
+    }
+    else
+    {
+      alert(updatedPosts.msg);
+    }
+  }
+
   async function updatePost(ID, likeAccounts, favoritedAccounts)
   {
     const updatedPosts = await fetch('/api/data/Games', {
@@ -48,9 +62,7 @@ export function Games({user, isDeveloper}) {
       body: JSON.stringify({ID: ID, likedAccounts: likeAccounts, favoritedAccounts: favoritedAccounts})
     });
 
-    const newPosts = await updatedPosts.json();
-
-    setGames(newPosts.games);
+    updateAllPosts(updatedPosts);
   }
 
   async function deletePost(ID)
@@ -58,19 +70,10 @@ export function Games({user, isDeveloper}) {
     const removedGame = await fetch('/api/data/Games', {
       method: 'DELETE',
       headers: {'content-type': 'application/json'},
-      body: JSON.stringify({ID: ID})
+      body: JSON.stringify({ID: ID}),
     });
 
-    const newPosts = await removedGame.json();
-
-    if (removedGame?.status === 200)
-    {
-      setGames(newPosts.games)
-    }
-    else
-    {
-      alert(newPosts.msg)
-    }
+    updateAllPosts(updatedPosts);
   }
 
   const savedGames = [];
