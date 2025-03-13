@@ -57,16 +57,27 @@ export function UnAuthenticated({onLogin}) {
     }
   }
 
-  function loginDeveloper() {
-    localStorage.setItem('username', username);
-    localStorage.setItem('userType', 'developer');
+  async function loginDeveloper() {
+    const response = await fetch('/api/auth/LoginDev', {
+      method: 'PUT',
+      body: JSON.stringify({email: username, password: password}),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
 
-    // setUser(username);
-    // setUserType('developer');
-
-    onLogin(username, 'developer');
-    
-    nav('/');
+    if (response?.status === 200)
+    {
+      localStorage.setItem('username', username);
+      localStorage.setItem('userType', 'developer');
+      onLogin(username, 'developer');
+      nav('/')
+    }
+    else
+    {
+      const body = await response.json();
+      alert(body.msg);
+    }
   }
 
   return (
