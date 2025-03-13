@@ -143,8 +143,11 @@ app.delete('/api/auth/Logout', async (req, res) => {
 app.get('/api/auth/User', async (req, res) =>{
     const token = req.cookies[authCookieName];
 
-    const user = await getUser('token', token);
-    res.send({"email": "Name", "type": "Type"});
+    if (token)
+    {
+        const user = await getUser('token', token);
+        res.send({"email": user.email, "type": user.type});
+    }
 });
 
 // Endpoint for checking if user is developer

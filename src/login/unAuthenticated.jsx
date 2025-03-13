@@ -22,6 +22,8 @@ export function UnAuthenticated({onLogin}) {
 
     if (response?.status === 200)
     {
+      localStorage.setItem('username', username);
+      localStorage.setItem('userType', 'normal');
       onLogin(username, 'normal');
       nav('/');
     }
@@ -43,6 +45,8 @@ export function UnAuthenticated({onLogin}) {
 
     if (response?.status === 200)
     {
+      localStorage.setItem('username', username);
+      localStorage.setItem('userType', 'normal');
       onLogin(username, 'normal');
       nav('/');
     }
