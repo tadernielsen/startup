@@ -11,11 +11,11 @@ const uuid = require('uuid');
 const authCookieName = 'token';
 
 // Data Lists
-const users = [];
-const developers = [];
+let users = [];
+let developers = [];
 
-const devLogs = [];
-const games = [];
+let devLogs = [];
+let games = [];
 
 let announcement = 'Press Edit to change this!';
 
@@ -169,12 +169,25 @@ app.get('/api/data/Announcement', (req, res) => {
 // Create Devlog
 app.post('/api/data/Devlog', (req, res) => {
     devLogs.push(req.body);
-    res.send(devLogs);
+    res.send({devlogs: devLogs});
 });
 
 // Like Devlog
 
 // Delete Devlog
+app.delete('/api/data/Devlog', (req, res) => {
+    devLogs = devLogs.filter(log => log.ID !== req.body.ID);
+
+    res.send({devlogs: devLogs}) // Not working
+    // if (postExist)
+    // {
+        
+    // }
+    // else
+    // {
+    //     res.status(400).send({msg: 'ERROR: Could not find post'})
+    // }
+});
 
 // Get Devlog
 app.get('/api/data/Devlog', (req, res) => {
