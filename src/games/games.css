@@ -67,8 +67,10 @@
 }
 
 #editGameImage {
-    width: 100px;
+    width: 125px;
     height: 100px;
+    padding-top: 30px;
+    padding-left: 2px;
 }
 
 #editGameDescription {

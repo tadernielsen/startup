@@ -94,7 +94,7 @@ export function Games({user, isDeveloper}) {
         <section className="games">
         {newGame ? (
             <div className="game newGame">
-              <input type="image" src="placeholder.png" id="editGameImage" alt="Submit"></input>
+              <input type="file" accept=".png, jpeg, .jpg" id="editGameImage" placeholder="image"></input>
               <input type="text" id="editGameTitle" placeholder='Title' maxLength={15}></input>
               <textarea type="textarea" id="editGameDescription" placeholder="Enter description here"></textarea>
               <input type="text" id="editURL" placeholder="install URL"></input>
