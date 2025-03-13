@@ -19,6 +19,7 @@ export class GamePost
   {
     if (!username)
     {
+      alert("Please Log in or Create Account");
       return;
     }
 
@@ -39,6 +40,7 @@ export class GamePost
   {
     if (!username)
     {
+      alert("Please Log in or Create Account");
       return;
     }
 

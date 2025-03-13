@@ -15,6 +15,7 @@ export class DevlogPost
   {
     if (!username)
     {
+      alert("Please Log in or Create Account");
       return;
     }
 
