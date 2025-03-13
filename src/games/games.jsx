@@ -73,7 +73,7 @@ export function Games({user, isDeveloper}) {
       body: JSON.stringify({ID: ID}),
     });
 
-    updateAllPosts(updatedPosts);
+    updateAllPosts(removedGame);
   }
 
   const savedGames = [];
