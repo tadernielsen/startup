@@ -151,10 +151,18 @@ app.get('/api/auth/User', async (req, res) =>{
 });
 
 // Endpoint for checking if user is developer
-app.use((req, res, next) => {
-    console.log("evil burger");
-    next();
-});
+const verifyDeveloper = async (req, res, next) => {
+    const user = await getDeveloper('token', req.cookies[authCookieName])
+
+    if (user.type === 'developer')
+    {
+        next();
+    }
+    else
+    {
+        res.status(403).send({msg: "UNAUTHORIZED"})
+    }
+}
 
 // Announcement Endpoints
 // Set Announcement
