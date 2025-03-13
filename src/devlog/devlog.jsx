@@ -22,15 +22,16 @@ export function Devlog({user, isDeveloper}) {
   {
     const newPost = new DevlogPost(Date.now(), title, description);
 
-    await fetch('/api/data/Devlog', {
+    const sendLog = await fetch('/api/data/Devlog', {
       method: 'POST',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify(newPost.returnJson()),
     })
-
-    const updatedLogs = [...logs, newPost.returnJson()];
-
+  
+    const savedDevLogs = await sendLog.json();
+    const updatedLogs = savedDevLogs.devlogs;
     setLogs(updatedLogs);
+
     setNewPost(false);
   }
 
@@ -41,10 +42,24 @@ export function Devlog({user, isDeveloper}) {
     setLogs(updatedLogs);
   }
 
-  function deletePost(ID) {
-    const updatedLogs = logs.filter(log => log.ID !== ID);
-    localStorage.setItem('devLogs', JSON.stringify(updatedLogs));
-    setLogs(updatedLogs);
+  async function deletePost(ID) {
+    const removedLogs = await fetch('/api/data/Devlog', {
+      method: 'DELETE',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify({ID: ID})
+    });
+
+    const newLogs = await removedLogs.json();
+
+    setLogs(newLogs.devlogs)
+    // if (removedLogs?.status === 200)
+    // {
+      
+    // }
+    // else
+    // {
+    //   alert(logs.msg);
+    // }
   }
 
   const savedDevLogs = []
