@@ -76,6 +76,7 @@ function setCookie(res, user)
 function clearCookie(res, user)
 {
     delete user.token;
+
     res.clearCookie(authCookieName);
 }
 
@@ -113,7 +114,7 @@ app.put('/api/auth/Login', async (req, res) => {
 
 // Developer Login
 app.put('/api/auth/LoginDev', async (req, res) => {
-    const dev = await getDeveloper(req.body.email);
+    const dev = await getDeveloper('name', req.body.email);
     if (dev && (await bcrypt.compare(req.body.password, dev.pass)))
     {
         setCookie(res, dev);
@@ -135,6 +136,14 @@ app.delete('/api/auth/Logout', async (req, res) => {
     {
         clearCookie(res, user);
     }
+    else
+    {
+        const dev = await getDeveloper('token', token);
+        if (dev)
+        {
+            clearCookie(res, dev)
+        }
+    }
 
     res.status(204).end();
 });
@@ -152,21 +161,25 @@ app.get('/api/auth/User', async (req, res) =>{
 
 // Endpoint for checking if user is developer
 const verifyDeveloper = async (req, res, next) => {
-    const user = await getDeveloper('token', req.cookies[authCookieName])
+    const user = await getDeveloper('token', req.cookies[authCookieName]);
 
-    if (user.type === 'developer')
+    if (user === null)
     {
-        next();
+        res.status(403).send({msg: "UNAUTHORIZED"});
+    }
+    else if (user === undefined)
+    {
+        res.status(403).send({msg: "UNAUTHORIZED"});
     }
     else
     {
-        res.status(403).send({msg: "UNAUTHORIZED"})
+        next();
     }
 }
 
 // Announcement Endpoints
 // Set Announcement
-app.put('/api/data/Announcement', (req, res) => {
+app.put('/api/data/Announcement', verifyDeveloper, (req, res) => {
     announcement = req.body.announcement;
     res.send({announcement: announcement});
 });
@@ -178,7 +191,7 @@ app.get('/api/data/Announcement', (req, res) => {
 
 // Devlog Endpoints
 // Create Devlog
-app.post('/api/data/Devlog', (req, res) => {
+app.post('/api/data/Devlog', verifyDeveloper, (req, res) => {
     devLogs.push(req.body);
     res.send({devlogs: devLogs});
 });
@@ -199,7 +212,7 @@ app.put('/api/data/Devlog', (req, res) => {
 });
 
 // Delete Devlog
-app.delete('/api/data/Devlog', (req, res) => {
+app.delete('/api/data/Devlog', verifyDeveloper, (req, res) => {
     const post = devLogs.find(log => log.ID === req.body.ID)
     
     if (post)
@@ -220,7 +233,7 @@ app.get('/api/data/Devlog', (req, res) => {
 
 // Game Endpoints
 // Create Game
-app.post('/api/data/Games', (req, res) => {
+app.post('/api/data/Games', verifyDeveloper, (req, res) => {
     games.push(req.body);
     res.send({games: games});
 });
@@ -241,7 +254,7 @@ app.put('/api/data/Games', (req, res) => {
 })
 
 // Delete Game
-app.delete('/api/data/Games', (req, res) => {
+app.delete('/api/data/Games', verifyDeveloper, (req, res) => {
     const game = games.find(post => post.ID === req.body.ID)
     
     if (game)
