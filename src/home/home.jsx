@@ -10,15 +10,25 @@ export function Home({isDeveloper}) {
   }
 
   const saveClick = async () => {
-    await fetch('/api/data/Announcement', {
+    const newAnnouncement = await fetch('/api/data/Announcement', {
       method: 'PUT',
       body: JSON.stringify({announcement: document.getElementById('announcement').value}),
       headers: {
         'Content-type': 'application/json',
       },
     })
-    .then((res) => res.json())
-    .then((res) => setAnnouncement(res.announcement));
+
+    const body = await newAnnouncement.json();
+
+    if (newAnnouncement?.status === 200)
+    {
+      setAnnouncement(body.announcement)
+    }
+    else
+    {
+      alert(body.msg);
+    }
+
     setEditing(false);
   }
 
