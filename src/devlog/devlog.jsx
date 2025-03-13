@@ -35,25 +35,29 @@ export function Devlog({user, isDeveloper}) {
     setNewPost(false);
   }
 
+  async function updateAllPosts(request)
+  {
+    const updatedLogs = await request.json();
+
+    if (request?.status === 200)
+      {
+        setLogs(updatedLogs.devlogs);
+      }
+      else
+      {
+        alert(updatedLogs.msg);
+      }
+  }
+
   async function updateLikes(ID, likeAccounts)
   {
-
     const updatedLogs = await fetch('/api/data/Devlog', {
       method: 'PUT',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({ID: ID, likedAccounts: likeAccounts})
     });
 
-    const newLogs = await updatedLogs.json();
-
-    if (updatedLogs?.status === 200)
-    {
-      setLogs(newLogs.devlogs);
-    }
-    else
-    {
-      alert(newLogs.msg);
-    }
+    updateAllPosts(updatedLogs);
   }
 
   async function deletePost(ID) {
@@ -63,16 +67,7 @@ export function Devlog({user, isDeveloper}) {
       body: JSON.stringify({ID: ID})
     });
 
-    const newLogs = await removedLogs.json();
-
-    if (removedLogs?.status === 200)
-    {
-      setLogs(newLogs.devlogs);
-    }
-    else
-    {
-      alert(newLogs.msg);
-    }
+    updateAllPosts(removedLogs);
   }
 
   const savedDevLogs = []
