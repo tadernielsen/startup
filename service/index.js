@@ -159,7 +159,7 @@ app.get('/api/auth/User', async (req, res) =>{
     }
 });
 
-// Endpoint for checking if user is developer
+// Middleware for checking if user is developer
 const verifyDeveloper = async (req, res, next) => {
     const user = await getDeveloper('token', req.cookies[authCookieName]);
 
@@ -174,6 +174,28 @@ const verifyDeveloper = async (req, res, next) => {
     else
     {
         next();
+    }
+}
+
+// Middleware for checking if user is logged in
+const verifyAuth = async (req, res, next) => {
+    const user = await getUser('token', req.cookies[authCookieName]);
+
+    if (user)
+    {
+        next();
+    }
+    else
+    {
+        const dev = await getDeveloper('token', req.cookies[authCookieName]);
+        if (dev)
+        {
+            next();
+        }
+        else
+        {
+            res.status(403).send({msg: "Please Log in or Create Account"});
+        }
     }
 }
 
