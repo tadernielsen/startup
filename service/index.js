@@ -260,6 +260,19 @@ app.get('/api/data/Games', (req, res) => {
     res.send(games);
 });
 
+// Injects Developer into list (Remove when DB is complete)
+async function injectDeveloper(username = "testdev", password = "abc")
+{
+    // Create user
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const dev = {name: username, pass: hashedPassword, type: "developer"};
+    developers.push(dev);
+
+    // Set Cookie        
+    dev.token = uuid.v4();
+}
+injectDeveloper()
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
