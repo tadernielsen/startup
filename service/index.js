@@ -173,6 +173,19 @@ app.post('/api/data/Devlog', (req, res) => {
 });
 
 // Like Devlog
+app.put('/api/data/Devlog', (req, res) => {
+    const post = devLogs.find(log => log.ID === req.body.ID)
+
+    if (post)
+    {
+        devLogs = devLogs.map(log => log === post ? { ...log, "likedAccounts": req.body.likedAccounts } : log);
+        res.send({devlogs: devLogs});
+    }
+    else
+    {
+        res.status(400).send({msg: 'ERROR: Could not find post'})
+    }
+});
 
 // Delete Devlog
 app.delete('/api/data/Devlog', (req, res) => {
