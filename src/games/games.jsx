@@ -27,15 +27,16 @@ export function Games({user, isDeveloper}) {
 
     const newPost = new GamePost(Date.now(), image, title, description, install);
 
-    await fetch('/api/data/Games', {
+    const sendGame = await fetch('/api/data/Games', {
       method: 'POST',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify(newPost.returnJson()),
     })
 
-    const updatedPost = [...games, newPost.returnJson()];
-    
-    setGames(updatedPost);
+    const savedPosts = await sendGame.json();
+    const updatedPosts = savedPosts.games;
+    setGames(updatedPosts);
+
     setNewGame(false);
   }
 
