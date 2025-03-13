@@ -222,7 +222,7 @@ app.post('/api/data/Devlog', verifyDeveloper, (req, res) => {
 });
 
 // Like Devlog
-app.put('/api/data/Devlog', (req, res) => {
+app.put('/api/data/Devlog', verifyAuth, (req, res) => {
     const post = devLogs.find(log => log.ID === req.body.ID)
 
     if (post)
@@ -264,7 +264,7 @@ app.post('/api/data/Games', verifyDeveloper, (req, res) => {
 });
 
 // Like and Favorite Game
-app.put('/api/data/Games', (req, res) => {
+app.put('/api/data/Games', verifyAuth, (req, res) => {
     const game = games.find(post => post.ID === req.body.ID);
 
     if (game)
