@@ -35,11 +35,25 @@ export function Devlog({user, isDeveloper}) {
     setNewPost(false);
   }
 
-  function updateLikes(ID, likeAccounts)
+  async function updateLikes(ID, likeAccounts)
   {
-    const updatedLogs = logs.map(log => log.ID === ID ? { ...log, "likedAccounts": likeAccounts } : log);
-    localStorage.setItem('devLogs', JSON.stringify(updatedLogs));
-    setLogs(updatedLogs);
+
+    const updatedLogs = await fetch('/api/data/Devlog', {
+      method: 'PUT',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify({ID: ID, likedAccounts: likeAccounts})
+    });
+
+    const newLogs = await updatedLogs.json();
+
+    if (updatedLogs?.status === 200)
+    {
+      setLogs(newLogs.devlogs);
+    }
+    else
+    {
+      alert(newLogs.msg);
+    }
   }
 
   async function deletePost(ID) {
@@ -53,7 +67,7 @@ export function Devlog({user, isDeveloper}) {
 
     if (removedLogs?.status === 200)
     {
-      setLogs(newLogs.devlogs)
+      setLogs(newLogs.devlogs);
     }
     else
     {
