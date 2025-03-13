@@ -47,11 +47,24 @@ export function Games({user, isDeveloper}) {
     setGames(updatedPosts);
   }
 
-  function deletePost(ID)
+  async function deletePost(ID)
   {
-    const updatedPosts = games.filter(post => post.ID !== ID);
-    localStorage.setItem('games', JSON.stringify(updatedPosts));
-    setGames(updatedPosts);
+    const removedGame = await fetch('/api/data/Games', {
+      method: 'DELETE',
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify({ID: ID})
+    });
+
+    const newPosts = await removedGame.json();
+
+    if (removedGame?.status === 200)
+    {
+      setGames(newPosts.games)
+    }
+    else
+    {
+      alert(newPosts.msg)
+    }
   }
 
   const savedGames = [];
