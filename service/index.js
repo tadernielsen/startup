@@ -176,17 +176,17 @@ app.post('/api/data/Devlog', (req, res) => {
 
 // Delete Devlog
 app.delete('/api/data/Devlog', (req, res) => {
-    devLogs = devLogs.filter(log => log.ID !== req.body.ID);
-
-    res.send({devlogs: devLogs}) // Not working
-    // if (postExist)
-    // {
-        
-    // }
-    // else
-    // {
-    //     res.status(400).send({msg: 'ERROR: Could not find post'})
-    // }
+    const post = devLogs.find(log => log.ID === req.body.ID)
+    
+    if (post)
+    {
+        devLogs = devLogs.filter(log => log !== post);
+        res.send({devlogs: devLogs})
+    }
+    else
+    {
+        res.status(400).send({msg: 'ERROR: Could not find post'})
+    }
 });
 
 // Get Devlog

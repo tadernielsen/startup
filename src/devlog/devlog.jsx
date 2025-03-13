@@ -51,15 +51,14 @@ export function Devlog({user, isDeveloper}) {
 
     const newLogs = await removedLogs.json();
 
-    setLogs(newLogs.devlogs)
-    // if (removedLogs?.status === 200)
-    // {
-      
-    // }
-    // else
-    // {
-    //   alert(logs.msg);
-    // }
+    if (removedLogs?.status === 200)
+    {
+      setLogs(newLogs.devlogs)
+    }
+    else
+    {
+      alert(newLogs.msg);
+    }
   }
 
   const savedDevLogs = []
