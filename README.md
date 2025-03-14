@@ -67,7 +67,7 @@ I am going to use the required technologies in the following ways.
     - retrieving post info
     - submitting likes or favorites
     - submitting new posts or games
-    - displaying a random geek joke from https://geek-jokes.sameerkumar.website/api?format=json
+    - displaying a random geek joke from https://perl.is/random
 - **DB/Login** - Stores game files and post data, devlog post data, and likes/favorites in database. Also stores user and developer data securely in the database. Users must be authenticated to like or favorite posts, but not to install games.
 - **WebSocket** - Posts are brodcast to other users when submitted by the Developer. Likes and favorites are also brodcasted when a user presses the button
 
