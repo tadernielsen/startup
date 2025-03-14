@@ -131,12 +131,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Express installed and port is defaulted on 4000.
+- [x] **Static middleware for frontend** - Added `express.static('public');` for the frontend in `service/index.js`.
+- [x] **Calls to third party endpoints** - Calls `https://perl.is/random` for a random quote in `app.jsx`, gets the quote and displays it at the bottom of the page.
+- [x] **Backend service endpoints** - Endpoints in `service/index.js` for `auth`, `devlog`, `games`, and `announcements`.
+- [x] **Frontend calls service endpoints** - All mocked functionallity replaced with calls to the service.
+- [x] **Supports registration, login, logout, and restricted endpoint** - Fully supports authentication. Restricts access to liking and favoriting posts if user is not logged in. Also restricts access to developer tools if user is not a developer.
 
 ## 🚀 DB deliverable
 
