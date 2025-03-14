@@ -24,7 +24,7 @@ export function Games({user, isDeveloper}) {
     if (file)
     {
       const formData = new FormData();
-      forData.append('file', file);
+      formData.append('file', file);
       const response = await fetch('/api/data/Games/Images', {
         method: 'POST',
         body: formData,
@@ -33,7 +33,7 @@ export function Games({user, isDeveloper}) {
       const data = await response.json();
       if (response.ok)
       {
-        return data.name;
+        return data.file;
       }
       else
       {
@@ -45,16 +45,16 @@ export function Games({user, isDeveloper}) {
 
   async function saveGame(image, title, description, install)
   {
-    if (image === "")
+    if (image.files.length === 0)
     {
       image = "placeholder.png";
     }
     else
     {
-      image = uploadImage(image);
+      image = await uploadImage(image);
     }
 
-    const newPost = new GamePost(Date.now(), image, title, description, install, user);
+    const newPost = new GamePost(Date.now(), 'GameImages/' + image, title, description, install, user);
 
     const sendGame = await fetch('/api/data/Games', {
       method: 'POST',
@@ -127,7 +127,7 @@ export function Games({user, isDeveloper}) {
               <input type="text" id="editGameTitle" placeholder='Title' maxLength={15}></input>
               <textarea type="textarea" id="editGameDescription" placeholder="Enter description here"></textarea>
               <input type="text" id="editURL" placeholder="install URL"></input>
-              <button className="saveButton" onClick={() => saveGame(document.getElementById('editGameImage').value, document.getElementById('editGameTitle').value, document.getElementById('editGameDescription').value, document.getElementById('editURL').value)}>Post</button>
+              <button className="saveButton" onClick={() => saveGame(document.getElementById('editGameImage'), document.getElementById('editGameTitle').value, document.getElementById('editGameDescription').value, document.getElementById('editURL').value)}>Post</button>
             </div>
             ) : (null)
           }

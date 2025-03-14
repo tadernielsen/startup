@@ -2,7 +2,7 @@ import React from 'react';
 
 export class GamePost
 {
-  constructor(ID, image = "placeholder.png", title, description, install = "", user, likedAccounts = [], favoritedAccounts = [])
+  constructor(ID, image, title, description, install = "", user, likedAccounts = [], favoritedAccounts = [])
   {
     this.ID = ID;
     this.image = image;
@@ -91,6 +91,6 @@ export class GamePost
 
   returnJson()
   {
-    return {"ID": this.ID, "Image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts, "favoritedAccounts": this.favoritedAccounts, "installURL": this.installURL}
+    return {"ID": this.ID, "image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts, "favoritedAccounts": this.favoritedAccounts, "installURL": this.installURL}
   }
 }
