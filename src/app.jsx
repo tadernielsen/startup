@@ -40,9 +40,9 @@ export default function App() {
 
   function getGeekJoke()
   {
-    fetch ('https://geek-jokes.sameerkumar.website/api')
+    fetch ('https://perl.is/random')
     .then((response) => response.json())
-    .then((data) => setJoke(data))
+    .then((data) => setJoke(data.quote))
     .catch(setJoke('Error: Fetch failed.'));
   }
 
