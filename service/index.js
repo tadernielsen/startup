@@ -336,6 +336,10 @@ app.get('/api/data/TNimages', (req, res) => {
     res.send({img: tnImages[randomNumber]})
 });
 
+app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+});
+
 // Injects Developer into list (Remove when DB is complete)
 async function injectDeveloper(username = "testdev", password = "abc")
 {
