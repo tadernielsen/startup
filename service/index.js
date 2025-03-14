@@ -10,6 +10,22 @@ const uuid = require('uuid');
 
 const authCookieName = 'token';
 
+// Image
+const multer = require('multer');
+
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: 'public/GameImages/',
+        filename: (req, file, cb) => {
+            const filetype = file.originalname.split('.').pop();
+            const id = Math.round(Math.random() * 1e9);
+            const filename = `${id}.${filetype}`;
+            cb(null, filename);
+        },
+    }),
+    limits: {fileSize: 500000},
+})
+
 // Data Lists
 let users = [];
 let developers = [];
@@ -298,8 +314,20 @@ app.get('/api/data/Games', (req, res) => {
     res.send(games);
 });
 
+// Save Game Image
+app.post('/api/data/Games/Images', upload.single('file'), (req, res) => {
+    if (req.file)
+    {
+        res.send({file: req.file.filename});
+    }
+    else
+    {
+        res.status(400).send({msg: "Upload Failed"});
+    }
+});
+
 // Other Endpoints
-// TN suffler Endpoints
+// TN shuffler Endpoints
 app.get('/api/data/TNimages', (req, res) => {
     const min = 0;
     const max = tnImages.length;
