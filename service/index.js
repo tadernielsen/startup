@@ -26,7 +26,10 @@ const upload = multer({
     limits: {fileSize: 500000},
 })
 
-// Data Lists
+// Database
+const DB = require('./database.js')
+
+// Data Lists (to be replaced by database once it is finished)
 let users = [];
 let developers = [];
 
