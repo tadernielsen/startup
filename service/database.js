@@ -28,7 +28,7 @@ const announcementCollection = db.collection('announcement');
 // User
 async function addNewUser(user)
 {
-
+    await userCollection.insertOne(user)
 }
 
 async function updateUser(user)
@@ -43,7 +43,7 @@ function getUser(email)
 
 function getUserWithToken(token)
 {
-    
+
 }
 
 // Developer
@@ -65,6 +65,10 @@ function getAnnouncement()
 }
 
 module.exports = {
+    addNewUser,
+    updateUser,
+    getUser,
+    getUserWithToken,
     updateAnnouncement,
     getAnnouncement,
 };
