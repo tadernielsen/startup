@@ -58,8 +58,9 @@ async function createUser(username, password, userType)
 {
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = {name: username, pass: hashedPassword, type: userType};
-    users.push(user);
+    const user = {name: username, pass: hashedPassword, type: userType, token: uuid.v4()};
+    //users.push(user);
+    DB.addNewUser(user);
 
     return user;
 }
@@ -84,7 +85,6 @@ function getDeveloper(field, value)
 
 function setCookie(res, user)
 {
-    user.token = uuid.v4();
     res.cookie(
         authCookieName, user.token, 
         {
