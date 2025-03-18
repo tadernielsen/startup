@@ -26,6 +26,25 @@ const announcementCollection = db.collection('announcement');
 
 // Database Endpoints
 // User
+async function addNewUser(user)
+{
+
+}
+
+async function updateUser(user)
+{
+
+}
+
+function getUser(email)
+{
+
+}
+
+function getUserWithToken(token)
+{
+    
+}
 
 // Developer
 
