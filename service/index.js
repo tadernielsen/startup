@@ -173,11 +173,13 @@ app.delete('/api/auth/Logout', async (req, res) => {
 // Get User Data
 app.get('/api/auth/User', async (req, res) =>{
     const token = req.cookies[authCookieName];
-
-    if (token)
+    const user = await getUser('token', token)
+    
+    if (user)
     {
-        const user = await getUser('token', token);
         res.send({"email": user.email, "type": user.type});
+    } else {
+        res.status(401).send({ msg: 'Unauthorized' });
     }
 });
 
