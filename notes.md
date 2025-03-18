@@ -430,3 +430,34 @@ Neo4J - Graph based data
 InfluxDB - Time series data
 
 __MongoDB:__ Collection of schema free JSON
+
+### Project Database
+__Endpoints__
+- Auth
+  - Get User
+  - Get User by Token
+  - Add User
+  - Update User
+- Dev Auth  
+  - Get Developer
+  - Get Developer by Token
+  - Update Developer
+  - (Does not have add, injects developer into database beforehand)
+- Devlog
+  - Add new post
+  - Get all posts
+  - Get post by ID
+  - Update post
+    - Likes
+  - Remove post
+- Games
+  - Add new game
+  - Get all games
+  - Get game by ID
+  - Update game
+    - Likes
+    - Favorites
+  - Remove Game
+- Announcement
+  - Update Announcement
+  - Get Announcement
