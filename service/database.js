@@ -25,7 +25,27 @@ const announcementCollection = db.collection('announcement');
 })();
 
 // Database Endpoints
+// User
+
+// Developer
+
+// DevLog
+
+// Games
+
+// Announcement
+async function updateAnnouncement(newAnnouncement)
+{
+    await announcementCollection.updateOne({}, {$set: {announcement: newAnnouncement}});
+}
+
+function getAnnouncement()
+{
+    const announcement = announcementCollection.findOne({});
+    return announcement;
+}
 
 module.exports = {
-
+    updateAnnouncement,
+    getAnnouncement,
 };
