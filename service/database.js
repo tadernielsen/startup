@@ -28,22 +28,22 @@ const announcementCollection = db.collection('announcement');
 // User
 async function addNewUser(user)
 {
-    await userCollection.insertOne(user)
+    await userCollection.insertOne(user);
 }
 
 async function updateUser(user)
 {
-
+    await userCollection.updateOne({user: user.user}, {$set: user});
 }
 
 function getUser(email)
 {
-
+    return userCollection.findOne({email: email});
 }
 
 function getUserWithToken(token)
 {
-
+    return userCollection.findOne({token: token});
 }
 
 // Developer
