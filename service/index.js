@@ -225,14 +225,15 @@ const verifyAuth = async (req, res, next) => {
 
 // Announcement Endpoints
 // Set Announcement
-app.put('/api/data/Announcement', verifyDeveloper, (req, res) => {
-    announcement = req.body.announcement;
-    res.send({announcement: announcement});
+app.put('/api/data/Announcement', verifyDeveloper, async (req, res) => {
+    await DB.updateAnnouncement(req.body.announcement);
+
+    res.send(await DB.getAnnouncement());
 });
 
 // Get Announcement
-app.get('/api/data/Announcement', (req, res) => {
-    res.send({announcement: announcement});
+app.get('/api/data/Announcement', async (req, res) => {
+    res.send(await DB.getAnnouncement());
 });
 
 // Devlog Endpoints
