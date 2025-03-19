@@ -48,6 +48,12 @@ function getUserWithToken(token)
 
 // Developer
 
+// Remove when DB is complete
+// async function injectDeveloper(dev)
+// {
+//     await developerCollection.insertOne(dev);
+// }
+
 async function updateDeveloper(dev)
 {
     await developerCollection.updateOne({name: dev.name}, {$set: dev});

@@ -78,11 +78,13 @@ function getUser(field, value)
 
 function getDeveloper(field, value)
 {
-    if (value)
+    if (!value) {return null;}
+
+    if (field === "token")
     {
-        return developers.find((dev) => dev[field] === value);
+        return DB.getDeveloperWithToken(value);
     }
-    return null;
+    return DB.getDeveloper(value);
 }
 
 function setCookie(res, user)
@@ -161,7 +163,8 @@ app.delete('/api/auth/Logout', async (req, res) => {
         const dev = await getDeveloper('token', token);
         if (dev)
         {
-            delete user.token;
+            delete dev.token;
+            DB.updateDeveloper(dev);
         }
     }
     res.clearCookie(authCookieName);
@@ -346,18 +349,22 @@ app.use((_req, res) => {
 });
 
 // Injects Developer into list (Remove when DB is complete)
-async function injectDeveloper(username = "testdev", password = "abc")
-{
-    // Create user
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const dev = {name: username, pass: hashedPassword, type: "developer"};
-    developers.push(dev);
+// async function injectDeveloper(username = "", password = "")
+// {
+//     // Create user
+//     const hashedPassword = await bcrypt.hash(password, 10);
+//     const dev = {name: username, pass: hashedPassword, type: "developer"};
+//     developers.push(dev);
 
-    // Set Cookie        
-    dev.token = uuid.v4();
-}
-injectDeveloper()
+//     // Set Cookie        
+//     dev.token = uuid.v4();
+
+//     DB.injectDeveloper(dev);
+// }
+// injectDeveloper()
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+
