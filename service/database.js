@@ -48,6 +48,21 @@ function getUserWithToken(token)
 
 // Developer
 
+async function updateDeveloper(dev)
+{
+    await developerCollection.updateOne({name: dev.name}, {$set: dev});
+}
+
+function getDeveloper(email)
+{
+    return developerCollection.findOne({name: email});
+}
+
+function getDeveloperWithToken(token)
+{
+    return developerCollection.findOne({token: token})
+}
+
 // DevLog
 
 // Games
