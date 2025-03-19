@@ -138,6 +138,8 @@ app.put('/api/auth/LoginDev', async (req, res) => {
     const dev = await getDeveloper('name', req.body.email);
     if (dev && (await bcrypt.compare(req.body.password, dev.pass)))
     {
+        dev.token = uuid.v4();
+        await DB.updateDeveloper(dev);
         setCookie(res, dev);
 
         res.send({email: dev.name, type: dev.type});
