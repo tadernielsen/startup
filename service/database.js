@@ -33,12 +33,12 @@ async function addNewUser(user)
 
 async function updateUser(user)
 {
-    await userCollection.updateOne({user: user.user}, {$set: user});
+    await userCollection.updateOne({name: user.name}, {$set: user});
 }
 
 function getUser(email)
 {
-    return userCollection.findOne({email: email});
+    return userCollection.findOne({name: email});
 }
 
 function getUserWithToken(token)
