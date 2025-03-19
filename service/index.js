@@ -67,11 +67,13 @@ async function createUser(username, password, userType)
 
 function getUser(field, value)
 {
-    if (value)
+    if (!value) {return null;}
+
+    if (field === "token")
     {
-        return users.find((user) => user[field] === value);
+        return DB.getUserWithToken(value);
     }
-    return null;
+    return DB.getUser(value);
 }
 
 function getDeveloper(field, value)
@@ -94,13 +96,6 @@ function setCookie(res, user)
     });
 }
 
-function clearCookie(res, user)
-{
-    delete user.token;
-
-    res.clearCookie(authCookieName);
-}
-
 // Endpoints
 // Authentication Endpoints
 // User Creation
@@ -121,9 +116,11 @@ app.post('/api/auth/CreateAccount', async (req, res) => {
 
 // User Login
 app.put('/api/auth/Login', async (req, res) => {
-    const user = await getUser('name', req.body.email);
+    const user = await getUser('user', req.body.email);
     if (user && (await bcrypt.compare(req.body.password, user.pass)))
     {
+        user.token = uuid.v4();
+        await DB.updateUser(user);
         setCookie(res, user);
 
         res.send({email: user.name, type: user.type});
@@ -156,16 +153,18 @@ app.delete('/api/auth/Logout', async (req, res) => {
     const user = await getUser('token', token);
     if (user)
     {
-        clearCookie(res, user);
+        delete user.token;
+        DB.updateUser(user);
     }
     else
     {
         const dev = await getDeveloper('token', token);
         if (dev)
         {
-            clearCookie(res, dev)
+            delete user.token;
         }
     }
+    res.clearCookie(authCookieName);
 
     res.status(204).end();
 });
