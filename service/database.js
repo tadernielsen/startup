@@ -84,6 +84,9 @@ module.exports = {
     updateUser,
     getUser,
     getUserWithToken,
+    updateDeveloper,
+    getDeveloper,
+    getDeveloperWithToken,
     updateAnnouncement,
     getAnnouncement,
 };
