@@ -70,6 +70,25 @@ function getDeveloperWithToken(token)
 }
 
 // DevLog
+async function addLog()
+{
+
+}
+
+async function updateLog()
+{
+
+}
+
+async function deleteLog()
+{
+
+}
+
+function getAllLogs()
+{
+
+}
 
 // Games
 
@@ -95,4 +114,8 @@ module.exports = {
     getDeveloperWithToken,
     updateAnnouncement,
     getAnnouncement,
+    addLog,
+    updateLog,
+    deleteLog,
+    getAllLogs,
 };
