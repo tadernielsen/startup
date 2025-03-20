@@ -461,3 +461,18 @@ __Endpoints__
 - Announcement
   - Update Announcement
   - Get Announcement
+
+## WebSocket
+Not WebSockets, just WebSocket
+
+__HTTP__:
+- Great for client initiated request
+- Doesn't allow bidirectional messages
+
+__WebSocket__:
+- Upgrade of HTTP
+- Either side can send data at any time
+- Efficient
+- Widespread support
+
+__Useful Advice__: if you have idea, don't just build it from scratch, look at what is already made and build off of it.
