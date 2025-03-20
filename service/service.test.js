@@ -1,6 +1,8 @@
 const request = require('supertest');
 const app = require('./service')
 
+// Currently doesn't work because I am unable to disable the server
+
 // User Tests
 function getRandomName()
 {
@@ -52,6 +54,6 @@ test('Get Announcement', async () => {
 
 });
 
-afterAll(() => {
-    
+afterAll(async () => {
+
 });
