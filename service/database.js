@@ -91,6 +91,25 @@ function getAllLogs()
 }
 
 // Games
+async function addGame()
+{
+
+}
+
+async function updateGame()
+{
+
+}
+
+async function deleteGame()
+{
+
+}
+
+function getAllGames()
+{
+
+}
 
 // Announcement
 async function updateAnnouncement(newAnnouncement)
@@ -118,4 +137,8 @@ module.exports = {
     updateLog,
     deleteLog,
     getAllLogs,
+    addGame,
+    updateGame,
+    deleteGame,
+    getAllGames,
 };
