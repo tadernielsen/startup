@@ -62,13 +62,15 @@ export function Devlog({user, isDeveloper}) {
   }
 
   async function deletePost(ID) {
-    const removedLogs = await fetch('/api/data/Devlog', {
+    await fetch('/api/data/Devlog', {
       method: 'DELETE',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({ID: ID})
     });
+    
+    const updatedPosts = logs.filter(log => log._id !== ID);
 
-    updateAllPosts(removedLogs);
+    setLogs(updatedPosts);
   }
 
   const savedDevLogs = []
