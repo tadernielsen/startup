@@ -70,9 +70,9 @@ function getDeveloperWithToken(token)
 }
 
 // DevLog
-async function addLog()
+async function addLog(devLog)
 {
-
+    await devLogCollection.insertOne(devLog);
 }
 
 async function updateLog()
@@ -87,7 +87,7 @@ async function deleteLog()
 
 function getAllLogs()
 {
-
+    return devLogCollection.find().toArray();
 }
 
 // Games
