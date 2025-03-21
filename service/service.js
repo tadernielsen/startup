@@ -241,9 +241,9 @@ app.get('/api/data/Announcement', async (req, res) => {
 
 // Devlog Endpoints
 // Create Devlog
-app.post('/api/data/Devlog', verifyDeveloper, (req, res) => {
-    devLogs.push(req.body);
-    res.send({devlogs: devLogs});
+app.post('/api/data/Devlog', verifyDeveloper, async (req, res) => {
+    await DB.addLog(req.body);
+    res.status(200).end();
 });
 
 // Like Devlog
@@ -277,8 +277,16 @@ app.delete('/api/data/Devlog', verifyDeveloper, (req, res) => {
 });
 
 // Get Devlog
-app.get('/api/data/Devlog', (req, res) => {
-    res.send(devLogs);
+app.get('/api/data/Devlog', async (req, res) => {
+    let savedLogs = []
+    const logsJSON = await DB.getAllLogs();
+
+    for (const log of logsJSON)
+    {
+        const reformatJson = {_id: log._id.toString(), title:log.title, description:log.description, likedAccounts:log.likedAccounts}
+        savedLogs.push(reformatJson);
+    }
+    res.send(savedLogs);
 });
 
 // Game Endpoints
