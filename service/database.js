@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const config = require('./dbConfig.json');
 
 // Setup
@@ -75,14 +75,14 @@ async function addLog(devLog)
     await devLogCollection.insertOne(devLog);
 }
 
-async function updateLog()
+async function updateLog(devLog)
 {
 
 }
 
-async function deleteLog()
+async function deleteLog(ID)
 {
-
+    await devLogCollection.findOneAndDelete({_id: new ObjectId(ID)});
 }
 
 function getAllLogs()

@@ -262,31 +262,17 @@ app.put('/api/data/Devlog', verifyAuth, (req, res) => {
 });
 
 // Delete Devlog
-app.delete('/api/data/Devlog', verifyDeveloper, (req, res) => {
-    const post = devLogs.find(log => log.ID === req.body.ID)
+app.delete('/api/data/Devlog', verifyDeveloper, async (req, res) => {
+    await DB.deleteLog(req.body.ID);
     
-    if (post)
-    {
-        devLogs = devLogs.filter(log => log !== post);
-        res.send({devlogs: devLogs})
-    }
-    else
-    {
-        res.status(400).send({msg: 'ERROR: Could not find post'})
-    }
+    res.status(200).end();
 });
 
 // Get Devlog
 app.get('/api/data/Devlog', async (req, res) => {
-    let savedLogs = []
     const logsJSON = await DB.getAllLogs();
 
-    for (const log of logsJSON)
-    {
-        const reformatJson = {_id: log._id.toString(), title:log.title, description:log.description, likedAccounts:log.likedAccounts}
-        savedLogs.push(reformatJson);
-    }
-    res.send(savedLogs);
+    res.send(logsJSON);
 });
 
 // Game Endpoints
