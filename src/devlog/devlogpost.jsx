@@ -2,13 +2,13 @@ import React from 'react';
 
 export class DevlogPost
 {
-  constructor(ID, title, description, likedAccounts = [])
+  constructor(title, description, likedAccounts = [], ID = 0)
   {
-    this.ID = ID;
     this.title = title;
     this.description = description;
     this.likedAccounts = likedAccounts;
     this.likeCount = likedAccounts.length;
+    this.ID = ID
   }
 
   likeButton(username, updateLikes)
@@ -51,6 +51,6 @@ export class DevlogPost
 
   returnJson()
   {
-    return {"ID": this.ID, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts}
+    return {"title": this.title, "description": this.description, "likedAccounts": this.likedAccounts}
   }
 }

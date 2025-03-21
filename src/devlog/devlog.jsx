@@ -20,17 +20,18 @@ export function Devlog({user, isDeveloper}) {
 
   async function savePost(title, description)
   {
-    const newPost = new DevlogPost(Date.now(), title, description);
+    const newPost = new DevlogPost(title, description);
 
-    const sendLog = await fetch('/api/data/Devlog', {
+    await fetch('/api/data/Devlog', {
       method: 'POST',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify(newPost.returnJson()),
     })
   
-    const savedDevLogs = await sendLog.json();
-    const updatedLogs = savedDevLogs.devlogs;
-    setLogs(updatedLogs);
+    const savedDevLogs = logs;
+    savedDevLogs.push(newPost);
+
+    setLogs(savedDevLogs);
 
     setNewPost(false);
   }
@@ -75,7 +76,7 @@ export function Devlog({user, isDeveloper}) {
   {
     for (const [i, log] of logs.entries())
     {
-      const post = new DevlogPost(log.ID, log.title, log.description, log.likedAccounts);
+      const post = new DevlogPost(log.title, log.description, log.likedAccounts, log._id);
       savedDevLogs.push(post.initilizePost(isDeveloper, user, updateLikes, deletePost));
     }
   }
