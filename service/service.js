@@ -247,18 +247,20 @@ app.post('/api/data/Devlog', verifyDeveloper, async (req, res) => {
 });
 
 // Like Devlog
-app.put('/api/data/Devlog', verifyAuth, (req, res) => {
-    const post = devLogs.find(log => log.ID === req.body.ID)
+app.put('/api/data/Devlog', verifyAuth, async (req, res) => {
+    await DB.updateLog(req.body.ID, req.body.likedAccounts);
 
-    if (post)
-    {
-        devLogs = devLogs.map(log => log === post ? { ...log, "likedAccounts": req.body.likedAccounts } : log);
-        res.send({devlogs: devLogs});
-    }
-    else
-    {
-        res.status(400).send({msg: 'ERROR: Could not find post'})
-    }
+    res.status(200).end();
+    
+    // if (post)
+    // {
+    //     devLogs = devLogs.map(log => log === post ? { ...log, "likedAccounts": req.body.likedAccounts } : log);
+    //     res.send({devlogs: devLogs});
+    // }
+    // else
+    // {
+    //     res.status(400).send({msg: 'ERROR: Could not find post'})
+    // }
 });
 
 // Delete Devlog

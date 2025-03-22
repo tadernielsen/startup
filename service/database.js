@@ -75,14 +75,14 @@ async function addLog(devLog)
     await devLogCollection.insertOne(devLog);
 }
 
-async function updateLog(devLog)
+async function updateLog(ID, likedAccounts)
 {
-
+    await devLogCollection.updateOne({_id: new ObjectId(ID)}, {$set: {likedAccounts: likedAccounts}});
 }
 
 async function deleteLog(ID)
 {
-    await devLogCollection.findOneAndDelete({_id: new ObjectId(ID)});
+    await devLogCollection.deleteOne({_id: new ObjectId(ID)});
 }
 
 function getAllLogs()
