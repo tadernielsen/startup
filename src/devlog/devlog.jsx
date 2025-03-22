@@ -36,29 +36,17 @@ export function Devlog({user, isDeveloper}) {
     setNewPost(false);
   }
 
-  async function updateAllPosts(request)
-  {
-    const updatedLogs = await request.json();
-
-    if (request?.status === 200)
-      {
-        setLogs(updatedLogs.devlogs);
-      }
-      else
-      {
-        alert(updatedLogs.msg);
-      }
-  }
-
   async function updateLikes(ID, likeAccounts)
   {
-    const updatedLogs = await fetch('/api/data/Devlog', {
+    await fetch('/api/data/Devlog', {
       method: 'PUT',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({ID: ID, likedAccounts: likeAccounts})
     });
 
-    updateAllPosts(updatedLogs);
+    const updatedlogs = logs.map(log => log._id === ID ? { ...log, "likedAccounts": likeAccounts } : log);
+
+    setLogs(updatedlogs);
   }
 
   async function deletePost(ID) {
