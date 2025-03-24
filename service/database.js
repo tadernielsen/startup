@@ -91,24 +91,32 @@ function getAllLogs()
 }
 
 // Games
-async function addGame()
+async function addGame(game)
 {
-
+    await gameCollection.insertOne(game);
 }
 
-async function updateGame()
+async function updateGame(ID, likedAccounts, favoritedAccounts)
 {
-
+    await gameCollection
+        .updateOne({_id: new ObjectId(ID)}, 
+        {
+            $set: 
+            {
+                likedAccounts: likedAccounts,
+                favoritedAccounts: favoritedAccounts
+            }
+        });
 }
 
 async function deleteGame()
 {
-
+    await gameCollection.deleteOne({_id: new ObjectId(ID)});
 }
 
 function getAllGames()
 {
-
+    return gameCollection.find().toArray();
 }
 
 // Announcement
