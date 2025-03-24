@@ -2,9 +2,8 @@ import React from 'react';
 
 export class GamePost
 {
-  constructor(ID, image, title, description, install = "", user, likedAccounts = [], favoritedAccounts = [])
+  constructor(image, title, description, install = "", user, likedAccounts = [], favoritedAccounts = [], ID = 0)
   {
-    this.ID = ID;
     this.image = image;
     this.title = title;
     this.description = description;
@@ -13,6 +12,7 @@ export class GamePost
     this.favoritedAccounts = favoritedAccounts;
     this.favorited = favoritedAccounts.includes(user);
     this.installURL = install;
+    this.ID = ID;
   }
 
   likeButton(username, updatePost)
@@ -91,6 +91,6 @@ export class GamePost
 
   returnJson()
   {
-    return {"ID": this.ID, "image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts, "favoritedAccounts": this.favoritedAccounts, "installURL": this.installURL}
+    return {"image": this.image, "title": this.title, "description": this.description, "likedAccounts": this.likedAccounts, "favoritedAccounts": this.favoritedAccounts, "installURL": this.installURL}
   }
 }

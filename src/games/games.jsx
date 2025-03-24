@@ -54,55 +54,46 @@ export function Games({user, isDeveloper}) {
       image = await uploadImage(image);
     }
 
-    const newPost = new GamePost(Date.now(), 'GameImages/' + image, title, description, install, user);
+    const newPost = new GamePost('GameImages/' + image, title, description, install, user);
 
-    const sendGame = await fetch('/api/data/Games', {
+    await fetch('/api/data/Games', {
       method: 'POST',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify(newPost.returnJson()),
     })
 
-    const savedPosts = await sendGame.json();
-    const updatedPosts = savedPosts.games;
-    setGames(updatedPosts);
+    const savedPosts = games;
+    savedPosts.push(newPost);
+
+    setGames(savedPosts);
 
     setNewGame(false);
   }
 
-  async function updateAllPosts(request)
-  {
-    const updatedPosts = await request.json();
-
-    if (request?.status === 200)
-    {
-      setGames(updatedPosts.games);
-    }
-    else
-    {
-      alert(updatedPosts.msg);
-    }
-  }
-
   async function updatePost(ID, likeAccounts, favoritedAccounts)
   {
-    const updatedPosts = await fetch('/api/data/Games', {
+    await fetch('/api/data/Games', {
       method: 'PUT',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({ID: ID, likedAccounts: likeAccounts, favoritedAccounts: favoritedAccounts})
     });
 
-    updateAllPosts(updatedPosts);
+    const updatedPosts = games.map(post => post.ID === ID ? { ...post, "likedAccounts": likedAccounts, "favoritedAccounts": favoritedAccounts } : post);
+
+    setGames(updatedPosts);
   }
 
   async function deletePost(ID)
   {
-    const removedGame = await fetch('/api/data/Games', {
+    await fetch('/api/data/Games', {
       method: 'DELETE',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({ID: ID}),
     });
 
-    updateAllPosts(removedGame);
+    const updatedPosts = games.filter(post => post.ID !== ID);
+
+    setGames(updatedPosts);
   }
 
   const savedGames = [];
@@ -110,7 +101,7 @@ export function Games({user, isDeveloper}) {
   {
     for (const [i, game] of games.entries())
     {
-      const post = new GamePost(game.ID, game.image, game.title, game.description, game.installURL, user, game.likedAccounts, game.favoritedAccounts);
+      const post = new GamePost(game.image, game.title, game.description, game.installURL, user, game.likedAccounts, game.favoritedAccounts, game.ID);
       savedGames.push(post.initilizePost(isDeveloper, user, updatePost, deletePost));
     }
   }
