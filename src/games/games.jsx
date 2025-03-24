@@ -78,7 +78,7 @@ export function Games({user, isDeveloper}) {
       body: JSON.stringify({ID: ID, likedAccounts: likeAccounts, favoritedAccounts: favoritedAccounts})
     });
 
-    const updatedPosts = games.map(post => post.ID === ID ? { ...post, "likedAccounts": likedAccounts, "favoritedAccounts": favoritedAccounts } : post);
+    const updatedPosts = games.map(post => post._id === ID ? { ...post, "likedAccounts": likeAccounts, "favoritedAccounts": favoritedAccounts } : post);
 
     setGames(updatedPosts);
   }
@@ -91,7 +91,7 @@ export function Games({user, isDeveloper}) {
       body: JSON.stringify({ID: ID}),
     });
 
-    const updatedPosts = games.filter(post => post.ID !== ID);
+    const updatedPosts = games.filter(post => post._id !== ID);
 
     setGames(updatedPosts);
   }
@@ -101,7 +101,7 @@ export function Games({user, isDeveloper}) {
   {
     for (const [i, game] of games.entries())
     {
-      const post = new GamePost(game.image, game.title, game.description, game.installURL, user, game.likedAccounts, game.favoritedAccounts, game.ID);
+      const post = new GamePost(game.image, game.title, game.description, game.installURL, user, game.likedAccounts, game.favoritedAccounts, game._id);
       savedGames.push(post.initilizePost(isDeveloper, user, updatePost, deletePost));
     }
   }
