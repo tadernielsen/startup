@@ -109,7 +109,7 @@ async function updateGame(ID, likedAccounts, favoritedAccounts)
         });
 }
 
-async function deleteGame()
+async function deleteGame(ID)
 {
     await gameCollection.deleteOne({_id: new ObjectId(ID)});
 }

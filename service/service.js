@@ -279,44 +279,50 @@ app.get('/api/data/Devlog', async (req, res) => {
 
 // Game Endpoints
 // Create Game
-app.post('/api/data/Games', verifyDeveloper, (req, res) => {
-    games.push(req.body);
-    res.send({games: games});
+app.post('/api/data/Games', verifyDeveloper, async (req, res) => {
+    await DB.addGame(req.body);
+    res.status(200).end();
 });
 
 // Like and Favorite Game
-app.put('/api/data/Games', verifyAuth, (req, res) => {
-    const game = games.find(post => post.ID === req.body.ID);
+app.put('/api/data/Games', verifyAuth, async (req, res) => {
+    await DB.updateGame(req.body.ID, req.body.likedAccounts, req.body.favoritedAccounts);
 
-    if (game)
-    {
-        games = games.map(post => post === game ? { ...post, "likedAccounts": req.body.likedAccounts, "favoritedAccounts": req.body.favoritedAccounts } : post);
-        res.send({games: games});
-    }
-    else
-    {
-        res.status(400).send({msg: 'ERROR: Could not find game'});
-    }
+    res.status(200).end();
+
+    // if (game)
+    // {
+    //     games = games.map(post => post === game ? { ...post, "likedAccounts": req.body.likedAccounts, "favoritedAccounts": req.body.favoritedAccounts } : post);
+    //     res.send({games: games});
+    // }
+    // else
+    // {
+    //     res.status(400).send({msg: 'ERROR: Could not find game'});
+    // }
 })
 
 // Delete Game
-app.delete('/api/data/Games', verifyDeveloper, (req, res) => {
-    const game = games.find(post => post.ID === req.body.ID)
+app.delete('/api/data/Games', verifyDeveloper, async (req, res) => {
+    await DB.deleteGame(req.body.ID);
+
+    res.status(200).end();
     
-    if (game)
-    {
-        games = games.filter(post => post !== game);
-        res.send({games: games})
-    }
-    else
-    {
-        res.status(400).send({msg: 'ERROR: Could not find game'})
-    }
+    // if (game)
+    // {
+    //     games = games.filter(post => post !== game);
+    //     res.send({games: games})
+    // }
+    // else
+    // {
+    //     res.status(400).send({msg: 'ERROR: Could not find game'})
+    // }
 });
 
 // Get Game
-app.get('/api/data/Games', (req, res) => {
-    res.send(games);
+app.get('/api/data/Games', async (req, res) => {
+    const gamesJSON = await DB.getAllGames();
+
+    res.send(gamesJSON);
 });
 
 // Save Game Image
