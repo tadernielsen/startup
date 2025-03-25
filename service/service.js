@@ -263,8 +263,8 @@ app.get('/api/data/Devlog', async (req, res) => {
 // Game Endpoints
 // Create Game
 app.post('/api/data/Games', verifyDeveloper, async (req, res) => {
-    await DB.addGame(req.body);
-    res.status(200).end();
+    const newGame = await DB.addGame(req.body);
+    res.status(200).send({newGame: newGame});
 });
 
 // Like and Favorite Game

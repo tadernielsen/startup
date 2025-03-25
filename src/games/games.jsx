@@ -56,44 +56,67 @@ export function Games({user, isDeveloper}) {
 
     const newPost = new GamePost('GameImages/' + image, title, description, install, user);
 
-    await fetch('/api/data/Games', {
+    const addGame = await fetch('/api/data/Games', {
       method: 'POST',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify(newPost.returnJson()),
     })
 
-    const savedPosts = games;
-    savedPosts.push(newPost);
+    const res = await addGame.json();
+    if (addGame?.status === 200)
+    {
+      const savedPosts = games;
 
-    setGames(savedPosts);
+      savedPosts.push(res.newGame);
+
+      setGames(savedPosts);
+    }
+    else
+    {
+      alert(res.msg);
+    }
 
     setNewGame(false);
   }
 
   async function updatePost(ID, likeAccounts, favoritedAccounts)
   {
-    await fetch('/api/data/Games', {
+    const callPost = await fetch('/api/data/Games', {
       method: 'PUT',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({ID: ID, likedAccounts: likeAccounts, favoritedAccounts: favoritedAccounts})
     });
 
-    const updatedPosts = games.map(post => post._id === ID ? { ...post, "likedAccounts": likeAccounts, "favoritedAccounts": favoritedAccounts } : post);
-
-    setGames(updatedPosts);
+    if (callPost.status === 200)
+    {
+      const updatedPosts = games.map(post => post._id === ID ? { ...post, "likedAccounts": likeAccounts, "favoritedAccounts": favoritedAccounts } : post);
+      setGames(updatedPosts);
+    }
+    else
+    {
+      const res = await callPost.json();
+      alert(res.msg);
+    }
   }
 
   async function deletePost(ID)
   {
-    await fetch('/api/data/Games', {
+    const removePost = await fetch('/api/data/Games', {
       method: 'DELETE',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({ID: ID}),
     });
 
-    const updatedPosts = games.filter(post => post._id !== ID);
-
-    setGames(updatedPosts);
+    if (removePost.status === 200)
+    {
+      const updatedPosts = games.filter(post => post._id !== ID);
+      setGames(updatedPosts);
+    }
+    else
+    {
+      const res = await removePost.json();
+      alert(res.msg);
+    }
   }
 
   const savedGames = [];

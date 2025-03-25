@@ -90,6 +90,8 @@ function getAllLogs()
 async function addGame(game)
 {
     await gameCollection.insertOne(game);
+
+    return game
 }
 
 async function updateGame(ID, likedAccounts, favoritedAccounts)
