@@ -84,7 +84,7 @@ export function Games({user, isDeveloper}) {
     const callPost = await fetch('/api/data/Games', {
       method: 'PUT',
       headers: {'content-type': 'application/json'},
-      body: JSON.stringify({ID: ID, likedAccounts: likeAccounts, favoritedAccounts: favoritedAccounts})
+      body: JSON.stringify({ID: ID, likedAccounts: likeAccounts, favoritedAccounts: favoritedAccounts, user: user})
     });
 
     if (callPost.status === 200)
