@@ -28,8 +28,8 @@ const upload = multer({
 // Database
 const DB = require('./database.js');
 
-let announcement = 'Press Edit to change this!';
-
+// Simple Data Stuff
+const forbiddenNames = ['tader', 'tadernielsen', 'tad', 'tadernielsen@gmail.com', 'tn', 'nielskaden', 'kaden', 't@dernielsen', 't@der', 'kaden nielsen', 'kn', 'tader@gmail.com'];
 const tnImages = ['TN PFP V3.png', 'V2 TN.jpg', 'V1 TN.png', 'OG TN.png', 'TN games PFP.png', 'TN Galaxy.png', 'TNYT logo.png', 'Halloween TN.png', 'TN chrismas Logo.png', 'TN chrismas V2.png', 'TN COVID-19.png', 'TN halloween 2021 pfp.png'];
 
 // Middleware
@@ -94,9 +94,13 @@ function setCookie(res, user)
 // Authentication Endpoints
 // User Creation
 app.post('/api/auth/CreateAccount', async (req, res) => {
-    if (await getUser('name', req.body.email))
+    if (await getUser('name', req.body.email) || await getDeveloper('name', req.body.email))
     {
         res.status(409).send({msg: 'User already exists.'});
+    }
+    else if (forbiddenNames.includes((req.body.email).toLowerCase()))
+    {
+        res.status(403).send({msg: "NAME FORBIDDEN"});
     }
     else
     {
