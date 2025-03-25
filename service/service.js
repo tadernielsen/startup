@@ -235,8 +235,8 @@ app.get('/api/data/Announcement', async (req, res) => {
 // Devlog Endpoints
 // Create Devlog
 app.post('/api/data/Devlog', verifyDeveloper, async (req, res) => {
-    await DB.addLog(req.body);
-    res.status(200).end();
+    const newPost = await DB.addLog(req.body);
+    res.status(200).send({newPost: newPost});
 });
 
 // Like Devlog

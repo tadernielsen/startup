@@ -67,6 +67,8 @@ function getDeveloperWithToken(token)
 async function addLog(devLog)
 {
     await devLogCollection.insertOne(devLog);
+    
+    return devLog;
 }
 
 async function updateLog(ID, likedAccounts)

@@ -28,16 +28,17 @@ export function Devlog({user, isDeveloper}) {
       body: JSON.stringify(newPost.returnJson()),
     });
     
+    const res = await addLog.json();
     if (addLog?.status === 200)
     {
       const savedDevLogs = logs;
-      savedDevLogs.push(newPost);
+      
+      savedDevLogs.push(res.newPost);
 
       setLogs(savedDevLogs);
     }
     else
     {
-      const res = await addLog.json();
       alert(res.msg);
     }
 
