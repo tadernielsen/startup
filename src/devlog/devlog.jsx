@@ -50,7 +50,7 @@ export function Devlog({user, isDeveloper}) {
     const updatedPost = await fetch('/api/data/Devlog', {
       method: 'PUT',
       headers: {'content-type': 'application/json'},
-      body: JSON.stringify({ID: ID, likedAccounts: likeAccounts})
+      body: JSON.stringify({ID: ID, likedAccounts: likeAccounts, user: user})
     });
 
     if (updatedPost.status === 200)

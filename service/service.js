@@ -205,7 +205,7 @@ const verifyDeveloper = async (req, res, next) => {
 const verifyAuth = async (req, res, next) => {
     const user = await getUser('token', req.cookies[authCookieName]);
 
-    if (user)
+    if (user && user.name === req.body.user)
     {
         next();
     }
