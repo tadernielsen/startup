@@ -22,46 +22,71 @@ export function Devlog({user, isDeveloper}) {
   {
     const newPost = new DevlogPost(title, description);
 
-    await fetch('/api/data/Devlog', {
+    const addLog = await fetch('/api/data/Devlog', {
       method: 'POST',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify(newPost.returnJson()),
-    })
-  
-    const savedDevLogs = logs;
-    savedDevLogs.push(newPost);
+    });
+    
+    if (addLog?.status === 200)
+    {
+      const savedDevLogs = logs;
+      savedDevLogs.push(newPost);
 
-    setLogs(savedDevLogs);
+      setLogs(savedDevLogs);
+    }
+    else
+    {
+      const res = await addLog.json();
+      alert(res.msg);
+    }
 
     setNewPost(false);
   }
 
   async function updateLikes(ID, likeAccounts)
   {
-    await fetch('/api/data/Devlog', {
+    const updatedPost = await fetch('/api/data/Devlog', {
       method: 'PUT',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({ID: ID, likedAccounts: likeAccounts})
     });
 
-    const updatedlogs = logs.map(log => log._id === ID ? { ...log, "likedAccounts": likeAccounts } : log);
+    if (updatedPost.status === 200)
+    {
+      const updatedlogs = logs.map(log => log._id === ID ? { ...log, "likedAccounts": likeAccounts } : log);
+      setLogs(updatedlogs);
+    }
+    else
+    {
+      const res = await updatedPost.json();
+      alert(res.msg);
+    }
 
-    setLogs(updatedlogs);
+    
   }
 
   async function deletePost(ID) {
-    await fetch('/api/data/Devlog', {
+    const removedPost = await fetch('/api/data/Devlog', {
       method: 'DELETE',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({ID: ID})
     });
     
-    const updatedPosts = logs.filter(log => log._id !== ID);
-
-    setLogs(updatedPosts);
+    if (removedPost.status === 200)
+    {
+      const updatedPosts = logs.filter(log => log._id !== ID);
+      setLogs(updatedPosts);
+    }
+    else
+    {
+      const res = await removedPost.json();
+      alert(res.msg);
+    }
+    
   }
 
-  const savedDevLogs = []
+  const savedDevLogs = [];
   if (logs.length)
   {
     for (const [i, log] of logs.entries())
