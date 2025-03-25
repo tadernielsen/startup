@@ -26,14 +26,7 @@ const upload = multer({
 })
 
 // Database
-const DB = require('./database.js')
-
-// Data Lists (to be replaced by database once it is finished)
-let users = [];
-let developers = [];
-
-let devLogs = [];
-let games = [];
+const DB = require('./database.js');
 
 let announcement = 'Press Edit to change this!';
 
@@ -58,7 +51,7 @@ async function createUser(username, password, userType)
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = {name: username, pass: hashedPassword, type: userType, token: uuid.v4()};
-    //users.push(user);
+    
     DB.addNewUser(user);
 
     return user;
@@ -251,16 +244,6 @@ app.put('/api/data/Devlog', verifyAuth, async (req, res) => {
     await DB.updateLog(req.body.ID, req.body.likedAccounts);
 
     res.status(200).end();
-    
-    // if (post)
-    // {
-    //     devLogs = devLogs.map(log => log === post ? { ...log, "likedAccounts": req.body.likedAccounts } : log);
-    //     res.send({devlogs: devLogs});
-    // }
-    // else
-    // {
-    //     res.status(400).send({msg: 'ERROR: Could not find post'})
-    // }
 });
 
 // Delete Devlog
@@ -289,16 +272,6 @@ app.put('/api/data/Games', verifyAuth, async (req, res) => {
     await DB.updateGame(req.body.ID, req.body.likedAccounts, req.body.favoritedAccounts);
 
     res.status(200).end();
-
-    // if (game)
-    // {
-    //     games = games.map(post => post === game ? { ...post, "likedAccounts": req.body.likedAccounts, "favoritedAccounts": req.body.favoritedAccounts } : post);
-    //     res.send({games: games});
-    // }
-    // else
-    // {
-    //     res.status(400).send({msg: 'ERROR: Could not find game'});
-    // }
 })
 
 // Delete Game
@@ -306,16 +279,6 @@ app.delete('/api/data/Games', verifyDeveloper, async (req, res) => {
     await DB.deleteGame(req.body.ID);
 
     res.status(200).end();
-    
-    // if (game)
-    // {
-    //     games = games.filter(post => post !== game);
-    //     res.send({games: games})
-    // }
-    // else
-    // {
-    //     res.status(400).send({msg: 'ERROR: Could not find game'})
-    // }
 });
 
 // Get Game
@@ -350,20 +313,5 @@ app.get('/api/data/TNimages', (req, res) => {
 app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
-
-// Injects Developer into list (Remove when DB is complete)
-// async function injectDeveloper(username = "", password = "")
-// {
-//     // Create user
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const dev = {name: username, pass: hashedPassword, type: "developer"};
-//     developers.push(dev);
-
-//     // Set Cookie        
-//     dev.token = uuid.v4();
-
-//     DB.injectDeveloper(dev);
-// }
-// injectDeveloper()
 
 module.exports = app;
