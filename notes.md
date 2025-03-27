@@ -476,3 +476,32 @@ __WebSocket__:
 - Widespread support
 
 __Useful Advice__: if you have idea, don't just build it from scratch, look at what is already made and build off of it.
+
+## Other things
+
+### TypeScript
+The top two programming languages (Python and JavaScript) don't have typing.
+
+- Interface
+- Union
+- Enum
+- Type coercion
+
+__Frontend or Backend first:__
+Start both pretty simple, then work to put more functionality in it
+
+### Performance
+Even tiny delays in page load time can be disastrous for you bottom line.
+Just a one-second delay leads to:
+- 11% fewer page views
+- 16% Decrease in consimer satisfaction
+- 7% lost in conversions
+
+How to make application faster
+- Optimize for real usage (Cache, bandwidth, cpu, storage)
+- Optimize based on data
+- Prioritize bottlenecks
+- Look at download size
+- Compress, reduce, minify
+- Lazy load
+- Use psychology (to make it look like progress is happening)
