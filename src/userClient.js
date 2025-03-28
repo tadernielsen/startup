@@ -19,3 +19,6 @@ class UserClient {
         };
     }
 }
+
+const client = new UserClient();
+export { client };
