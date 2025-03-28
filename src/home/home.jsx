@@ -62,11 +62,16 @@ export function Home({isDeveloper}) {
         <section className="welcome">
             <h3>Welcome</h3>
             <p>Welcome to TN-Games! This website is designed for you to view and download my games in the <b>Games</b> tab. You can also view devlog posts in the <b>DevLog</b> Page. If you <b>Login</b>, you will be able to like devlog posts and favorite games</p>
+            <p>This website was created for my CS260 class. It is currently still in development. Development started <b>January 9th, 2025</b></p>
+
         </section>
         
-        <section className="about">
-            <h3>About</h3>
-            <p>This website was created for my CS260 class. It is currently still in development. Development started <b>January 9th, 2025</b></p>
+        <section className="activity">
+            <h3>Recent Activity</h3>
+            <p>thing1</p>
+            <p>thing2</p>
+            <p>thing3</p>
+            <p>thing4</p>
         </section>
     </main>
   );
