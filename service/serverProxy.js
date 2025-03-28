@@ -29,7 +29,7 @@ function serverProxy(server)
             client.isAlive = false;
             client.ping();
         });
-    }, 30000);
+    }, 10000);
 }
 
 module.exports = {serverProxy};
