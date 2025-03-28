@@ -32,4 +32,4 @@ function serverProxy(server)
     }, 30000);
 }
 
-module.exports = serverProxy;
+module.exports = {serverProxy};
