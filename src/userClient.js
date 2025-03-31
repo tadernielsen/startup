@@ -45,14 +45,15 @@ class UserClient {
         };
     }
 
-    sendMessage()
+    sendMessage(from, type, data)
     {
-
+        const event = new eventMessage(from, type, data);
+        this.socket.send(JSON.stringify(event));
     }
 
     receiveMessage()
     {
-        
+        this.events.push(event);
     }
 }
 
