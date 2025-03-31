@@ -1,3 +1,23 @@
+const event = {
+    System: 'system',
+    announcement: 'announcement',
+    newDevLog: 'newDevLog',
+    newGame: 'newGame',
+    login: 'login',
+    logout: 'logout',
+    like: 'like',
+    favorite: 'favorite',
+}
+
+const eventMessage = {
+    construtor(from, type, data)
+    {
+        this.from = from;
+        this.type = type;
+        this.data = data;
+    }
+}
+
 class UserClient {
     events = [];
 
@@ -31,4 +51,4 @@ class UserClient {
 }
 
 const client = new UserClient();
-export { client };
+export { event, client };
