@@ -27,15 +27,21 @@ class UserClient {
         this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
 
         this.socket.onopen = () => {
-            this.connected = true;
+            this.receiveMessage(new eventMessage('system', event.System, 'connected'));
         };
 
         this.socket.onmessage = async (msg) => {
-
+            try 
+            {
+                const event = JSON.parse(msg.data);
+                this.receiveMessage(event);
+            } 
+            catch
+            {}
         };
 
         this.socket.onclose = () => {
-            this.connected = false;
+            this.receiveMessage(new eventMessage('system', event.System, 'disconnected'));
         };
     }
 
