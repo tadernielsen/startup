@@ -65,14 +65,15 @@ export function Home({isDeveloper}) {
     fetch('/api/data/Announcement')
     .then((res) => res.json())
     .then((res) => setAnnouncement(res.announcement));
+  }, []);
 
+  React.useEffect(() => {
     client.addHandler(handleEvent);
 
     return () => {
       client.removeHandler(handleEvent);
     }
-      
-  }, []);
+  });
 
   return (
     <main className="home">
