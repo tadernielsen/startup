@@ -44,7 +44,7 @@ export function Home({isDeveloper}) {
       let msg = 'error';
       if (message.type === event.System)
       {
-        msg = 'Websocket connected';
+        msg = message.data.msg;
       }
       rederedMessages.push(<div key={i} className="message">{msg}</div>);
     }

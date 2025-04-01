@@ -29,7 +29,7 @@ class UserClient {
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
 
         this.socket.onopen = (msg) => {
-            this.receiveMessage(new eventMessage('system', event.System, 'connected'));
+            this.receiveMessage(new eventMessage('system', event.System, {msg: 'Welcome to TN-Games!'}));
         };
 
         this.socket.onmessage = async (msg) => {
@@ -43,7 +43,7 @@ class UserClient {
         };
 
         this.socket.onclose = (msg) => {
-            this.receiveMessage(new eventMessage('system', event.System, 'disconnected'));
+            this.receiveMessage(new eventMessage('system', event.System, {msg: 'Disconnected'}));
         };
     }
 
