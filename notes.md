@@ -505,3 +505,86 @@ How to make application faster
 - Compress, reduce, minify
 - Lazy load
 - Use psychology (to make it look like progress is happening)
+
+### Security
+
+__Breaches__
+- Brazilian meatpacking JBS ransomware: $4.4 million
+- Solarwinds APT $25 million
+- Amazon DDOS attack (1 hour) $75 million
+- Sony Entertainment breach $171 million
+- VA unencrypted data $500 million
+- AWS, Yahoo, CNN, Dell DDOS Mafiaboy $1 billion
+
+Cybercrime costs [will reach] $10.5 trillion USD annually by 2025 - Cybercrime Magazine
+
+__How to fight__
+Open Worldwide Application Security Project (OWASP 10)
+1. Broken Access Control
+  - Least privilege access violation
+  - URL bypass control
+    - /payment/:accountid
+  - Resource path allows access
+    - ../../etc/password
+2. Cryptographic Failures
+  - Not encrypting at rest or transit
+  - Weak cryptography (SHA1, MD5)
+  - Misused cryptography (no salt, wrong params)
+3. Injection
+  - User supplied data is not sanitized
+  - User supplied data programmatically executed
+4. Insecure Design
+  - Not aware of best practices
+  - Unlimited trial accounts
+  - Customer data not segmented
+  - Single layer defense
+    - Always remember to sacrifice security last so you can have a company the next day
+    - Layers of security doesn't stop hackers, it just slows them down so you can shut it down
+5. Security Misconfiguration
+  - Development info exposed
+  - Using default configurations
+  - Unnecessary features installed
+  - System not hardened
+6. Vulnerable Components
+  - Unnecessary/unused packages imported
+  - Untrusted/verified sources
+  - Out of date software
+  - Not tracking vulnerability bulletins
+  - Package version not locked
+7. ID and Auth Failures
+  - Credential stuffing (compremized list)
+  - Brute force attacks (guessing)
+  - Permitting weak passwords
+  - Weak credential recovery
+  - Credentials in URL
+  - Not expiring auth tokens
+8. Software Integrity Failures
+  - Unverified CDN usage
+  - Unverified packages (npm install)
+  - Unverified updates
+  - Insecure CD/CI platforms
+9. Logging Failure
+  - Not logging critical requests
+  - Not monitoring system performance
+  - Logs not audited, automatic or manual
+  - Logs not stored centrally
+  - No real-time response
+10. Server Side Request Forgery
+  - PUT /user/image?url=""
+  - http://localhost/users/_search?pretty <- Redis query to dump all users
+
+__Put on your white hat__
+- Discover the system
+- Get behind the wall of trust
+- Use exposed info
+- Exploit unexpected usage
+- Exploit misdirection
+- Exploit lazy
+- Exploit trust
+
+__Security Minded__
+- System and customer segmentation
+- Multi-layered security
+- Security and penetration testing
+- Secure real time logging and metrics
+- Action playbooks
