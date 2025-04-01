@@ -66,6 +66,11 @@ class UserClient {
     {
         this.events.push(event);
 
+        if (this.events.length > 4)
+        {
+            this.events.shift();
+        }
+
         this.events.forEach((evnt) => {
             this.handlers.forEach((handler) => {
                 handler(evnt);
