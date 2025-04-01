@@ -9,7 +9,7 @@ function serverProxy(http)
 
         socket.on('message', function message(data) {
             socketServer.clients.forEach((client) => {
-                if (client !== socket && client.readyState === WebSocketServer.OPEN) {
+                if (client !== socket && client.readyState === WebSocket.OPEN) {
                     client.send(data);
                 }
             });

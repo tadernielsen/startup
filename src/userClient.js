@@ -35,7 +35,7 @@ class UserClient {
         this.socket.onmessage = async (msg) => {
             try 
             {
-                const event = JSON.parse(msg.data);
+                const event = JSON.parse(await msg.data.text());
                 this.receiveMessage(event);
             } 
             catch

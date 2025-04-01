@@ -46,6 +46,11 @@ export function Home({isDeveloper}) {
       {
         msg = message.data.msg;
       }
+      if (message.type === event.announcement)
+      {
+        msg = "A new announcement has been released!";
+      }
+
       rederedMessages.push(<div key={i} className="message">{msg}</div>);
     }
 
