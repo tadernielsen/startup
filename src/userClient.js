@@ -20,6 +20,7 @@ const eventMessage = {
 
 class UserClient {
     events = [];
+    handlers = [];
 
     constructor()
     {
@@ -51,9 +52,25 @@ class UserClient {
         this.socket.send(JSON.stringify(event));
     }
 
-    receiveMessage()
+    addHandler(handler)
+    {
+        this.handlers.push(handler);
+    }
+
+    removeHandler(handler)
+    {
+        this.handlers.filter(h => h !== handler);
+    }
+
+    receiveMessage(event)
     {
         this.events.push(event);
+
+        this.events.forEach((evnt) => {
+            this.handlers.forEach((handler) => {
+                handler(evnt);
+            })
+        })
     }
 }
 
