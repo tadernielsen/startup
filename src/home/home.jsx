@@ -1,6 +1,8 @@
 import React from 'react';
 import './home.css';
 
+import { event, client } from '../userClient.js';
+
 export function Home({isDeveloper}) {
   const [announcement, setAnnouncement] = React.useState('Loading announcement...');
   const [editing, setEditing] = React.useState(false);
@@ -23,6 +25,8 @@ export function Home({isDeveloper}) {
     if (newAnnouncement?.status === 200)
     {
       setAnnouncement(body.announcement)
+
+      client.sendMessage('', event.announcement, {});
     }
     else
     {
