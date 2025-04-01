@@ -7,6 +7,8 @@ export function Home({isDeveloper}) {
   const [announcement, setAnnouncement] = React.useState('Loading announcement...');
   const [editing, setEditing] = React.useState(false);
 
+  const [messages, setMessages] = React.useState([]);
+
   const editClick = () => {
     setEditing(true);
   }
@@ -36,12 +38,35 @@ export function Home({isDeveloper}) {
     setEditing(false);
   }
 
-  
+  function createMessages() {
+    const messages = [];
+    for (const [i, message] of messages.entries()) {
+      let msg = 'error';
+      if (message.type === event.System)
+      {
+        msg = 'Websocket connected';
+      }
+      messages.push(<div key={i} className="message">{msg}</div>);
+    }
+
+    return messages;
+  }
+
+  function handleMessage(message) {
+    setMessages([...messages, message]);
+  }
 
   React.useEffect(() => {
     fetch('/api/data/Announcement')
     .then((res) => res.json())
     .then((res) => setAnnouncement(res.announcement));
+
+    client.addHandler(handleMessage);
+
+    return () => {
+      client.removeHandler(handleMessage);
+    }
+      
   }, []);
 
   return (
@@ -72,10 +97,7 @@ export function Home({isDeveloper}) {
         
         <section className="activity">
             <h3>Recent Activity</h3>
-            <p>thing1</p>
-            <p>thing2</p>
-            <p>thing3</p>
-            <p>thing4</p>
+            {createMessages()}
         </section>
     </main>
   );
