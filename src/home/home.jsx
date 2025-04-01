@@ -39,20 +39,20 @@ export function Home({isDeveloper}) {
   }
 
   function createMessages() {
-    const messages = [];
+    const rederedMessages = [];
     for (const [i, message] of messages.entries()) {
       let msg = 'error';
       if (message.type === event.System)
       {
         msg = 'Websocket connected';
       }
-      messages.push(<div key={i} className="message">{msg}</div>);
+      rederedMessages.push(<div key={i} className="message">{msg}</div>);
     }
 
-    return messages;
+    return rederedMessages;
   }
 
-  function handleMessage(message) {
+  function handleEvent(message) {
     setMessages([...messages, message]);
   }
 
@@ -61,10 +61,10 @@ export function Home({isDeveloper}) {
     .then((res) => res.json())
     .then((res) => setAnnouncement(res.announcement));
 
-    client.addHandler(handleMessage);
+    client.addHandler(handleEvent);
 
     return () => {
-      client.removeHandler(handleMessage);
+      client.removeHandler(handleEvent);
     }
       
   }, []);

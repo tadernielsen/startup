@@ -9,8 +9,8 @@ const event = {
     favorite: 'favorite',
 }
 
-const eventMessage = {
-    construtor(from, type, data)
+class eventMessage {
+    constructor(from, type, data)
     {
         this.from = from;
         this.type = type;
@@ -24,10 +24,11 @@ class UserClient {
 
     constructor()
     {
-        const protocol = window.location.protocol === 'https:' ? 'ws' : 'wss';
-        this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+        let port = window.location.port;
+        const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+        this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
 
-        this.socket.onopen = () => {
+        this.socket.onopen = (msg) => {
             this.receiveMessage(new eventMessage('system', event.System, 'connected'));
         };
 
@@ -41,7 +42,7 @@ class UserClient {
             {}
         };
 
-        this.socket.onclose = () => {
+        this.socket.onclose = (msg) => {
             this.receiveMessage(new eventMessage('system', event.System, 'disconnected'));
         };
     }

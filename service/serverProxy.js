@@ -1,8 +1,8 @@
 const { WebSocketServer } = require('ws');
 
-function serverProxy(server)
+function serverProxy(http)
 {
-    const socketServer = new WebSocketServer({server});
+    const socketServer = new WebSocketServer({server: http});
 
     socketServer.on('connection', (socket) => {
         socket.isAlive = true;
