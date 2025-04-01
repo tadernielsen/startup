@@ -48,7 +48,7 @@ export function Home({isDeveloper}) {
       }
       if (message.type === event.announcement)
       {
-        msg = "A new announcement has been released!";
+        msg = "A new announcement has been posted!";
       }
 
       rederedMessages.push(<div key={i} className="message">{msg}</div>);
@@ -59,6 +59,11 @@ export function Home({isDeveloper}) {
 
   function handleEvent(message) {
     setMessages([...messages, message]);
+
+    if (messages.length >= 6)
+    {
+      setMessages(messages.shift());
+    }
   }
 
   React.useEffect(() => {

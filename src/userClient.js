@@ -67,7 +67,7 @@ class UserClient {
     {
         this.events.push(event);
 
-        if (this.events.length > 4)
+        if (this.events.length >= 6)
         {
             this.events.shift();
         }
