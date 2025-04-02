@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { event, client } from '../userClient.js';
+
 export class GamePost
 {
   constructor(image, title, description, install = "", user, likedAccounts = [], favoritedAccounts = [], ID = 0)
@@ -32,6 +34,8 @@ export class GamePost
     {
       this.likedAccounts.push(username);
       this.likeCount = this.likedAccounts.length;
+
+      client.sendMessage(username, event.like, {type: "game", title: this.title})
     }
     updatePost(this.ID, this.likedAccounts, this.favoritedAccounts);
   }
@@ -53,6 +57,8 @@ export class GamePost
       {
         this.favoritedAccounts.push(username);
         this.favorited = true;
+        
+        client.sendMessage(username, event.favorite, {title: this.title});
       }
       updatePost(this.ID, this.likedAccounts, this.favoritedAccounts);
   }

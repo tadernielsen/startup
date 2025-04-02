@@ -62,6 +62,10 @@ export function Home({isDeveloper}) {
       {
         msg = `${message.from} liked the ${message.data.type}: ${message.data.title}`
       }
+      else if (message.type === event.favorite)
+      {
+        msg = `${message.from} favorited the game: ${message.data.title}`;
+      }
 
       rederedMessages.push(<div key={i} className="message">{msg}</div>);
     }
