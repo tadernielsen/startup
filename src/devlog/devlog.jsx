@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './devlog.css';
 
 import { DevlogPost } from './devlogpost.jsx';
+import { event, client } from '../userClient.js';
 
 export function Devlog({user, isDeveloper}) {
   const [logs, setLogs] = React.useState([]);
@@ -36,6 +37,8 @@ export function Devlog({user, isDeveloper}) {
       savedDevLogs.push(res.newPost);
 
       setLogs(savedDevLogs);
+
+      client.sendMessage(user, event.devlog, {title: newPost.title});
     }
     else
     {

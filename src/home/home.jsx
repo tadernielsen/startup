@@ -46,9 +46,13 @@ export function Home({isDeveloper}) {
       {
         msg = message.data.msg;
       }
-      if (message.type === event.announcement)
+      else if (message.type === event.announcement)
       {
         msg = "A new announcement has been posted!";
+      }
+      else if (message.type === event.devlog)
+      {
+        msg = `${message.from} just posted a new devlog post titled "${message.data.title}"`;
       }
 
       rederedMessages.push(<div key={i} className="message">{msg}</div>);
