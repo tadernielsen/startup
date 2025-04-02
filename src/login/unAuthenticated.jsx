@@ -4,6 +4,7 @@ import './login.css';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { event, client } from '../userClient.js';
 
 export function UnAuthenticated({onLogin}) {
   const [username, setUsername] = React.useState('');
@@ -25,6 +26,7 @@ export function UnAuthenticated({onLogin}) {
       localStorage.setItem('username', username);
       localStorage.setItem('userType', 'normal');
       onLogin(username, 'normal');
+      callWebSocket(username);
       nav('/');
     }
     else
@@ -48,6 +50,7 @@ export function UnAuthenticated({onLogin}) {
       localStorage.setItem('username', username);
       localStorage.setItem('userType', 'normal');
       onLogin(username, 'normal');
+      callWebSocket(username);
       nav('/');
     }
     else
@@ -55,6 +58,11 @@ export function UnAuthenticated({onLogin}) {
       const body = await response.json();
       alert(body.msg);
     }
+  }
+
+  function callWebSocket(username)
+  {
+    client.sendMessage(username, event.login);
   }
 
   async function loginDeveloper() {

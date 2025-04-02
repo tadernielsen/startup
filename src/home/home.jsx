@@ -66,6 +66,10 @@ export function Home({isDeveloper}) {
       {
         msg = `${message.from} favorited the game: ${message.data.title}`;
       }
+      else if (message.type === event.login)
+      {
+        msg = `${message.from} logged in!`;
+      }
 
       rederedMessages.push(<div key={i} className="message">{msg}</div>);
     }
