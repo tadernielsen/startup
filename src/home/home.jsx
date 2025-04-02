@@ -50,9 +50,13 @@ export function Home({isDeveloper}) {
       {
         msg = "A new announcement has been posted!";
       }
-      else if (message.type === event.devlog)
+      else if (message.type === event.newDevLog)
       {
         msg = `${message.from} just posted a new devlog post titled "${message.data.title}"`;
+      }
+      else if (message.type === event.newGame)
+      {
+        msg = `${message.from} just released a new game called "${message.data.title}"!`;
       }
 
       rederedMessages.push(<div key={i} className="message">{msg}</div>);

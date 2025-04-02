@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './games.css';
 
 import { GamePost } from './gamepost.jsx';
+import { event, client } from '../userClient.js';
 
 export function Games({user, isDeveloper}) {
   const [games, setGames] = React.useState([]);
@@ -70,6 +71,8 @@ export function Games({user, isDeveloper}) {
       savedPosts.push(res.newGame);
 
       setGames(savedPosts);
+
+      client.sendMessage(user, event.newGame, {title: newPost.title});
     }
     else
     {

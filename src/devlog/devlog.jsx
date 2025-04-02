@@ -38,7 +38,7 @@ export function Devlog({user, isDeveloper}) {
 
       setLogs(savedDevLogs);
 
-      client.sendMessage(user, event.devlog, {title: newPost.title});
+      client.sendMessage(user, event.newDevLog, {title: newPost.title});
     }
     else
     {
