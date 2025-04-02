@@ -31,7 +31,7 @@ export class DevlogPost
       this.likedAccounts.push(username);
       this.likeCount = this.likedAccounts.length;
 
-      client.sendMessage(username, event.like, {title: this.title})
+      client.sendMessage(username, event.like, {type: "devlog", title: this.title})
     }
     updateLikes(this.ID, this.likedAccounts);
   }

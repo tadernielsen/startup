@@ -60,7 +60,7 @@ export function Home({isDeveloper}) {
       }
       else if (message.type === event.like)
       {
-        msg = `${message.from} liked the post: ${message.data.title}`
+        msg = `${message.from} liked the ${message.data.type}: ${message.data.title}`
       }
 
       rederedMessages.push(<div key={i} className="message">{msg}</div>);
