@@ -5,6 +5,8 @@ import './login.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
+import { event, client } from '../userClient.js';
+
 export function Authenticated({userName,onLogout}) {
   const nav = useNavigate();
 
@@ -13,15 +15,20 @@ export function Authenticated({userName,onLogout}) {
     fetch('/api/auth/Logout', {
       method: 'DELETE',
     })
-      .then(() => {
-        localStorage.removeItem('username');
-        localStorage.setItem('userType', 'normal');
-        onLogout();
-        nav('/');
-      })
-      .catch(() => {
-        alert('Logout Failed (Possibly Offline?)');
-      });
+    .then(() => {
+      if (localStorage.getItem('userType') === 'normal')
+      {
+        client.sendMessage(localStorage.getItem('username'), event.logout, {});
+      }
+      localStorage.removeItem('username');
+      localStorage.setItem('userType', 'normal');
+      onLogout();
+
+      nav('/');
+    })
+    .catch(() => {
+      alert('Logout Failed (Possibly Offline?)');
+    });
   }
 
   return (

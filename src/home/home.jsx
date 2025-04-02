@@ -70,6 +70,10 @@ export function Home({isDeveloper}) {
       {
         msg = `${message.from} logged in!`;
       }
+      else if (message.type === event.logout)
+      {
+        msg = `${message.from} logged out :(`;
+      }
 
       rederedMessages.push(<div key={i} className="message">{msg}</div>);
     }
