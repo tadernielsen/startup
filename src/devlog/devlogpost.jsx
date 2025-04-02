@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { event, client } from '../userClient.js';
+
 export class DevlogPost
 {
   constructor(title, description, likedAccounts = [], ID = 0)
@@ -28,6 +30,8 @@ export class DevlogPost
     {
       this.likedAccounts.push(username);
       this.likeCount = this.likedAccounts.length;
+
+      client.sendMessage(username, event.like, {title: this.title})
     }
     updateLikes(this.ID, this.likedAccounts);
   }

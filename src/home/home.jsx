@@ -58,6 +58,10 @@ export function Home({isDeveloper}) {
       {
         msg = `${message.from} just released a new game called "${message.data.title}"!`;
       }
+      else if (message.type === event.like)
+      {
+        msg = `${message.from} liked the post: ${message.data.title}`
+      }
 
       rederedMessages.push(<div key={i} className="message">{msg}</div>);
     }
