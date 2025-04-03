@@ -50,6 +50,8 @@ b
     display: block;
     text-align: center;
     width: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #editLogDescription {

@@ -125,7 +125,8 @@ export function Games({user, isDeveloper}) {
   const savedGames = [];
   if (games.length)
   {
-    for (const [i, game] of games.entries())
+    const reversedGames = [...games].reverse();
+    for (const [i, game] of reversedGames.entries())
     {
       const post = new GamePost(game.image, game.title, game.description, game.installURL, user, game.likedAccounts, game.favoritedAccounts, game._id);
       savedGames.push(post.initilizePost(isDeveloper, user, updatePost, deletePost));

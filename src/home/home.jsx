@@ -132,7 +132,7 @@ export function Home({isDeveloper}) {
         
         <section className="activity">
             <h3>Recent Activity</h3>
-            {createMessages()}
+            {createMessages().reverse()}
         </section>
     </main>
   );

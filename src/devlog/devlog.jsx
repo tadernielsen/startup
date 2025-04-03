@@ -93,7 +93,8 @@ export function Devlog({user, isDeveloper}) {
   const savedDevLogs = [];
   if (logs.length)
   {
-    for (const [i, log] of logs.entries())
+    const reversedLogs = [...logs].reverse();
+    for (const [i, log] of reversedLogs.entries())
     {
       const post = new DevlogPost(log.title, log.description, log.likedAccounts, log._id);
       savedDevLogs.push(post.initilizePost(isDeveloper, user, updateLikes, deletePost));

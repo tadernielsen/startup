@@ -92,11 +92,11 @@ export function UnAuthenticated({onLogin}) {
     <div className="login">
         <h1>Login</h1>
             <div className="input-group mb-3">
-                <label className="input-group-text" for="username">Username:</label>
+                <label className="input-group-text">Username:</label>
                 <input className="form-control" type="text" id="username" placeholder="your@email.com" onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div className="input-group mb-3">
-                <label className="input-group-text" for="password">Password:</label>
+                <label className="input-group-text">Password:</label>
                 <input className="form-control" type="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className="buttons">
