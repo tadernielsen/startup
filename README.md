@@ -149,8 +149,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - `serverProxy` creates a WebSocket server and listens on /ws, when it receives messages it sends them to all clients (except the sender).
+- [x] **Frontend makes WebSocket connection** - Frontend connects to backend and displays the message "Welcome to TN Games" on the home page. When disconnected it displays "disconnected".
+- [x] **Data sent over WebSocket connection** - `home`, `devLog`, `games`, `authenticated`, and `unAuthenticated` all send data to websocket.
+    - `home` sends data whenever the announcement is updated.
+    - `devLog` sends the post title and username whenever a post is created or liked.
+    - `games` sends the game title and username whenever a game is created, liked, or favorited.
+    - `authenticated` and `unAuthenticated` both send the username whenever a user logs in or out.
+- [x] **WebSocket data displayed** - When a client receives new data while on the home page, the data is displayed in the __Recent Activity__ section.
+- [x] **Application is fully functional** - Everything on the server is functional! You can go on all of the pages and interact with the elements on them.
