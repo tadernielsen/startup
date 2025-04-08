@@ -589,3 +589,58 @@ __Security Minded__
 - Security and penetration testing
 - Secure real time logging and metrics
 - Action playbooks
+
+### UX design
+"Don't make me think" - Steve Krug
+
+__Important Elements__
+- Simplicity
+- Design as a story
+- Color
+- Consistent
+  - Use a UI Framwork (Material.io, Tailwind, Bootstrap)
+- Navigation
+  - Display location
+  - Browser controls
+  - Breadcrumbs
+  - Anticipate common paths
+- Typography
+  - Less fonts, the better
+- Text
+- Iconography
+  - Use standard icon
+- Space
+- Interaction
+- Images
+- Animation
+- Decision Fatigue
+  - Hick's law: The time necessary to make a decision increases logarithmically with the number of choices presented
+- Responsive
+- Accessibility
+  - Visual
+    - High contrast theme
+    - Screen reader support
+  - Audio
+    - Closed Caption
+    - Visual animation
+  - Physical
+    - Keybord Navigation
+    - Element ordering
+- Legal
+  - Privicy: GDPR
+  - Education: FERPA
+  - Health: HIPAA
+  - Payment: PCI
+- Walls
+  - Regestration
+  - Payment
+  - Login
+  - Navigation
+  - Legal
+- Internationalization
+  - Language
+  - Currency
+  - Times and dates
+  - Numbers
+  - Icons
+  - Images
